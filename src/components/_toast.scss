@@ -1,0 +1,59 @@
+// ============================================================
+// Aura — Toast
+// Transient notification. Show it via the JS helper `toast(msg,
+// {type})`, or render the markup yourself and flip data-state.
+// ============================================================
+@use "../config" as cfg;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: var(--z-toast);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: min(360px, calc(100vw - 40px));
+    pointer-events: none;
+  }
+  .#{$p}toast-container--bottom { top: auto; bottom: 20px; }
+
+  .#{$p}toast {
+    --_c: var(--primary);
+    pointer-events: auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    background: var(--surface-1);
+    border: 1px solid var(--outline);
+    border-left: 3px solid var(--_c);
+    box-shadow: var(--shadow-2);
+    font-size: var(--fs-sm);
+    opacity: 0;
+    transform: translateX(12px);
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .#{$p}toast[data-state="open"] { opacity: 1; transform: none; }
+
+  .#{$p}toast--success { --_c: var(--success); }
+  .#{$p}toast--warning { --_c: var(--warning); }
+  .#{$p}toast--error   { --_c: var(--error); }
+  .#{$p}toast--info    { --_c: var(--info); }
+
+  .#{$p}toast__body { flex: 1; color: var(--on-surface); line-height: 1.4; }
+  .#{$p}toast__close {
+    flex: none;
+    border: none;
+    background: none;
+    color: var(--on-surface-muted);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 2px;
+    &:hover { color: var(--on-surface); }
+  }
+}

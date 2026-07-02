@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Modal — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Modal</h1>
+    <p class="doc-lead">A dialog driven by <code>data-state</code>. Mark the overlay
+      <code>data-overlay</code> and the optional JS adds scroll-lock, focus-trap, Esc and
+      backdrop-close. In frameworks, bind <code>data-state</code> to your own state instead.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class / attr</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>modal-overlay</code> + <code>modal</code></td><td>Backdrop + dialog</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>modal__title</code> <code>modal__body</code> <code>modal__actions</code></td><td>Sections</td></tr>
+        <tr><td class="doc-cat">State</td><td><code>data-state="open|closed"</code></td><td>Visibility (framework-facing)</td></tr>
+        <tr><td class="doc-cat">Trigger</td><td><code>data-open="#id"</code> · <code>data-close</code></td><td>Vanilla auto-wiring</td></tr>
+      </tbody>
+    </table>
+
+    <section class="doc-sec">
+      <h2>Modal</h2>
+      <div class="doc-preview">
+        <button class="btn btn--error" data-open="#demo-modal">Delete workspace</button>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;button class="btn btn--error" data-open="#dlg"&gt;Delete&lt;/button&gt;
+
+&lt;div class="modal-overlay" id="dlg" data-state="closed" data-overlay&gt;
+  &lt;div class="modal" role="dialog" aria-modal="true"&gt;
+    &lt;h3 class="modal__title"&gt;Delete workspace?&lt;/h3&gt;
+    &lt;p class="modal__body"&gt;This action is permanent.&lt;/p&gt;
+    &lt;div class="modal__actions"&gt;
+      &lt;button class="btn btn--ghost" data-close&gt;Cancel&lt;/button&gt;
+      &lt;button class="btn btn--error" data-close&gt;Delete&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- vanilla: auto-wire all triggers --&gt;
+&lt;script type="module" src="interactions.auto.js"&gt;&lt;/script&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>In a framework (React)</h2>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>// No library JS needed — bind data-state to your own state.
+&lt;div className="modal-overlay" data-state={open ? 'open' : 'closed'} data-overlay&gt;
+  &lt;div className="modal" role="dialog" aria-modal="true"&gt;
+    &lt;h3 className="modal__title"&gt;Delete workspace?&lt;/h3&gt;
+    &lt;div className="modal__actions"&gt;
+      &lt;button className="btn btn--ghost" onClick={() =&gt; setOpen(false)}&gt;Cancel&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+// optional a11y helpers: import { trapFocus, lockScroll } from 'aura-css/interactions'</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <!-- the actual modal for the live demo above -->
+  <div class="modal-overlay" id="demo-modal" data-state="closed" data-overlay>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="demo-modal-t">
+      <h3 class="modal__title" id="demo-modal-t">Delete workspace?</h3>
+      <p class="modal__body">This action is permanent and will remove all projects, members and data associated with it.</p>
+      <div class="modal__actions">
+        <button class="btn btn--ghost" data-close>Cancel</button>
+        <button class="btn btn--error" data-close>Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="docs.js"></script>
+  <script type="module" src="../src/js/interactions.auto.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+// ============================================================
+// Aura — Rating (radio-powered stars)
+// CSS-only, keyboard-accessible (arrow keys), form-submittable.
+// Uses row-reverse so `:checked ~ label` fills the star and all
+// lower ones. Hover previews.
+// ============================================================
+@use "../config" as cfg;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}rating {
+    --_c: var(--warning);
+    display: inline-flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 2px;
+
+    input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      margin: 0;
+    }
+    label {
+      font-size: 24px;
+      line-height: 1;
+      color: var(--outline-strong);
+      cursor: pointer;
+      transition: color .12s ease, transform .12s ease;
+    }
+    label:hover { transform: scale(1.1); }
+
+    // fill the checked star + every lower one (they follow in the reversed DOM)
+    input:checked ~ label,
+    label:hover,
+    label:hover ~ label { color: var(--_c); }
+
+    input:focus-visible + label { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
+    &.#{$p}rating--sm label { font-size: 18px; }
+    &.#{$p}rating--lg label { font-size: 32px; }
+  }
+}

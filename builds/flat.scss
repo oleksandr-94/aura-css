@@ -1,0 +1,4 @@
+// Build preset: the whole library compiled with the FLAT skin.
+// Outputs dist/aura-flat.css. Not library source — just a recipe.
+@use "../src/config" with ($skin: flat);
+@use "../src/index";

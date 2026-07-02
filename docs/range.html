@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Range — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Range</h1>
+    <p class="doc-lead">A slider on the native <code>&lt;input type="range"&gt;</code> — themed,
+      keyboard-accessible, no JS. The colour follows the variant.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>range</code></td><td>On <code>&lt;input type="range"&gt;</code></td></tr>
+        <tr><td class="doc-cat">Color</td><td><code>range--success</code> <code>range--warning</code> <code>range--error</code></td><td>Accent</td></tr>
+        <tr><td class="doc-cat">Size</td><td><code>range--sm</code> <code>range--lg</code></td><td>Small / large</td></tr>
+      </tbody>
+    </table>
+
+    <section class="doc-sec">
+      <h2>Range</h2>
+      <div class="doc-preview col">
+        <input class="range" type="range" min="0" max="100" value="60" style="max-width:320px">
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;input class="range" type="range" min="0" max="100" value="60"&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Colours &amp; sizes</h2>
+      <div class="doc-preview col">
+        <input class="range range--sm" type="range" value="30" style="max-width:320px">
+        <input class="range range--success" type="range" value="80" style="max-width:320px">
+        <input class="range range--error" type="range" value="20" style="max-width:320px">
+        <input class="range range--lg" type="range" value="55" style="max-width:320px">
+        <input class="range" type="range" value="40" disabled style="max-width:320px">
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;input class="range range--success" type="range" value="80"&gt;
+&lt;input class="range range--lg" type="range" value="55"&gt;
+&lt;input class="range" type="range" disabled&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

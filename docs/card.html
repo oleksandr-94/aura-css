@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Card — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Card</h1>
+    <p class="doc-lead">A surface container rendered through the active skin (glass / flat /
+      neu). Optional status accent and gradient fill follow the colour and stay themeable.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>card</code></td><td>Padded surface container</td></tr>
+        <tr><td class="doc-cat">Parts</td><td><code>card__header</code> <code>card__title</code> <code>card__body</code> <code>card__actions</code></td><td>Header row / heading / text / footer</td></tr>
+        <tr><td class="doc-cat">Status</td><td><code>card--success</code> <code>card--warning</code> <code>card--error</code> <code>card--info</code></td><td>Coloured left accent</td></tr>
+        <tr><td class="doc-cat">Fill</td><td><code>card--gradient</code></td><td>Gradient (combine with a colour)</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Basic -->
+    <section class="doc-sec">
+      <h2>Card</h2>
+      <div class="doc-preview">
+        <div class="card" style="max-width:300px">
+          <h3 class="card__title">Storage</h3>
+          <p class="card__body">72% of 100 GB used across your workspace.</p>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="card"&gt;
+  &lt;h3 class="card__title"&gt;Storage&lt;/h3&gt;
+  &lt;p class="card__body"&gt;72% of 100 GB used.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Header + badge -->
+    <section class="doc-sec">
+      <h2>Header &amp; badge</h2>
+      <div class="doc-preview">
+        <div class="card" style="max-width:320px">
+          <div class="card__header">
+            <h3 class="card__title">Acme Inc.</h3>
+            <span class="badge badge--success"><i class="badge__dot"></i> Active</span>
+          </div>
+          <p class="card__body">Enterprise plan · renews 12 Aug · $1,204/mo.</p>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="card"&gt;
+  &lt;div class="card__header"&gt;
+    &lt;h3 class="card__title"&gt;Acme Inc.&lt;/h3&gt;
+    &lt;span class="badge badge--success"&gt;&lt;i class="badge__dot"&gt;&lt;/i&gt; Active&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;p class="card__body"&gt;Enterprise plan · renews 12 Aug.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Status accent -->
+    <section class="doc-sec">
+      <h2>Status accent</h2>
+      <div class="doc-preview" style="align-items:stretch">
+        <div class="card card--success" style="flex:1;max-width:220px">
+          <h3 class="card__title" style="font-size:16px">Deploy succeeded</h3>
+          <p class="card__body">Build #482 is live.</p>
+        </div>
+        <div class="card card--warning" style="flex:1;max-width:220px">
+          <h3 class="card__title" style="font-size:16px">Trial ending</h3>
+          <p class="card__body">3 days left on Pro.</p>
+        </div>
+        <div class="card card--error" style="flex:1;max-width:220px">
+          <h3 class="card__title" style="font-size:16px">Payment failed</h3>
+          <p class="card__body">Update your card.</p>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="card card--success"&gt; … &lt;/div&gt;
+&lt;div class="card card--warning"&gt; … &lt;/div&gt;
+&lt;div class="card card--error"&gt; … &lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Gradient -->
+    <section class="doc-sec">
+      <h2>Gradient</h2>
+      <p class="doc-lead" style="font-size:15px;margin-bottom:14px">Combine
+        <code>.card--gradient</code> with a colour modifier to recolour the gradient.</p>
+      <div class="doc-preview">
+        <div class="card card--gradient" style="max-width:280px">
+          <h3 class="card__title">Upgrade to Pro</h3>
+          <p class="card__body">Unlock unlimited projects and priority support.</p>
+          <div class="card__actions"><button class="btn btn--ghost btn--sm" style="--on-surface:#fff;border-color:rgba(255,255,255,.5)">Later</button><button class="btn btn--sm" style="background:#fff;color:var(--primary)">Upgrade</button></div>
+        </div>
+        <div class="card card--gradient card--error" style="max-width:260px">
+          <h3 class="card__title">Danger zone</h3>
+          <p class="card__body">Deleting is permanent and cannot be undone.</p>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="card card--gradient"&gt; … &lt;/div&gt;
+&lt;div class="card card--gradient card--error"&gt; … &lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <section class="doc-sec">
+      <h2>With actions</h2>
+      <div class="doc-preview">
+        <div class="card" style="max-width:300px">
+          <h3 class="card__title">Invite teammates</h3>
+          <p class="card__body">Add members to collaborate on this workspace.</p>
+          <div class="card__actions">
+            <button class="btn btn--sm">Invite</button>
+            <button class="btn btn--ghost btn--sm">Copy link</button>
+          </div>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="card"&gt;
+  &lt;h3 class="card__title"&gt;Invite teammates&lt;/h3&gt;
+  &lt;p class="card__body"&gt;Add members to collaborate.&lt;/p&gt;
+  &lt;div class="card__actions"&gt;
+    &lt;button class="btn btn--sm"&gt;Invite&lt;/button&gt;
+    &lt;button class="btn btn--ghost btn--sm"&gt;Copy link&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

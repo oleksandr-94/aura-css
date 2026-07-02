@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Alert — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Alert</h1>
+    <p class="doc-lead">A message panel with an accent bar and icon. Colour variants carry
+      status meaning; the tint stays constant while the active skin adds surface feel.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>alert</code></td><td>Base (primary) panel</td></tr>
+        <tr><td class="doc-cat">Color</td><td><code>alert--success</code> <code>alert--warning</code> <code>alert--error</code> <code>alert--info</code></td><td>Status colours</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>alert__icon</code></td><td>Leading icon</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>alert__title</code></td><td>Bold heading</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>alert__body</code></td><td>Muted description</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Default -->
+    <section class="doc-sec">
+      <h2>Alert</h2>
+      <div class="doc-preview col">
+        <div class="alert">
+          <span class="alert__icon">ℹ</span>
+          <div>A new version of Aura is available.</div>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="alert"&gt;
+  &lt;span class="alert__icon"&gt;ℹ&lt;/span&gt;
+  &lt;div&gt;A new version of Aura is available.&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Colours -->
+    <section class="doc-sec">
+      <h2>Colours</h2>
+      <div class="doc-preview col">
+        <div class="alert alert--success"><span class="alert__icon">✓</span><div>Changes saved successfully.</div></div>
+        <div class="alert alert--warning"><span class="alert__icon">⚠</span><div>Your trial ends in 3 days.</div></div>
+        <div class="alert alert--error"><span class="alert__icon">✕</span><div>Payment could not be processed.</div></div>
+        <div class="alert alert--info"><span class="alert__icon">ℹ</span><div>A new version is available.</div></div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="alert alert--success"&gt;
+  &lt;span class="alert__icon"&gt;✓&lt;/span&gt;
+  &lt;div&gt;Changes saved successfully.&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- With title & body -->
+    <section class="doc-sec">
+      <h2>With title &amp; body</h2>
+      <div class="doc-preview col">
+        <div class="alert alert--error">
+          <span class="alert__icon">✕</span>
+          <div>
+            <div class="alert__title">Payment failed</div>
+            <div class="alert__body">Your card was declined. Update your billing details and try again.</div>
+          </div>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="alert alert--error"&gt;
+  &lt;span class="alert__icon"&gt;✕&lt;/span&gt;
+  &lt;div&gt;
+    &lt;div class="alert__title"&gt;Payment failed&lt;/div&gt;
+    &lt;div class="alert__body"&gt;Your card was declined.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

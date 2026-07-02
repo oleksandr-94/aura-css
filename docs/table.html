@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Table — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Table</h1>
+    <p class="doc-lead">A data table. It is transparent by design — drop it inside a
+      <code>.card</code> for a surface. Rules use the outline tokens.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>table</code></td><td>On a <code>&lt;table&gt;</code></td></tr>
+        <tr><td class="doc-cat">Modifier</td><td><code>table--zebra</code></td><td>Striped rows</td></tr>
+        <tr><td class="doc-cat">Modifier</td><td><code>table--compact</code></td><td>Tighter padding</td></tr>
+      </tbody>
+    </table>
+
+    <section class="doc-sec">
+      <h2>Table</h2>
+      <div class="doc-preview col">
+        <div class="card" style="padding:0;overflow:hidden">
+          <table class="table">
+            <thead><tr><th>Customer</th><th>Plan</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Acme Inc.</td><td>Enterprise</td><td><span class="badge badge--success">Active</span></td></tr>
+              <tr><td>Globex</td><td>Pro</td><td><span class="badge badge--warning">Pending</span></td></tr>
+              <tr><td>Soylent</td><td>Starter</td><td><span class="badge badge--error">Failed</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;table class="table"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Customer&lt;/th&gt;&lt;th&gt;Plan&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Acme Inc.&lt;/td&gt;&lt;td&gt;Enterprise&lt;/td&gt;&lt;td&gt;&lt;span class="badge badge--success"&gt;Active&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Zebra</h2>
+      <div class="doc-preview col">
+        <div class="card" style="padding:0;overflow:hidden">
+          <table class="table table--zebra">
+            <thead><tr><th>Name</th><th>Role</th><th>Team</th></tr></thead>
+            <tbody>
+              <tr><td>Olena Kovalenko</td><td>Owner</td><td>Platform</td></tr>
+              <tr><td>Andrii Shevchenko</td><td>Editor</td><td>Growth</td></tr>
+              <tr><td>Maria Bondarenko</td><td>Viewer</td><td>Design</td></tr>
+              <tr><td>Ivan Melnyk</td><td>Editor</td><td>Platform</td></tr>
+              <tr><td>Sofia Tkachenko</td><td>Admin</td><td>Ops</td></tr>
+              <tr><td>Dmytro Lysenko</td><td>Viewer</td><td>Growth</td></tr>
+              <tr><td>Nazar Kravets</td><td>Editor</td><td>Design</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;table class="table table--zebra"&gt; … &lt;/table&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

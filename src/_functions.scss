@@ -1,0 +1,23 @@
+// ============================================================
+// Aura — functions
+// Auto content-colour derivation (the "no white-on-white" guard).
+// ============================================================
+@use "sass:color";
+@use "sass:math";
+
+// Relative luminance (WCAG-ish, linearised enough for a threshold).
+@function luminance($c) {
+  $r: math.div(color.channel($c, "red",   $space: rgb), 255);
+  $g: math.div(color.channel($c, "green", $space: rgb), 255);
+  $b: math.div(color.channel($c, "blue",  $space: rgb), 255);
+  @return (0.2126 * $r) + (0.7152 * $g) + (0.0722 * $b);
+}
+
+// Pick a legible text/icon colour for a given background.
+// Light backgrounds → near-black ink; dark backgrounds → white.
+@function on-color($bg, $dark: #0f1a14, $light: #ffffff) {
+  @if luminance($bg) > 0.55 {
+    @return $dark;
+  }
+  @return $light;
+}

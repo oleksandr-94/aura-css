@@ -1,0 +1,60 @@
+// ============================================================
+// Aura — Segmented control (radio-powered)
+// A single-select group built on native radios: CSS-only, keyboard
+// accessible (arrow keys) and form-submittable. The checked option
+// becomes a skin-aware filled pill via control().
+// ============================================================
+@use "../config" as cfg;
+@use "../surface" as s;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}segmented {
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    border-radius: var(--radius-md);
+    @include s.field;              // recessed well (like tabs)
+  }
+  .#{$p}segmented--block { display: flex; width: 100%; }
+  .#{$p}segmented--block .#{$p}segmented__option { flex: 1; }
+
+  .#{$p}segmented__option {
+    position: relative;
+    display: inline-flex;
+    flex: none;
+
+    input {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+    span {
+      flex: 1;
+      text-align: center;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: var(--fs-sm);
+      color: var(--on-surface-muted);
+      white-space: nowrap;
+      user-select: none;
+      transition: color .15s ease;
+    }
+
+    input:checked + span {
+      --_c: var(--primary);
+      --_bg: var(--_c);
+      --_fg: var(--on-primary);
+      @include s.control;          // active pill — glass glow / flat / neu
+      color: var(--_fg);
+    }
+    input:focus-visible + span {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+  }
+}

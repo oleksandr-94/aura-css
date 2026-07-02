@@ -1,0 +1,43 @@
+// ============================================================
+// Aura — Alert
+// Message panel with an accent bar + icon. The accent colour lives
+// in --_c so variants are one line. Colour tint is constant; the
+// skin only adds surface feel via chip().
+// ============================================================
+@use "../config" as cfg;
+@use "../surface" as s;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}alert {
+    --_c: var(--primary);
+
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--_c) 13%, var(--surface-1));
+    color: var(--on-surface);
+    border: 1px solid var(--outline);
+    border-left: 3px solid var(--_c);
+    font-size: var(--fs-md);
+
+    @include s.chip;            // glass gloss / neu extrusion / flat
+
+    // ---- colour variants ----
+    &.#{$p}alert--success { --_c: var(--success); }
+    &.#{$p}alert--warning { --_c: var(--warning); }
+    &.#{$p}alert--error   { --_c: var(--error); }
+    &.#{$p}alert--info    { --_c: var(--info); }
+  }
+
+  .#{$p}alert__icon {
+    color: var(--_c);
+    font-size: 18px;
+    line-height: 1.35;
+    flex: none;
+  }
+  .#{$p}alert__title { font-weight: 700; }
+  .#{$p}alert__body  { color: var(--on-surface-muted); font-size: var(--fs-sm); margin-top: 2px; }
+}

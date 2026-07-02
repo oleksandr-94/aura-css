@@ -1,0 +1,71 @@
+{
+  "name": "aura-css",
+  "version": "0.1.0",
+  "description": "Aura — a framework-agnostic, themeable, skinnable CSS component library (SCSS source + optional JS behaviour layer).",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/oleksandr-94/aura-css.git" },
+  "homepage": "https://github.com/oleksandr-94/aura-css#readme",
+  "bugs": "https://github.com/oleksandr-94/aura-css/issues",
+  "keywords": [
+    "css",
+    "components",
+    "design-system",
+    "themeable",
+    "glassmorphism",
+    "neumorphism",
+    "sass",
+    "ui"
+  ],
+  "type": "module",
+  "main": "./dist/interactions.mjs",
+  "module": "./dist/interactions.mjs",
+  "types": "./dist/interactions.d.ts",
+  "sass": "./src/index.scss",
+  "style": "./dist/aura.css",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/interactions.d.ts",
+      "import": "./dist/interactions.mjs"
+    },
+    "./global": "./dist/interactions.global.min.js",
+    "./css": "./dist/aura.css",
+    "./css/min": "./dist/aura.min.css",
+    "./flat": "./dist/aura-flat.css",
+    "./flat/min": "./dist/aura-flat.min.css",
+    "./neu": "./dist/aura-neu.css",
+    "./neu/min": "./dist/aura-neu.min.css",
+    "./scss": "./src/index.scss"
+  },
+  "browserslist": [
+    "Chrome >= 111",
+    "Edge >= 111",
+    "Firefox >= 113",
+    "Safari >= 16.4"
+  ],
+  "scripts": {
+    "css:glass": "sass src/index.scss dist/aura.css --style=expanded --no-source-map && sass src/index.scss dist/aura.min.css --style=compressed --no-source-map",
+    "css:flat": "sass builds/flat.scss dist/aura-flat.css --style=expanded --no-source-map && sass builds/flat.scss dist/aura-flat.min.css --style=compressed --no-source-map",
+    "css:neu": "sass builds/neu.scss dist/aura-neu.css --style=expanded --no-source-map && sass builds/neu.scss dist/aura-neu.min.css --style=compressed --no-source-map",
+    "css:prefix": "postcss dist/aura.css dist/aura.min.css dist/aura-flat.css dist/aura-flat.min.css dist/aura-neu.css dist/aura-neu.min.css --replace",
+    "build:css": "npm run css:glass && npm run css:flat && npm run css:neu && npm run css:prefix",
+    "build:js": "esbuild src/js/interactions.js --bundle --format=esm --outfile=dist/interactions.mjs && esbuild src/js/interactions.js --bundle --format=esm --minify --outfile=dist/interactions.min.mjs && esbuild src/js/global.js --bundle --format=iife --global-name=Aura --minify --outfile=dist/interactions.global.min.js",
+    "build": "npm run build:css && npm run build:js",
+    "watch": "sass --watch src/index.scss:dist/aura.css --no-source-map",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "esbuild": "^0.23.1",
+    "happy-dom": "^15.7.4",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0",
+    "sass": "^1.77.0",
+    "vitest": "^2.1.1"
+  }
+}

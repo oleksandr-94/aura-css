@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dropdown — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Dropdown</h1>
+    <p class="doc-lead">A menu driven by <code>data-state</code> on the root. A trigger with
+      <code>data-toggle</code> flips it; the optional JS handles outside-click, Esc and
+      <code>aria-expanded</code>. Frameworks bind <code>data-state</code> themselves.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class / attr</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>dropdown</code></td><td>Root (holds state)</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>dropdown__menu</code> <code>dropdown__item</code> <code>dropdown__divider</code></td><td>Menu / item / rule</td></tr>
+        <tr><td class="doc-cat">Modifier</td><td><code>dropdown__menu--end</code></td><td>Align to right edge</td></tr>
+        <tr><td class="doc-cat">Trigger</td><td><code>data-toggle</code></td><td>Toggles nearest dropdown</td></tr>
+      </tbody>
+    </table>
+
+    <section class="doc-sec">
+      <h2>Dropdown</h2>
+      <div class="doc-preview">
+        <div class="dropdown" data-state="closed">
+          <button class="btn" data-toggle aria-haspopup="true" aria-expanded="false">Menu <span class="dropdown__caret"></span></button>
+          <div class="dropdown__menu" role="menu">
+            <a class="dropdown__item" href="#">Profile</a>
+            <a class="dropdown__item" href="#">Billing</a>
+            <a class="dropdown__item" href="#">Team</a>
+            <div class="dropdown__divider"></div>
+            <a class="dropdown__item" href="#">Sign out</a>
+          </div>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="dropdown" data-state="closed"&gt;
+  &lt;button class="btn" data-toggle aria-haspopup="true"&gt;Menu &lt;span class="dropdown__caret"&gt;&lt;/span&gt;&lt;/button&gt;
+  &lt;div class="dropdown__menu" role="menu"&gt;
+    &lt;a class="dropdown__item" href="#"&gt;Profile&lt;/a&gt;
+    &lt;a class="dropdown__item" href="#"&gt;Billing&lt;/a&gt;
+    &lt;div class="dropdown__divider"&gt;&lt;/div&gt;
+    &lt;a class="dropdown__item" href="#"&gt;Sign out&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type="module" src="interactions.auto.js"&gt;&lt;/script&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+  <script type="module" src="../src/js/interactions.auto.js"></script>
+</body>
+</html>

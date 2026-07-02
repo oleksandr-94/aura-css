@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Theme generator — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+<style>
+  .tg-layout { display:grid; grid-template-columns:280px 1fr; gap:24px; align-items:start; }
+  .tg-controls { display:flex; flex-direction:column; gap:14px; }
+  .tg-row { display:flex; align-items:center; justify-content:space-between; gap:12px; font-size:13px; font-weight:600; }
+  .tg-row input[type=color]{ width:44px; height:30px; padding:0; border:1px solid var(--outline); border-radius:8px; background:none; cursor:pointer; }
+  .tg-row input[type=text]{ width:100px; font:inherit; font-size:12px; font-family:"JetBrains Mono",monospace; padding:5px 8px; border-radius:8px; border:1px solid var(--outline); background:var(--surface-1); color:var(--on-surface); }
+  .tg-group-title{ font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--on-surface-muted); font-weight:700; margin-top:8px; }
+  .tg-preview{ padding:24px; border-radius:var(--radius-lg); display:flex; flex-direction:column; gap:18px;
+    background:
+      radial-gradient(600px 300px at 15% 0%, color-mix(in srgb,var(--primary) 22%,transparent), transparent 60%),
+      radial-gradient(600px 300px at 100% 100%, color-mix(in srgb,var(--secondary) 22%,transparent), transparent 55%),
+      var(--surface); }
+  .tg-cluster{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .tg-out{ margin-top:24px; }
+</style>
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Theme generator</h1>
+    <p class="doc-lead">Pick your accent colours and a base mode. The <code>on-*</code> content
+      colours and <code>*-container</code> tints are derived automatically for contrast — then
+      copy the ready-made theme block into your CSS.</p>
+
+    <div class="tg-layout">
+      <div class="tg-controls">
+        <div class="tg-row" style="font-weight:700">
+          <span>Theme name</span>
+          <input type="text" id="tg-name" value="my-theme" style="width:130px">
+        </div>
+        <div class="tg-row" style="font-weight:700">
+          <span>Base</span>
+          <div class="seg" style="display:inline-flex;border:1px solid var(--outline-strong);border-radius:8px;overflow:hidden">
+            <button class="tg-mode on" data-mode="dark" style="border:none;background:var(--primary);color:var(--on-primary);font:inherit;font-size:12px;font-weight:700;padding:5px 12px;cursor:pointer">Dark</button>
+            <button class="tg-mode" data-mode="light" style="border:none;background:transparent;color:var(--on-surface);font:inherit;font-size:12px;font-weight:700;padding:5px 12px;cursor:pointer">Light</button>
+          </div>
+        </div>
+
+        <div class="tg-group-title">Accents</div>
+        <div class="tg-row"><span>primary</span><input type="color" data-role="primary" value="#00bd7d"></div>
+        <div class="tg-row"><span>secondary</span><input type="color" data-role="secondary" value="#3b82f6"></div>
+        <div class="tg-row"><span>accent</span><input type="color" data-role="accent" value="#12e0c0"></div>
+
+        <div class="tg-group-title">Status</div>
+        <div class="tg-row"><span>success</span><input type="color" data-role="success" value="#16a34a"></div>
+        <div class="tg-row"><span>warning</span><input type="color" data-role="warning" value="#e0913a"></div>
+        <div class="tg-row"><span>error</span><input type="color" data-role="error" value="#ea4b5e"></div>
+        <div class="tg-row"><span>info</span><input type="color" data-role="info" value="#3b82f6"></div>
+      </div>
+
+      <div class="tg-preview" id="tg-preview">
+        <div class="tg-cluster">
+          <button class="btn">Primary</button>
+          <button class="btn btn--secondary">Secondary</button>
+          <button class="btn btn--gradient">Gradient</button>
+          <button class="btn btn--ghost">Ghost</button>
+          <button class="btn btn--error">Error</button>
+        </div>
+        <div class="tg-cluster">
+          <span class="badge badge--primary">Primary</span>
+          <span class="badge badge--success"><i class="badge__dot"></i> Active</span>
+          <span class="badge badge--warning">Pending</span>
+          <span class="badge badge--error">Failed</span>
+        </div>
+        <div class="alert alert--success"><span class="alert__icon">✓</span><div>Changes saved successfully.</div></div>
+        <div class="tg-cluster" style="gap:16px">
+          <div class="card card--gradient" style="max-width:220px">
+            <h3 class="card__title">Upgrade</h3>
+            <p class="card__body">Unlock everything.</p>
+          </div>
+          <div style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:12px">
+            <div class="field"><label class="field__label">Email</label><input class="input" placeholder="you@studio.dev"></div>
+            <div class="tg-cluster">
+              <label class="switch"><input type="checkbox" checked><span class="switch__track"></span><span class="switch__thumb"></span></label>
+              <input type="checkbox" class="checkbox" checked>
+              <input type="radio" class="radio" checked>
+              <div class="progress" style="flex:1"><span class="progress__bar" style="width:65%"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-sec tg-out">
+      <h2>Generated theme</h2>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code id="tg-output"></code></pre>
+      </div>
+      <p class="doc-lead" style="font-size:14px;margin-top:12px">Paste it into your CSS, then use
+        <code>&lt;html data-theme="my-theme"&gt;</code>.</p>
+    </div>
+  </main>
+
+  <script src="docs.js"></script>
+  <script>
+    (function () {
+      // base (non-accent) tokens per mode — mirrors aura-dark / aura-light
+      var BASE = {
+        dark: {
+          'surface':'#0e1526','surface-1':'#141d33','surface-2':'#1b2540',
+          'on-surface':'#e7ecf5','on-surface-muted':'rgba(231,236,245,.62)',
+          'outline':'rgba(255,255,255,.14)','outline-strong':'rgba(255,255,255,.24)',
+          'glass-film':'rgba(255,255,255,.06)','glass-film-2':'rgba(255,255,255,.10)',
+          'tip-bg':'rgba(238,244,250,.96)','tip-text':'#0e1526',
+          'shadow-1':'0 8px 32px rgba(0,0,0,.40)','shadow-2':'0 16px 44px rgba(0,0,0,.50)'
+        },
+        light: {
+          'surface':'#eef3f2','surface-1':'#ffffff','surface-2':'#f5faf8',
+          'on-surface':'#10231b','on-surface-muted':'rgba(16,35,27,.62)',
+          'outline':'rgba(12,70,50,.16)','outline-strong':'rgba(12,70,50,.30)',
+          'glass-film':'rgba(255,255,255,.55)','glass-film-2':'rgba(255,255,255,.70)',
+          'tip-bg':'rgba(16,24,40,.95)','tip-text':'#eef4fa',
+          'shadow-1':'0 10px 30px rgba(10,90,60,.14)','shadow-2':'0 16px 40px rgba(10,90,60,.18)'
+        }
+      };
+      var ACCENTS = ['primary','secondary','accent','success','warning','error','info'];
+      var mode = 'dark';
+
+      function lum(hex) {
+        var m = hex.replace('#',''); if (m.length===3) m = m.split('').map(function(c){return c+c;}).join('');
+        var r=parseInt(m.substr(0,2),16)/255, g=parseInt(m.substr(2,2),16)/255, b=parseInt(m.substr(4,2),16)/255;
+        return 0.2126*r + 0.7152*g + 0.0722*b;
+      }
+      function onColor(hex){ return lum(hex) > 0.55 ? '#0f1a14' : '#ffffff'; }
+
+      function collect() {
+        var t = {};
+        var base = BASE[mode];
+        Object.keys(base).forEach(function(k){ t[k] = base[k]; });
+        ACCENTS.forEach(function(role){
+          var c = document.querySelector('input[data-role="'+role+'"]').value;
+          t[role] = c;
+          t['on-'+role] = onColor(c);
+          t[role+'-container'] = 'color-mix(in srgb, '+c+' 16%, transparent)';
+          t['on-'+role+'-container'] = c;
+        });
+        return t;
+      }
+
+      function apply() {
+        var t = collect();
+        var pv = document.getElementById('tg-preview');
+        Object.keys(t).forEach(function(k){ pv.style.setProperty('--'+k, t[k]); });
+
+        var name = document.getElementById('tg-name').value || 'my-theme';
+        var order = ['primary','on-primary','primary-container','on-primary-container',
+          'secondary','on-secondary','secondary-container','on-secondary-container',
+          'accent','on-accent','accent-container','on-accent-container',
+          'success','on-success','warning','on-warning','error','on-error','info','on-info',
+          'surface','surface-1','surface-2','on-surface','on-surface-muted',
+          'outline','outline-strong','glass-film','glass-film-2','tip-bg','tip-text','shadow-1','shadow-2'];
+        var lines = order.filter(function(k){ return t[k] != null; })
+          .map(function(k){ return '  --'+k+': '+t[k]+';'; }).join('\n');
+        document.getElementById('tg-output').textContent =
+          'html[data-theme="'+name+'"] {\n' + lines + '\n}';
+      }
+
+      document.querySelectorAll('input[data-role], #tg-name').forEach(function(el){
+        el.addEventListener('input', apply);
+      });
+      document.querySelectorAll('.tg-mode').forEach(function(b){
+        b.addEventListener('click', function(){
+          mode = b.dataset.mode;
+          document.querySelectorAll('.tg-mode').forEach(function(x){
+            var on = x === b;
+            x.style.background = on ? 'var(--primary)' : 'transparent';
+            x.style.color = on ? 'var(--on-primary)' : 'var(--on-surface)';
+          });
+          apply();
+        });
+      });
+
+      apply();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+// Declares cascade-layer order up front. Host app styles stay
+// unlayered and therefore always win over Aura. The a11y layer is
+// last so reduced-motion overrides Aura's own component motion.
+@layer base, components, a11y;

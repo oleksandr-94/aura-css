@@ -1,0 +1,51 @@
+// ============================================================
+// Aura — Checkbox
+// Custom control (appearance:none). Box is a skin-aware well via
+// field(); checked/indeterminate fill with --_c + white mark.
+// ============================================================
+@use "../config" as cfg;
+@use "../surface" as s;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}checkbox {
+    --_c: var(--primary);
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+    flex: none;
+    width: 18px;
+    height: 18px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    transition: background .15s ease, border-color .15s ease;
+    @include s.field;
+
+    &:checked,
+    &:indeterminate { --_bg: var(--_c); --_fg: #fff; @include s.control; }
+
+    &:checked::after {
+      content: "";
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 5px; height: 9px;
+      border: solid #fff; border-width: 0 2px 2px 0;
+      transform: translate(-50%, -58%) rotate(45deg);
+    }
+    &:indeterminate::after {
+      content: "";
+      position: absolute;
+      left: 3px; right: 3px; top: calc(50% - 1px);
+      height: 2px; background: #fff; border-radius: 1px;
+    }
+
+    &:focus-visible { outline: 2px solid var(--_c); outline-offset: 2px; }
+    &:disabled { opacity: .5; cursor: not-allowed; }
+
+    &.#{$p}checkbox--success { --_c: var(--success); }
+    &.#{$p}checkbox--warning { --_c: var(--warning); }
+    &.#{$p}checkbox--error   { --_c: var(--error); }
+  }
+}

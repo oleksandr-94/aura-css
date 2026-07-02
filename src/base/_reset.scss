@@ -1,0 +1,7 @@
+// ============================================================
+// Aura — minimal, non-destructive reset (scoped to a layer so a
+// host app's styles always win over it).
+// ============================================================
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+}

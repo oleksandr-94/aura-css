@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Components — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Components</h1>
+    <p class="doc-lead">A framework-agnostic, themeable, skinnable CSS library. Every preview
+      below is live — switch the theme and skin in the sidebar to see components adapt.</p>
+
+    <div class="doc-gallery">
+      <a class="doc-tile" href="button.html">
+        <div class="doc-tile__preview">
+          <button class="btn btn--sm">Primary</button>
+          <button class="btn btn--sm btn--secondary">Secondary</button>
+          <button class="btn btn--sm btn--outline">Outline</button>
+        </div>
+        <div class="doc-tile__label">Button <span>7 colours · 2 styles · sizes</span></div>
+      </a>
+
+      <a class="doc-tile" href="card.html">
+        <div class="doc-tile__preview">
+          <div class="card" style="width:210px;padding:16px;gap:8px">
+            <h3 class="card__title" style="font-size:16px">Storage</h3>
+            <p class="card__body" style="font-size:13px">72% of 100 GB used.</p>
+          </div>
+        </div>
+        <div class="doc-tile__label">Card <span>surface container</span></div>
+      </a>
+
+      <a class="doc-tile" href="input.html">
+        <div class="doc-tile__preview">
+          <div class="field" style="width:210px">
+            <label class="field__label" for="e">Email</label>
+            <input id="e" class="input input--sm" placeholder="you@studio.dev">
+          </div>
+        </div>
+        <div class="doc-tile__label">Input <span>input · select · textarea</span></div>
+      </a>
+
+      <a class="doc-tile" href="badge.html">
+        <div class="doc-tile__preview">
+          <span class="badge badge--success"><i class="badge__dot"></i> Active</span>
+          <span class="badge badge--warning"><i class="badge__dot"></i> Pending</span>
+          <span class="badge badge--error">Failed</span>
+        </div>
+        <div class="doc-tile__label">Badge <span>7 status tints</span></div>
+      </a>
+
+      <a class="doc-tile" href="alert.html">
+        <div class="doc-tile__preview">
+          <div class="alert alert--success" style="width:230px"><span class="alert__icon">✓</span><div>Changes saved.</div></div>
+        </div>
+        <div class="doc-tile__label">Alert <span>status message panel</span></div>
+      </a>
+
+      <a class="doc-tile" href="switch.html">
+        <div class="doc-tile__preview">
+          <label class="switch"><input type="checkbox" checked><span class="switch__track"></span><span class="switch__thumb"></span></label>
+          <label class="switch switch--success"><input type="checkbox" checked><span class="switch__track"></span><span class="switch__thumb"></span></label>
+          <label class="switch"><input type="checkbox"><span class="switch__track"></span><span class="switch__thumb"></span></label>
+        </div>
+        <div class="doc-tile__label">Switch <span>toggle · colours · sizes</span></div>
+      </a>
+
+      <a class="doc-tile" href="checkbox.html">
+        <div class="doc-tile__preview">
+          <input type="checkbox" class="checkbox" checked>
+          <input type="checkbox" class="checkbox checkbox--success" checked>
+          <input type="checkbox" class="checkbox">
+        </div>
+        <div class="doc-tile__label">Checkbox <span>+ indeterminate</span></div>
+      </a>
+
+      <a class="doc-tile" href="radio.html">
+        <div class="doc-tile__preview">
+          <input type="radio" name="g1" class="radio" checked>
+          <input type="radio" name="g2" class="radio radio--success" checked>
+          <input type="radio" name="g3" class="radio">
+        </div>
+        <div class="doc-tile__label">Radio <span>grouped choice</span></div>
+      </a>
+
+      <a class="doc-tile" href="select.html">
+        <div class="doc-tile__preview">
+          <select class="select" style="width:200px"><option>Owner</option><option>Editor</option></select>
+        </div>
+        <div class="doc-tile__label">Select <span>custom chevron</span></div>
+      </a>
+
+      <a class="doc-tile" href="range.html">
+        <div class="doc-tile__preview" style="flex-direction:column;gap:10px">
+          <input class="range" type="range" value="60" style="width:200px">
+          <input class="range range--success" type="range" value="85" style="width:200px">
+        </div>
+        <div class="doc-tile__label">Range <span>slider</span></div>
+      </a>
+
+      <a class="doc-tile" href="file.html">
+        <div class="doc-tile__preview">
+          <input class="file" type="file">
+        </div>
+        <div class="doc-tile__label">File input <span>styled button</span></div>
+      </a>
+
+      <a class="doc-tile" href="rating.html">
+        <div class="doc-tile__preview">
+          <div class="rating">
+            <input type="radio" name="gr" value="5"><label>★</label>
+            <input type="radio" name="gr" value="4" checked><label>★</label>
+            <input type="radio" name="gr" value="3"><label>★</label>
+            <input type="radio" name="gr" value="2"><label>★</label>
+            <input type="radio" name="gr" value="1"><label>★</label>
+          </div>
+        </div>
+        <div class="doc-tile__label">Rating <span>stars · radios</span></div>
+      </a>
+
+      <a class="doc-tile" href="tabs.html">
+        <div class="doc-tile__preview">
+          <div class="tabs">
+            <button class="tab tab--active">Overview</button>
+            <button class="tab">Activity</button>
+          </div>
+        </div>
+        <div class="doc-tile__label">Tabs <span>segmented bar</span></div>
+      </a>
+
+      <a class="doc-tile" href="button-group.html">
+        <div class="doc-tile__preview" style="flex-direction:column;gap:10px">
+          <div class="group">
+            <button class="btn btn--ghost">Day</button>
+            <button class="btn btn--ghost">Week</button>
+            <button class="btn btn--ghost">Month</button>
+          </div>
+          <div class="group" style="width:210px">
+            <input class="input input--sm" placeholder="Search…">
+            <button class="btn btn--sm">Go</button>
+          </div>
+        </div>
+        <div class="doc-tile__label">Group <span>buttons + fields</span></div>
+      </a>
+
+      <a class="doc-tile" href="table.html">
+        <div class="doc-tile__preview">
+          <table class="table" style="background:var(--surface-1);border-radius:10px;overflow:hidden">
+            <thead><tr><th>Name</th><th>Plan</th></tr></thead>
+            <tbody><tr><td>Acme</td><td>Pro</td></tr><tr><td>Globex</td><td>Free</td></tr></tbody>
+          </table>
+        </div>
+        <div class="doc-tile__label">Table <span>+ zebra · compact</span></div>
+      </a>
+
+      <a class="doc-tile" href="progress.html">
+        <div class="doc-tile__preview" style="flex-direction:column;gap:12px">
+          <div class="progress" style="width:180px"><span class="progress__bar" style="width:70%"></span></div>
+          <span class="spinner"></span>
+        </div>
+        <div class="doc-tile__label">Progress <span>bar + spinner</span></div>
+      </a>
+
+      <a class="doc-tile" href="tooltip.html">
+        <div class="doc-tile__preview">
+          <span class="badge badge--primary">hover · focus</span>
+        </div>
+        <div class="doc-tile__label">Tooltip <span>inverted, pure CSS</span></div>
+      </a>
+
+      <a class="doc-tile" href="modal.html">
+        <div class="doc-tile__preview">
+          <div style="width:220px;padding:16px;border-radius:12px;background:var(--surface-1);border:1px solid var(--outline);box-shadow:var(--shadow-2)">
+            <div style="font-weight:800;margin-bottom:10px">Delete workspace?</div>
+            <div style="display:flex;gap:8px;justify-content:flex-end">
+              <button class="btn btn--ghost btn--sm">Cancel</button>
+              <button class="btn btn--error btn--sm">Delete</button>
+            </div>
+          </div>
+        </div>
+        <div class="doc-tile__label">Modal <span>dialog · data-state</span></div>
+      </a>
+
+      <a class="doc-tile" href="dropdown.html">
+        <div class="doc-tile__preview">
+          <div style="width:180px;padding:6px;border-radius:10px;background:var(--surface-1);border:1px solid var(--outline);box-shadow:var(--shadow-2)">
+            <span class="dropdown__item">Profile</span>
+            <span class="dropdown__item">Billing</span>
+            <span class="dropdown__item">Sign out</span>
+          </div>
+        </div>
+        <div class="doc-tile__label">Dropdown <span>menu · outside-close</span></div>
+      </a>
+
+      <a class="doc-tile" href="avatar.html">
+        <div class="doc-tile__preview">
+          <span class="avatar-group">
+            <span class="avatar">OL</span>
+            <span class="avatar" style="background:color-mix(in srgb,var(--secondary) 30%,var(--surface-2))">AK</span>
+            <span class="avatar" style="background:color-mix(in srgb,var(--warning) 30%,var(--surface-2))">MB</span>
+            <span class="avatar">+5</span>
+          </span>
+        </div>
+        <div class="doc-tile__label">Avatar <span>group · status</span></div>
+      </a>
+
+      <a class="doc-tile" href="accordion.html">
+        <div class="doc-tile__preview" style="align-items:stretch">
+          <div class="accordion" style="width:100%">
+            <div class="accordion__item"><div class="accordion__head" style="pointer-events:none">What is Aura? <span>⌄</span></div></div>
+            <div class="accordion__item"><div class="accordion__head" style="pointer-events:none">Does it need a build?</div></div>
+          </div>
+        </div>
+        <div class="doc-tile__label">Accordion <span>native details</span></div>
+      </a>
+
+      <a class="doc-tile" href="toast.html">
+        <div class="doc-tile__preview">
+          <div class="toast toast--success" data-state="open" style="position:static;pointer-events:auto;width:230px">
+            <div class="toast__body">Changes saved.</div>
+            <button class="toast__close">&times;</button>
+          </div>
+        </div>
+        <div class="doc-tile__label">Toast <span>notification · JS helper</span></div>
+      </a>
+
+      <a class="doc-tile" href="pagination.html">
+        <div class="doc-tile__preview">
+          <nav class="pagination">
+            <span class="pagination__item pagination__item--active">1</span>
+            <span class="pagination__item">2</span>
+            <span class="pagination__item">3</span>
+          </nav>
+        </div>
+        <div class="doc-tile__label">Pagination <span>page navigation</span></div>
+      </a>
+    </div>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+// ============================================================
+// Aura — Tabs (segmented)
+// Container is a skin-aware well; the active tab is a skin-aware
+// filled control. Content switching is left to the app.
+// ============================================================
+@use "../config" as cfg;
+@use "../surface" as s;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}tabs {
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    border-radius: var(--radius-md);
+    @include s.field;
+  }
+  .#{$p}tabs--block { display: flex; width: 100%; }
+  .#{$p}tabs--block .#{$p}tab { flex: 1; }
+
+  .#{$p}tab {
+    font: inherit;
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    padding: 8px 14px;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--on-surface-muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color .15s ease;
+
+    &:hover:not(.#{$p}tab--active) { color: var(--on-surface); }
+    &:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+  }
+
+  .#{$p}tab--active {
+    --_bg: var(--primary);
+    --_fg: var(--on-primary);
+    @include s.control;
+    color: var(--_fg);
+  }
+
+  // panel shown/hidden by the JS (or your framework) via the `hidden` attribute
+  .#{$p}tab-panel { margin-top: var(--space-4); }
+
+  // ---- underline variant ----
+  .#{$p}tabs--underline {
+    gap: 4px;
+    padding: 0;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--outline);
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+
+    .#{$p}tab {
+      border-radius: 0;
+      padding: 10px 14px;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+    }
+    .#{$p}tab--active {
+      background: none;
+      box-shadow: none;
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+  }
+
+  // ---- lift variant (raised "folder" tab that merges into its panel) ----
+  // Pair with .tab-panels (a surface-1 box). The active tab overlaps the
+  // panel's top border and shares its background → one connected surface.
+  .#{$p}tabs--lift {
+    gap: 4px;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+
+    .#{$p}tab {
+      position: relative;
+      z-index: 0;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      padding: 10px 16px;
+      border: 1px solid transparent;
+      border-bottom: none;
+      margin-bottom: -1px;          // overlap the panel's top border
+    }
+    .#{$p}tab--active {
+      z-index: 1;                   // sit above the panel border → merge
+      background: var(--surface-1);
+      box-shadow: none;
+      color: var(--on-surface);
+      border-color: var(--outline);
+    }
+  }
+
+  // Panel container — a surface card that works with any tab variant.
+  // Default: a standalone rounded card (a gap below pill/underline tabs).
+  // Default: a plain content area that flows under pill / underline tabs
+  // (no second box). After lift tabs it becomes a connected surface card.
+  .#{$p}tab-panels {
+    padding-top: var(--space-4);
+    .#{$p}tab-panel { margin-top: 0; }
+  }
+  .#{$p}tabs--lift + .#{$p}tab-panels {
+    padding: var(--space-6);
+    background: var(--surface-1);
+    border: 1px solid var(--outline);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  }
+
+  // ---- tabbed card: tabs are the header, panels the body — one card,
+  //      no gap. Works with pill / underline tabs inside. ----
+  .#{$p}tab-card {
+    background: var(--surface-1);
+    border: 1px solid var(--outline);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+
+    > .#{$p}tabs {
+      display: flex;                 // full width → divider spans the whole card
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--outline);
+      border-radius: 0;
+      box-shadow: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      padding: var(--space-2);
+    }
+    // underline tabs: drop bottom padding so the underline sits on the divider
+    > .#{$p}tabs--underline { padding: var(--space-1) var(--space-2) 0; }
+    > .#{$p}tab-panels {
+      margin-top: 0;
+      padding: var(--space-6);
+    }
+  }
+
+  // ---- sizes (compose with any variant) ----
+  .#{$p}tabs--sm .#{$p}tab { padding: 5px 10px;  font-size: var(--fs-xs); }
+  .#{$p}tabs--lg .#{$p}tab { padding: 11px 18px; font-size: var(--fs-md); }
+}

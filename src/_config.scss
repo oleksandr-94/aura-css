@@ -1,0 +1,72 @@
+// ============================================================
+// Aura — configuration
+// The three levers that adapt the library per project.
+// Override any of these with `@use "aura/src/config" with (...)`.
+// ============================================================
+
+// 1) Namespace. Empty by default; set e.g. "au-" to avoid
+//    class-name collisions with other libraries in a project.
+$prefix: '' !default;
+
+// 2) Skin — surface treatment, independent of colour palette.
+//    glass | flat | neu
+$skin: glass !default;
+
+// 3) Themes — colour palettes (Material-3 style roles).
+//    Only base colours are required; every `on-*` (content) colour
+//    is derived automatically for guaranteed contrast.
+$default-theme: aura-dark !default;
+
+$themes: (
+  aura-dark: (
+    // accents
+    primary:   #00BD7D,
+    secondary: #3B82F6,
+    accent:    #12E0C0,
+    // status
+    success:   #16A34A,
+    warning:   #E0913A,
+    error:     #EA4B5E,
+    info:      #3B82F6,
+    // surfaces (page → elevated)
+    surface:    #0e1526,
+    surface-1:  #141d33,
+    surface-2:  #1b2540,
+    on-surface:        #e7ecf5,
+    on-surface-muted:  rgba(231,236,245,.62),
+    // lines
+    outline:         rgba(255,255,255,.14),
+    outline-strong:  rgba(255,255,255,.24),
+    // frosted-glass film (used only by the glass skin)
+    glass-film:    rgba(255,255,255,.06),
+    glass-film-2:  rgba(255,255,255,.10),
+    // inverted tooltip (light on dark)
+    tip-bg:   rgba(238,244,250,.96),
+    tip-text: #0e1526,
+    // elevation
+    shadow-1: (0 8px 32px rgba(0,0,0,.40)),
+    shadow-2: (0 16px 44px rgba(0,0,0,.50)),
+  ),
+  aura-light: (
+    primary:   #00A86B,
+    secondary: #2563EB,
+    accent:    #0FB89B,
+    success:   #16A34A,
+    warning:   #D97706,
+    error:     #DC2626,
+    info:      #2563EB,
+    surface:    #eef3f2,
+    surface-1:  #ffffff,
+    surface-2:  #f5faf8,
+    on-surface:        #10231b,
+    on-surface-muted:  rgba(16,35,27,.62),
+    outline:         rgba(12,70,50,.16),
+    outline-strong:  rgba(12,70,50,.30),
+    glass-film:    rgba(255,255,255,.55),
+    glass-film-2:  rgba(255,255,255,.70),
+    tip-bg:   rgba(16,24,40,.95),
+    tip-text: #eef4fa,
+    shadow-1: (0 10px 30px rgba(10,90,60,.14)),
+    shadow-2: (0 16px 40px rgba(10,90,60,.18)),
+  ),
+) !default;

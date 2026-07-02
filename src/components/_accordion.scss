@@ -1,0 +1,62 @@
+// ============================================================
+// Aura — Accordion
+// Built on native <details>/<summary> — zero JS, accessible,
+// keyboard-friendly. Frameworks bind the `open` attribute.
+// ============================================================
+@use "../config" as cfg;
+@use "../surface" as s;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .#{$p}accordion__item {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    @include s.surface(1);
+  }
+
+  .#{$p}accordion__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    font-weight: 700;
+    font-size: var(--fs-md);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+
+    &::-webkit-details-marker { display: none; }
+    // CSS chevron (crisp, scales with border-width)
+    &::after {
+      content: "";
+      flex: none;
+      width: 9px;
+      height: 9px;
+      margin-inline-start: 8px;
+      border-right: 2px solid var(--on-surface-muted);
+      border-bottom: 2px solid var(--on-surface-muted);
+      border-bottom-right-radius: 2px;
+      transform: translateY(-2px) rotate(45deg);
+      transition: transform .2s ease;
+    }
+    &:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
+  }
+
+  .#{$p}accordion__item[open] > .#{$p}accordion__head::after {
+    transform: translateY(2px) rotate(-135deg);
+  }
+
+  .#{$p}accordion__body {
+    padding: 0 16px 16px;
+    color: var(--on-surface-muted);
+    font-size: var(--fs-sm);
+    line-height: 1.5;
+  }
+}

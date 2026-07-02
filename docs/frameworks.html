@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Usage with React / Vue — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Usage with React / Vue</h1>
+    <p class="doc-lead">Aura is CSS-first: components are class names plus a
+      <code>data-state</code> attribute. In a framework you own the state and bind
+      <code>data-state</code> to it — the JS layer is only for toasts and a few pure helpers.</p>
+
+    <div class="alert alert--info" style="margin-bottom:32px">
+      <span class="alert__icon">ℹ</span>
+      <div>
+        <div class="alert__title">Rule of thumb</div>
+        <div class="alert__body">Don't use <code>mount / open / close / toggle</code> in a
+          framework — they write <code>data-state</code> straight to the DOM and desync from
+          your component state. Bind <code>data-state</code> yourself; import only
+          <code>toast</code>, <code>trapFocus</code>, <code>lockScroll</code>.</div>
+      </div>
+    </div>
+
+    <section class="doc-sec">
+      <h2>Install</h2>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>import 'aura-css/css';                       // glass skin (or aura-css/flat, aura-css/neu)
+import { toast, trapFocus, lockScroll, unlockScroll } from 'aura-css';</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>React — Modal</h2>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>import { useEffect, useRef } from 'react';
+import { trapFocus, lockScroll, unlockScroll } from 'aura-css';
+
+function Modal({ open, onClose, children }) {
+  const ref = useRef(null);
+
+  useEffect(() =&gt; {
+    if (!open) return;
+    lockScroll();
+    const untrap = trapFocus(ref.current);
+    const onKey = (e) =&gt; e.key === 'Escape' &amp;&amp; onClose();
+    document.addEventListener('keydown', onKey);
+    return () =&gt; { untrap(); unlockScroll(); document.removeEventListener('keydown', onKey); };
+  }, [open, onClose]);
+
+  return (
+    &lt;div className="modal-overlay" data-state={open ? 'open' : 'closed'} data-overlay
+         onClick={(e) =&gt; e.target === e.currentTarget &amp;&amp; onClose()}&gt;
+      &lt;div className="modal" role="dialog" aria-modal="true" ref={ref}&gt;{children}&lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>React — Dropdown</h2>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>function Dropdown() {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() =&gt; {
+    if (!open) return;
+    const onDoc = (e) =&gt; !ref.current.contains(e.target) &amp;&amp; setOpen(false);
+    document.addEventListener('click', onDoc);
+    return () =&gt; document.removeEventListener('click', onDoc);
+  }, [open]);
+
+  return (
+    &lt;div className="dropdown" data-state={open ? 'open' : 'closed'} ref={ref}&gt;
+      &lt;button className="btn" onClick={() =&gt; setOpen(v =&gt; !v)}&gt;Menu &lt;span className="dropdown__caret" /&gt;&lt;/button&gt;
+      &lt;div className="dropdown__menu"&gt;
+        &lt;a className="dropdown__item" href="#"&gt;Profile&lt;/a&gt;
+        &lt;a className="dropdown__item" href="#"&gt;Sign out&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Toasts — the exception</h2>
+      <p class="doc-lead" style="font-size:15px;margin-bottom:14px">Toasts are imperative by
+        nature, so <code>toast()</code> is exactly what you want — call it from any handler.</p>
+      <div class="doc-preview">
+        <button class="btn" id="fw-toast">Show toast</button>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>import { toast } from 'aura-css';
+
+&lt;button className="btn" onClick={() =&gt; toast('Saved!', { type: 'success' })}&gt;
+  Save
+&lt;/button&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Vue</h2>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;template&gt;
+  &lt;div class="modal-overlay" :data-state="open ? 'open' : 'closed'" data-overlay
+       @click.self="open = false"&gt;
+    &lt;div class="modal" role="dialog" aria-modal="true" ref="dialog"&gt;
+      &lt;slot /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { watch, ref } from 'vue';
+import { trapFocus, lockScroll, unlockScroll } from 'aura-css';
+// bind :data-state to `open`; call trapFocus/lockScroll in a watcher.
+&lt;/script&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>What to import</h2>
+      <table class="doc-table" style="margin-bottom:0">
+        <thead><tr><th>From <code>aura</code></th><th>In React / Vue</th></tr></thead>
+        <tbody>
+          <tr><td><code>toast()</code></td><td>✅ call from any handler</td></tr>
+          <tr><td><code>trapFocus</code> · <code>lockScroll</code> · <code>unlockScroll</code></td><td>✅ in effects / watchers</td></tr>
+          <tr><td><code>configure()</code></td><td>✅ if you set a prefix</td></tr>
+          <tr><td><code>mount</code> · <code>open</code> · <code>close</code> · <code>toggle</code></td><td>❌ vanilla only — they write to the DOM past your state</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+  <script type="module">
+    import { toast } from '../src/js/interactions.js';
+    document.getElementById('fw-toast')?.addEventListener('click', function () {
+      toast('Saved!', { type: 'success' });
+    });
+  </script>
+</body>
+</html>

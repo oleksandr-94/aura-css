@@ -1,0 +1,65 @@
+// ============================================================
+// Aura — tokens
+// Emits static scales + generates every theme from config.
+// Components must only ever reference these CSS variables.
+// ============================================================
+@use "sass:map";
+@use "./config" as cfg;
+@use "./functions" as fn;
+
+// ---- Static, theme-independent scales ----
+:root {
+  // radius
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+  // spacing (4pt)
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px;
+  --space-4: 16px; --space-6: 24px; --space-8: 32px;
+  // type
+  --font: "Plus Jakarta Sans", system-ui, sans-serif;
+  --fs-xs: 12px; --fs-sm: 13px; --fs-md: 14px; --fs-lg: 16px; --fs-xl: 20px;
+  // surface effects
+  --blur: 20px;
+  // general brand gradient (auto-adapts to each theme's accents).
+  // Per-colour button gradients are derived inline from the button's own colour.
+  --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  --gradient-tint: #ffd23f;   // warm highlight mixed into the light end of button gradients
+  // z-index scale
+  --z-dropdown: 1000;
+  --z-sticky:   1020;
+  --z-modal:    1050;
+  --z-toast:    1080;
+}
+
+// ---- Per-theme colour roles ----
+@mixin emit-theme($c) {
+  // accents + status: derive on-* (content) and *-container automatically
+  @each $role in (primary, secondary, accent, success, warning, error, info) {
+    $val: map.get($c, $role);
+    @if $val {
+      --#{$role}: #{$val};
+      --on-#{$role}: #{fn.on-color($val)};
+      // subtle tinted fill for badges/alerts + its content colour
+      --#{$role}-container: color-mix(in srgb, #{$val} 16%, transparent);
+      --on-#{$role}-container: #{$val};
+    }
+  }
+  // surfaces + lines + elevation (provided explicitly)
+  @each $role in (surface, surface-1, surface-2, on-surface, on-surface-muted,
+                  outline, outline-strong, glass-film, glass-film-2,
+                  tip-bg, tip-text, shadow-1, shadow-2) {
+    $val: map.get($c, $role);
+    @if $val { --#{$role}: #{$val}; }
+  }
+}
+
+@each $name, $colors in cfg.$themes {
+  @if $name == cfg.$default-theme {
+    :root,
+    [data-theme="#{$name}"] { @include emit-theme($colors); }
+  } @else {
+    [data-theme="#{$name}"] { @include emit-theme($colors); }
+  }
+}

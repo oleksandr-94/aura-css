@@ -1,0 +1,49 @@
+// ============================================================
+// Skin: neu — soft neumorphism, extruded / inset shadows.
+// Works best when the page background matches --surface.
+// ============================================================
+
+// Panels / cards — extruded from the surface.
+@mixin surface($level: 1) {
+  background: var(--surface);
+  border: none;
+  box-shadow:
+    8px 8px 20px color-mix(in srgb, var(--surface) 45%, #000),
+    -8px -8px 20px color-mix(in srgb, var(--surface) 88%, #fff);
+}
+
+// Control wells (inputs, checkboxes, switch tracks) — pressed into
+// the surface. Sharp, small inset so it reads on tiny controls too.
+@mixin field {
+  background: var(--surface);
+  border: none;
+  box-shadow:
+    inset 2px 2px 4px color-mix(in srgb, var(--surface) 40%, #000),
+    inset -2px -2px 4px color-mix(in srgb, var(--surface) 92%, #fff);
+}
+
+// Filled controls (buttons) — extruded, coloured; shadows derived
+// from the control's own colour so any variant stays neumorphic.
+@mixin control {
+  background: var(--_bg);
+  color: var(--_fg);
+  border: none;
+  box-shadow:
+    3px 3px 7px color-mix(in srgb, var(--_shadow-color, var(--_bg)) 55%, #000),
+    -3px -3px 7px color-mix(in srgb, var(--_shadow-color, var(--_bg)) 82%, #fff);
+}
+
+// Pressed state — inset.
+@mixin control-active {
+  transform: none;
+  box-shadow:
+    inset 2px 2px 5px color-mix(in srgb, var(--_shadow-color, var(--_bg)) 55%, #000),
+    inset -2px -2px 5px color-mix(in srgb, var(--_shadow-color, var(--_bg)) 82%, #fff);
+}
+
+// Small tinted pill (badge) — neu: soft extrusion from the page surface.
+@mixin chip {
+  box-shadow:
+    2px 2px 5px color-mix(in srgb, var(--surface) 55%, #000),
+    -2px -2px 5px color-mix(in srgb, var(--surface) 88%, #fff);
+}

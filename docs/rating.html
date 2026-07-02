@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rating — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Rating</h1>
+    <p class="doc-lead">A star rating on native radios — CSS-only, keyboard-accessible
+      (arrow keys), form-submittable. Hover previews; click sets. Put the stars in reverse
+      order (5 → 1).</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>rating</code></td><td>Wraps radio + label pairs (reversed)</td></tr>
+        <tr><td class="doc-cat">Size</td><td><code>rating--sm</code> <code>rating--lg</code></td><td>Small / large</td></tr>
+      </tbody>
+    </table>
+
+    <section class="doc-sec">
+      <h2>Rating</h2>
+      <div class="doc-preview">
+        <div class="rating">
+          <input type="radio" name="r1" id="r1-5" value="5"><label for="r1-5">★</label>
+          <input type="radio" name="r1" id="r1-4" value="4" checked><label for="r1-4">★</label>
+          <input type="radio" name="r1" id="r1-3" value="3"><label for="r1-3">★</label>
+          <input type="radio" name="r1" id="r1-2" value="2"><label for="r1-2">★</label>
+          <input type="radio" name="r1" id="r1-1" value="1"><label for="r1-1">★</label>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="rating"&gt;
+  &lt;input type="radio" name="r" id="r5" value="5"&gt;&lt;label for="r5"&gt;★&lt;/label&gt;
+  &lt;input type="radio" name="r" id="r4" value="4" checked&gt;&lt;label for="r4"&gt;★&lt;/label&gt;
+  &lt;input type="radio" name="r" id="r3" value="3"&gt;&lt;label for="r3"&gt;★&lt;/label&gt;
+  &lt;input type="radio" name="r" id="r2" value="2"&gt;&lt;label for="r2"&gt;★&lt;/label&gt;
+  &lt;input type="radio" name="r" id="r1" value="1"&gt;&lt;label for="r1"&gt;★&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Sizes</h2>
+      <div class="doc-preview col">
+        <div class="rating rating--sm">
+          <input type="radio" name="r2" value="5"><label>★</label>
+          <input type="radio" name="r2" value="4" checked><label>★</label>
+          <input type="radio" name="r2" value="3"><label>★</label>
+          <input type="radio" name="r2" value="2"><label>★</label>
+          <input type="radio" name="r2" value="1"><label>★</label>
+        </div>
+        <div class="rating rating--lg">
+          <input type="radio" name="r3" value="5" checked><label>★</label>
+          <input type="radio" name="r3" value="4"><label>★</label>
+          <input type="radio" name="r3" value="3"><label>★</label>
+          <input type="radio" name="r3" value="2"><label>★</label>
+          <input type="radio" name="r3" value="1"><label>★</label>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="rating rating--lg"&gt; … &lt;/div&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

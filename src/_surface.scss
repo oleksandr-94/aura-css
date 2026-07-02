@@ -1,0 +1,49 @@
+// ============================================================
+// Aura — surface dispatcher
+// Components call surface()/field(); this routes to the active
+// skin in skins/. Add a skin = add a file + one branch here.
+// ============================================================
+@use "./config" as cfg;
+@use "./skins/glass";
+@use "./skins/flat";
+@use "./skins/neu";
+
+// $level: 1 = card, 2 = elevated (popover / modal)
+@mixin surface($level: 1) {
+  @if cfg.$skin == glass      { @include glass.surface($level); }
+  @else if cfg.$skin == flat  { @include flat.surface($level); }
+  @else if cfg.$skin == neu   { @include neu.surface($level); }
+  @else { @error "Unknown $skin: #{cfg.$skin}. Use glass | flat | neu."; }
+}
+
+// A control field (input wells, switch tracks).
+@mixin field {
+  @if cfg.$skin == glass      { @include glass.field; }
+  @else if cfg.$skin == flat  { @include flat.field; }
+  @else if cfg.$skin == neu   { @include neu.field; }
+  @else { @error "Unknown $skin: #{cfg.$skin}. Use glass | flat | neu."; }
+}
+
+// A filled interactive control (buttons). Expects local --_bg / --_fg.
+@mixin control {
+  @if cfg.$skin == glass      { @include glass.control; }
+  @else if cfg.$skin == flat  { @include flat.control; }
+  @else if cfg.$skin == neu   { @include neu.control; }
+  @else { @error "Unknown $skin: #{cfg.$skin}. Use glass | flat | neu."; }
+}
+
+// Pressed state for a filled control.
+@mixin control-active {
+  @if cfg.$skin == glass      { @include glass.control-active; }
+  @else if cfg.$skin == flat  { @include flat.control-active; }
+  @else if cfg.$skin == neu   { @include neu.control-active; }
+  @else { @error "Unknown $skin: #{cfg.$skin}. Use glass | flat | neu."; }
+}
+
+// A small tinted pill (badge). Keeps its colour tint; skin adds feel.
+@mixin chip {
+  @if cfg.$skin == glass      { @include glass.chip; }
+  @else if cfg.$skin == flat  { @include flat.chip; }
+  @else if cfg.$skin == neu   { @include neu.chip; }
+  @else { @error "Unknown $skin: #{cfg.$skin}. Use glass | flat | neu."; }
+}

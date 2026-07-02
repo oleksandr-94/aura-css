@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Group — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Group</h1>
+    <p class="doc-lead">Joins adjacent controls — buttons <em>and</em> form fields — into one
+      segmented unit with square inner corners and a single shared border. Wrap any mix of
+      <code>.btn</code>, <code>.input</code>, <code>.select</code>.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>group</code> <span style="color:var(--on-surface-muted)">(alias <code>btn-group</code>)</span></td><td>Joins its direct children</td></tr>
+        <tr><td class="doc-cat">Children</td><td><code>.btn</code> · <code>.input</code> · <code>.select</code></td><td>Fields grow, buttons stay natural</td></tr>
+        <tr><td class="doc-cat">Modifier</td><td><code>group--block</code></td><td>Full width, equal items</td></tr>
+        <tr><td class="doc-cat">Radio</td><td><code>segmented</code> · <code>segmented__option</code></td><td>Single-select via radios (no JS)</td></tr>
+      </tbody>
+    </table>
+
+    <section class="doc-sec">
+      <h2>Button group</h2>
+      <div class="doc-preview">
+        <div class="group">
+          <button class="btn btn--ghost">Day</button>
+          <button class="btn btn--ghost">Week</button>
+          <button class="btn btn--ghost">Month</button>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="group"&gt;
+  &lt;button class="btn btn--ghost"&gt;Day&lt;/button&gt;
+  &lt;button class="btn btn--ghost"&gt;Week&lt;/button&gt;
+  &lt;button class="btn btn--ghost"&gt;Month&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Radio segmented <span style="font-size:14px;color:var(--on-surface-muted);font-weight:600">single-select · no JS</span></h2>
+      <p class="doc-lead" style="font-size:15px;margin-bottom:14px">When exactly one option is
+        active, use <code>.segmented</code> — native radios, so it's keyboard-accessible
+        (arrow keys) and submits with a form. The checked pill is skin-aware.</p>
+      <div class="doc-preview">
+        <div class="segmented" role="radiogroup" aria-label="View">
+          <label class="segmented__option"><input type="radio" name="seg-view" checked><span>Day</span></label>
+          <label class="segmented__option"><input type="radio" name="seg-view"><span>Week</span></label>
+          <label class="segmented__option"><input type="radio" name="seg-view"><span>Month</span></label>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="segmented" role="radiogroup" aria-label="View"&gt;
+  &lt;label class="segmented__option"&gt;
+    &lt;input type="radio" name="view" checked&gt;&lt;span&gt;Day&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;label class="segmented__option"&gt;
+    &lt;input type="radio" name="view"&gt;&lt;span&gt;Week&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;label class="segmented__option"&gt;
+    &lt;input type="radio" name="view"&gt;&lt;span&gt;Month&lt;/span&gt;
+  &lt;/label&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Input group</h2>
+      <div class="doc-preview col">
+        <div class="group" style="width:100%;max-width:420px">
+          <input class="input" type="text" placeholder="Search projects…">
+          <button class="btn">Search</button>
+        </div>
+        <div class="group" style="width:100%;max-width:420px">
+          <select class="select" style="flex:none;width:auto"><option>https://</option><option>http://</option></select>
+          <input class="input" type="text" placeholder="your-domain.dev">
+          <button class="btn btn--ghost">Copy</button>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="group"&gt;
+  &lt;input class="input" type="text" placeholder="Search projects…"&gt;
+  &lt;button class="btn"&gt;Search&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Full width</h2>
+      <div class="doc-preview col">
+        <div class="group group--block">
+          <button class="btn btn--ghost">Left</button>
+          <button class="btn btn--ghost">Center</button>
+          <button class="btn btn--ghost">Right</button>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="group group--block"&gt;
+  &lt;button class="btn btn--ghost"&gt;Left&lt;/button&gt;
+  &lt;button class="btn btn--ghost"&gt;Center&lt;/button&gt;
+  &lt;button class="btn btn--ghost"&gt;Right&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

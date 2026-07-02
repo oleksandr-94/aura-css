@@ -1,0 +1,40 @@
+// ============================================================
+// Skin: glass — frosted, translucent, blurred.
+// The frosted film is a LIGHT translucent layer (not the surface
+// colour) so a colourful backdrop shows through, blurred — that's
+// what reads as real glass.
+// ============================================================
+@mixin surface($level: 1) {
+  @if $level == 2 { background: var(--glass-film-2); }
+  @else           { background: var(--glass-film); }
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
+  backdrop-filter: blur(var(--blur)) saturate(180%);
+  border: 1px solid var(--outline);
+  box-shadow: var(--shadow-#{$level}), inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+@mixin field {
+  background: var(--glass-film);
+  -webkit-backdrop-filter: blur(var(--blur));
+  backdrop-filter: blur(var(--blur));
+  border: 1px solid var(--outline-strong);
+}
+
+// Filled control — solid colour with a soft glow and a glassy top gloss.
+@mixin control {
+  background: var(--_bg);
+  color: var(--_fg);
+  border: 1px solid transparent;
+  box-shadow:
+    0 6px 18px color-mix(in srgb, var(--_shadow-color, var(--_bg)) 40%, transparent),
+    inset 0 1px 0 rgba(255,255,255,.28);
+}
+
+@mixin control-active {
+  transform: translateY(1px);
+}
+
+// Small tinted pill (badge) — glass: tint + faint top gloss.
+@mixin chip {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22);
+}

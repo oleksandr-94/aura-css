@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Radio — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Radio</h1>
+    <p class="doc-lead">A custom radio button. The circle is a skin-aware well; checked fills
+      with the accent colour and a white centre dot. Group them with a shared <code>name</code>.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>radio</code></td><td>On <code>&lt;input type="radio"&gt;</code></td></tr>
+        <tr><td class="doc-cat">Color</td><td><code>radio--success</code> <code>radio--warning</code> <code>radio--error</code></td><td>Checked colour</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Default group -->
+    <section class="doc-sec">
+      <h2>Radio</h2>
+      <div class="doc-preview">
+        <input type="radio" name="r1" class="radio" checked>
+        <input type="radio" name="r1" class="radio">
+        <input type="radio" name="r1" class="radio" disabled>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;input type="radio" name="plan" class="radio" checked&gt;
+&lt;input type="radio" name="plan" class="radio"&gt;
+&lt;input type="radio" name="plan" class="radio" disabled&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Colours -->
+    <section class="doc-sec">
+      <h2>Colours</h2>
+      <div class="doc-preview">
+        <input type="radio" name="r2" class="radio" checked>
+        <input type="radio" name="r3" class="radio radio--success" checked>
+        <input type="radio" name="r4" class="radio radio--warning" checked>
+        <input type="radio" name="r5" class="radio radio--error" checked>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;input type="radio" name="p" class="radio radio--success" checked&gt;
+&lt;input type="radio" name="p" class="radio radio--error"&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- With labels -->
+    <section class="doc-sec">
+      <h2>With labels</h2>
+      <div class="doc-preview col">
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
+          <input type="radio" name="plan" class="radio" checked> Monthly
+        </label>
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
+          <input type="radio" name="plan" class="radio"> Annual
+        </label>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;label style="display:flex;align-items:center;gap:10px"&gt;
+  &lt;input type="radio" name="plan" class="radio" checked&gt; Monthly
+&lt;/label&gt;
+&lt;label style="display:flex;align-items:center;gap:10px"&gt;
+  &lt;input type="radio" name="plan" class="radio"&gt; Annual
+&lt;/label&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

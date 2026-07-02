@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Toast — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Toast</h1>
+    <p class="doc-lead">A transient notification. Show it imperatively with the JS helper
+      <code>toast(message, { type, timeout })</code>, or render the markup yourself and flip
+      <code>data-state</code>.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class / API</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Container</td><td><code>toast-container</code> <code>--bottom</code></td><td>Fixed stack (auto-created)</td></tr>
+        <tr><td class="doc-cat">Component</td><td><code>toast</code></td><td>One notification</td></tr>
+        <tr><td class="doc-cat">Color</td><td><code>toast--success</code> <code>--warning</code> <code>--error</code> <code>--info</code></td><td>Accent</td></tr>
+        <tr><td class="doc-cat">API</td><td><code>toast(msg, opts)</code></td><td>Create + auto-dismiss</td></tr>
+      </tbody>
+    </table>
+
+    <section class="doc-sec">
+      <h2>Trigger a toast</h2>
+      <div class="doc-preview">
+        <button class="btn" data-toast="Changes saved." data-type="success">Success</button>
+        <button class="btn btn--warning" data-toast="Your trial ends soon." data-type="warning">Warning</button>
+        <button class="btn btn--error" data-toast="Something went wrong." data-type="error">Error</button>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>import { toast } from 'aura-css/interactions';   // or window.Aura.toast
+
+toast('Changes saved.', { type: 'success' });
+toast('Something went wrong.', { type: 'error', timeout: 6000 });</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Static markup</h2>
+      <div class="doc-preview col">
+        <div class="toast toast--success" data-state="open" style="position:static;pointer-events:auto">
+          <div class="toast__body">Changes saved successfully.</div>
+          <button class="toast__close" aria-label="Dismiss">&times;</button>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="toast toast--success" data-state="open"&gt;
+  &lt;div class="toast__body"&gt;Changes saved successfully.&lt;/div&gt;
+  &lt;button class="toast__close"&gt;&times;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+  <script type="module">
+    import { toast } from '../src/js/interactions.js';
+    document.querySelectorAll('[data-toast]').forEach(function (b) {
+      b.addEventListener('click', function () { toast(b.dataset.toast, { type: b.dataset.type }); });
+    });
+  </script>
+</body>
+</html>

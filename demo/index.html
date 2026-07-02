@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aura — demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<!-- Aura library (swappable skin build) -->
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<style>
+  /* Demo page chrome only — NOT part of the library */
+  body{
+    margin:0; min-height:100vh; font-family:var(--font);
+    color:var(--on-surface);
+    background:
+      radial-gradient(680px 500px at 14% 8%,  color-mix(in srgb, var(--primary) 60%, transparent), transparent 60%),
+      radial-gradient(620px 460px at 48% 2%,  color-mix(in srgb, var(--accent) 50%, transparent), transparent 55%),
+      radial-gradient(760px 540px at 86% 12%, color-mix(in srgb, var(--secondary) 55%, transparent), transparent 55%),
+      radial-gradient(720px 600px at 72% 88%, color-mix(in srgb, var(--info) 45%, transparent), transparent 55%),
+      var(--surface);
+    background-attachment:fixed;
+    padding:32px;
+  }
+  body.bg-solid{ background:var(--surface); }
+  .bar{display:flex;align-items:center;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+  .bar h1{font-size:24px;font-weight:800;margin:0;flex:1}
+  .seg{display:inline-flex;border:1px solid var(--outline-strong);border-radius:var(--radius-md);overflow:hidden}
+  .seg button{font:inherit;font-size:13px;font-weight:600;padding:8px 14px;border:none;background:transparent;color:var(--on-surface);cursor:pointer}
+  .seg button.on{background:var(--primary);color:var(--on-primary)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;align-items:start}
+  .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
+  .muted{color:var(--on-surface-muted);font-size:13px;margin:0 0 10px}
+  h2.sec{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--on-surface-muted);margin:0 0 12px}
+</style>
+</head>
+<body>
+  <div class="bar">
+    <h1>Aura</h1>
+    <div class="seg" id="theme">
+      <button data-v="aura-dark" class="on">Dark</button>
+      <button data-v="aura-light">Light</button>
+    </div>
+    <div class="seg" id="skin">
+      <button data-v="../dist/aura.css" class="on">Glass</button>
+      <button data-v="../dist/aura-flat.css">Flat</button>
+      <button data-v="../dist/aura-neu.css">Neu</button>
+    </div>
+    <div class="seg" id="bg">
+      <button data-v="" class="on">Vivid</button>
+      <button data-v="bg-solid">Solid</button>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2 class="card__title">Buttons — colour</h2>
+      <div class="row">
+        <button class="btn">Primary</button>
+        <button class="btn btn--secondary">Secondary</button>
+        <button class="btn btn--success">Success</button>
+      </div>
+      <div class="row">
+        <button class="btn btn--warning">Warning</button>
+        <button class="btn btn--error">Error</button>
+        <button class="btn" disabled>Disabled</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="card__title">Buttons — style</h2>
+      <div class="row">
+        <button class="btn btn--ghost">Ghost</button>
+        <button class="btn btn--outline">Outline</button>
+        <button class="btn btn--outline btn--error">Outline</button>
+      </div>
+      <h2 class="sec" style="margin-top:6px">Sizes</h2>
+      <div class="row">
+        <button class="btn btn--sm">Small</button>
+        <button class="btn">Default</button>
+        <button class="btn btn--lg">Large</button>
+      </div>
+      <button class="btn btn--block">Block</button>
+    </div>
+
+    <div class="card">
+      <h2 class="card__title">Card</h2>
+      <p class="card__body">This card renders via the <code>surface()</code> mixin. Toggle the skin above — glass to flat — and only this treatment changes, not the markup.</p>
+      <div class="row">
+        <button class="btn btn--sm">Action</button>
+        <button class="btn btn--ghost btn--sm">Cancel</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="card__title">Auto content-colour</h2>
+      <p class="card__body">Every button's text colour is derived from its background for guaranteed contrast — no manual pairing. Switch to Light and watch it hold up.</p>
+    </div>
+
+    <div class="card">
+      <h2 class="card__title">Inputs</h2>
+      <div class="field">
+        <label class="field__label" for="e">Email</label>
+        <input id="e" class="input" type="email" placeholder="you@studio.dev">
+      </div>
+      <div class="field">
+        <label class="field__label" for="p">Password</label>
+        <input id="p" class="input input--error" type="password" value="123">
+        <span class="field__hint field__hint--error">At least 8 characters.</span>
+      </div>
+      <div class="field">
+        <label class="field__label" for="r">Role</label>
+        <select id="r" class="select"><option>Owner</option><option>Editor</option><option>Viewer</option></select>
+      </div>
+      <div class="field">
+        <label class="field__label" for="m">Message</label>
+        <textarea id="m" class="textarea" placeholder="Type here…"></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="card__title">Input sizes</h2>
+      <div class="field"><input class="input input--sm" placeholder="Small"></div>
+      <div class="field"><input class="input" placeholder="Default"></div>
+      <div class="field"><input class="input input--lg" placeholder="Large"></div>
+      <div class="field"><input class="input" placeholder="Disabled" disabled></div>
+    </div>
+  </div>
+
+  <script>
+    var root=document.documentElement;
+    document.getElementById('theme').addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b)return;
+      root.setAttribute('data-theme',b.dataset.v);
+      [].forEach.call(this.children,c=>c.classList.toggle('on',c===b));
+    });
+    document.getElementById('skin').addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b)return;
+      document.getElementById('aura-css').href=b.dataset.v;
+      [].forEach.call(this.children,c=>c.classList.toggle('on',c===b));
+    });
+    document.getElementById('bg').addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b)return;
+      document.body.className=b.dataset.v;
+      [].forEach.call(this.children,c=>c.classList.toggle('on',c===b));
+    });
+  </script>
+</body>
+</html>

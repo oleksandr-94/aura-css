@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Switch — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Switch</h1>
+    <p class="doc-lead">A toggle for boolean settings. The track is a skin-aware well; when on,
+      it fills with the accent colour and shows a white thumb.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>switch</code></td><td>Toggle (wraps a checkbox)</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>switch__track</code> <code>switch__thumb</code></td><td>Track / knob</td></tr>
+        <tr><td class="doc-cat">Color</td><td><code>switch--success</code> <code>switch--warning</code> <code>switch--error</code></td><td>Checked colour</td></tr>
+        <tr><td class="doc-cat">Size</td><td><code>switch--sm</code> <code>switch--lg</code></td><td>Small / large</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Default -->
+    <section class="doc-sec">
+      <h2>Switch</h2>
+      <div class="doc-preview">
+        <label class="switch"><input type="checkbox" checked><span class="switch__track"></span><span class="switch__thumb"></span></label>
+        <label class="switch"><input type="checkbox"><span class="switch__track"></span><span class="switch__thumb"></span></label>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;label class="switch"&gt;
+  &lt;input type="checkbox" checked&gt;
+  &lt;span class="switch__track"&gt;&lt;/span&gt;
+  &lt;span class="switch__thumb"&gt;&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Colours -->
+    <section class="doc-sec">
+      <h2>Colours</h2>
+      <div class="doc-preview">
+        <label class="switch"><input type="checkbox" checked><span class="switch__track"></span><span class="switch__thumb"></span></label>
+        <label class="switch switch--success"><input type="checkbox" checked><span class="switch__track"></span><span class="switch__thumb"></span></label>
+        <label class="switch switch--warning"><input type="checkbox" checked><span class="switch__track"></span><span class="switch__thumb"></span></label>
+        <label class="switch switch--error"><input type="checkbox" checked><span class="switch__track"></span><span class="switch__thumb"></span></label>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;label class="switch switch--success"&gt;
+  &lt;input type="checkbox" checked&gt;
+  &lt;span class="switch__track"&gt;&lt;/span&gt;
+  &lt;span class="switch__thumb"&gt;&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Sizes -->
+    <section class="doc-sec">
+      <h2>Sizes</h2>
+      <div class="doc-preview">
+        <label class="switch switch--sm"><input type="checkbox" checked><span class="switch__track"></span><span class="switch__thumb"></span></label>
+        <label class="switch"><input type="checkbox" checked><span class="switch__track"></span><span class="switch__thumb"></span></label>
+        <label class="switch switch--lg"><input type="checkbox" checked><span class="switch__track"></span><span class="switch__thumb"></span></label>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;label class="switch switch--sm"&gt;…&lt;/label&gt;
+&lt;label class="switch"&gt;…&lt;/label&gt;
+&lt;label class="switch switch--lg"&gt;…&lt;/label&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- With label -->
+    <section class="doc-sec">
+      <h2>With label</h2>
+      <div class="doc-preview col">
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
+          <span class="switch"><input type="checkbox" checked><span class="switch__track"></span><span class="switch__thumb"></span></span>
+          Email notifications
+        </label>
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer;opacity:.6">
+          <span class="switch"><input type="checkbox" disabled><span class="switch__track"></span><span class="switch__thumb"></span></span>
+          Disabled option
+        </label>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;label style="display:flex;align-items:center;gap:10px"&gt;
+  &lt;span class="switch"&gt;
+    &lt;input type="checkbox" checked&gt;
+    &lt;span class="switch__track"&gt;&lt;/span&gt;
+    &lt;span class="switch__thumb"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  Email notifications
+&lt;/label&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

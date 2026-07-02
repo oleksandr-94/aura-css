@@ -1,0 +1,42 @@
+// ============================================================
+// Aura — Radio
+// Custom control (appearance:none). Circle is a skin-aware well via
+// field(); checked fills with --_c + white centre dot.
+// ============================================================
+@use "../config" as cfg;
+@use "../surface" as s;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}radio {
+    --_c: var(--primary);
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+    flex: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    transition: background .15s ease, border-color .15s ease;
+    @include s.field;
+
+    &:checked { --_bg: var(--_c); --_fg: #fff; @include s.control; }
+    &:checked::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    &:focus-visible { outline: 2px solid var(--_c); outline-offset: 2px; }
+    &:disabled { opacity: .5; cursor: not-allowed; }
+
+    &.#{$p}radio--success { --_c: var(--success); }
+    &.#{$p}radio--warning { --_c: var(--warning); }
+    &.#{$p}radio--error   { --_c: var(--error); }
+  }
+}

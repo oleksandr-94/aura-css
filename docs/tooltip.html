@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tooltip — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Tooltip</h1>
+    <p class="doc-lead">A pure-CSS tooltip shown on hover or focus. It is inverted against the
+      theme — a light bubble on dark, a dark bubble on light — for contrast.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>tooltip</code></td><td>Wraps the trigger</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>tooltip__text</code></td><td>The bubble</td></tr>
+        <tr><td class="doc-cat">Placement</td><td><code>tooltip--bottom</code></td><td>Show below</td></tr>
+      </tbody>
+    </table>
+
+    <section class="doc-sec">
+      <h2>Tooltip</h2>
+      <div class="doc-preview" style="padding-top:48px">
+        <span class="tooltip">
+          <button class="btn btn--ghost">Hover me</button>
+          <span class="tooltip__text">Frosted tooltip ✨</span>
+        </span>
+        <span class="tooltip tooltip--bottom">
+          <button class="btn btn--ghost">Below</button>
+          <span class="tooltip__text">Appears below</span>
+        </span>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;span class="tooltip"&gt;
+  &lt;button class="btn btn--ghost"&gt;Hover me&lt;/button&gt;
+  &lt;span class="tooltip__text"&gt;Frosted tooltip ✨&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;span class="tooltip tooltip--bottom"&gt;
+  &lt;button class="btn btn--ghost"&gt;Below&lt;/button&gt;
+  &lt;span class="tooltip__text"&gt;Appears below&lt;/span&gt;
+&lt;/span&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+// ============================================================
+// Aura — Switch (toggle)
+// The track is a control well via field() (skin-aware); when
+// checked it fills with the accent colour (--_c). White thumb on
+// the coloured track — never colour-on-colour.
+// ============================================================
+@use "../config" as cfg;
+@use "../surface" as s;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}switch {
+    --_c: var(--primary);
+    position: relative;
+    display: inline-flex;
+    flex: none;
+    width: 46px;
+    height: 26px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .#{$p}switch input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .#{$p}switch__track {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-pill);
+    transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
+    @include s.field;
+  }
+
+  .#{$p}switch__thumb {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--on-surface-muted);
+    transition: transform .2s ease, background .2s ease;
+  }
+
+  .#{$p}switch input:checked ~ .#{$p}switch__track {
+    --_bg: var(--_c);
+    --_fg: #fff;
+    @include s.control;
+  }
+  .#{$p}switch input:checked ~ .#{$p}switch__thumb {
+    transform: translateX(20px);
+    background: #fff;
+  }
+  .#{$p}switch input:focus-visible ~ .#{$p}switch__track {
+    outline: 2px solid var(--_c);
+    outline-offset: 2px;
+  }
+  .#{$p}switch input:disabled ~ .#{$p}switch__track,
+  .#{$p}switch input:disabled ~ .#{$p}switch__thumb { opacity: .5; }
+
+  // ---- colours ----
+  .#{$p}switch--success { --_c: var(--success); }
+  .#{$p}switch--warning { --_c: var(--warning); }
+  .#{$p}switch--error   { --_c: var(--error); }
+
+  // ---- sizes ----
+  .#{$p}switch--sm { width: 38px; height: 22px; }
+  .#{$p}switch--sm .#{$p}switch__thumb { width: 14px; height: 14px; }
+  .#{$p}switch--sm input:checked ~ .#{$p}switch__thumb { transform: translateX(16px); }
+
+  .#{$p}switch--lg { width: 56px; height: 32px; }
+  .#{$p}switch--lg .#{$p}switch__thumb { width: 24px; height: 24px; }
+  .#{$p}switch--lg input:checked ~ .#{$p}switch__thumb { transform: translateX(24px); }
+}

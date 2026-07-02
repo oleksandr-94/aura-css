@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Install — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Install</h1>
+    <p class="doc-lead">Aura ships as plain CSS (one file per skin) plus an optional JS
+      behaviour layer. It works in any project — static HTML, a bundler, or a framework.</p>
+
+    <div class="alert alert--info" style="margin-bottom:32px">
+      <span class="alert__icon">ℹ</span>
+      <div>Everything lives in <code>dist/</code> after <code>npm run build</code>. The CSS is
+        self-sufficient; the JS is only needed for modal / dropdown / tabs / toasts.</div>
+    </div>
+
+    <section class="doc-sec">
+      <h2>1 · Add the CSS</h2>
+      <p class="doc-lead" style="font-size:15px;margin-bottom:14px">Link one skin and set a theme
+        on the root element. That's the whole styling layer.</p>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;html data-theme="aura-dark"&gt;
+  &lt;head&gt;
+    &lt;link rel="stylesheet" href="aura/dist/aura.css"&gt;      &lt;!-- glass (default) --&gt;
+    &lt;!-- or: aura-flat.css · aura-neu.css · *.min.css --&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;button class="btn"&gt;Hello&lt;/button&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>2 · Add the JS <span style="font-size:14px;color:var(--on-surface-muted);font-weight:600">optional</span></h2>
+      <p class="doc-lead" style="font-size:15px;margin-bottom:14px">Only for stateful components.
+        Pick one:</p>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;!-- A) plain &lt;script&gt;: exposes window.Aura + auto-wires data-* triggers --&gt;
+&lt;script src="aura/dist/interactions.global.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- B) native ESM (auto-wires) --&gt;
+&lt;script type="module" src="aura/src/js/interactions.auto.js"&gt;&lt;/script&gt;
+
+// C) bundler / framework
+import { open, toast } from 'aura-css';   // dist/interactions.mjs + types</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>3 · Install from npm</h2>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>npm install aura-css
+
+# then, with a bundler:
+import 'aura-css/css';                    // glass  (aura-css/css/min · aura-css/flat · aura-css/neu)
+import { open, toast } from 'aura-css';   // behaviour layer + types</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>4 · Build from source</h2>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>cd aura
+npm install
+npm run build     # → dist/ : CSS (expanded + min, per skin) + JS + types
+npm test          # unit tests for the JS layer</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>5 · Customise</h2>
+      <p class="doc-lead" style="font-size:15px;margin-bottom:14px">Compile the SCSS yourself to
+        set the three levers — namespace, skin, and your own themes.</p>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>// your-styles.scss
+@use 'aura-css/scss' with (
+  $prefix: 'ui',            // → .ui-btn  (avoid class clashes)
+  $skin:   flat,            // glass | flat | neu
+  $themes: ( ocean: ( primary: #0EA5E9, … ) )
+);</code></pre>
+      </div>
+      <p class="doc-lead" style="font-size:14px;margin-top:12px">Tip: build a theme visually with
+        the <a href="theme-generator.html" style="color:var(--primary)">Theme generator</a>.</p>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Browser support</h2>
+      <p class="doc-lead" style="font-size:15px">Evergreen baseline — Chrome/Edge 111+, Firefox
+        113+, Safari 16.4+ (needs <code>color-mix()</code> and cascade layers;
+        <code>backdrop-filter</code> is glass-only). Non-glass skins have the lightest requirements.</p>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

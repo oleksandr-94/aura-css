@@ -1,0 +1,60 @@
+// ============================================================
+// Aura — Tooltip
+// Pure-CSS, shown on hover/focus. Inverted vs. the theme
+// (light bubble on dark, dark bubble on light) via tip tokens.
+// ============================================================
+@use "../config" as cfg;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}tooltip {
+    position: relative;
+    display: inline-flex;
+  }
+  .#{$p}tooltip__text {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    background: var(--tip-bg);
+    color: var(--tip-text);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 6px 20px rgba(0,0,0,.25);
+    z-index: var(--z-dropdown);
+    transition: opacity .15s ease, visibility .15s ease;
+  }
+  // caret
+  .#{$p}tooltip__text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--tip-bg);
+  }
+
+  .#{$p}tooltip:hover .#{$p}tooltip__text,
+  .#{$p}tooltip:focus-within .#{$p}tooltip__text {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  // ---- placement: bottom ----
+  .#{$p}tooltip--bottom .#{$p}tooltip__text {
+    bottom: auto;
+    top: calc(100% + 8px);
+  }
+  .#{$p}tooltip--bottom .#{$p}tooltip__text::after {
+    top: auto;
+    bottom: 100%;
+    border-top-color: transparent;
+    border-bottom-color: var(--tip-bg);
+  }
+}

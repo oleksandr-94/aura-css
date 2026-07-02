@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Select — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Select</h1>
+    <p class="doc-lead">A native <code>&lt;select&gt;</code> with a custom chevron (the OS arrow
+      is removed). Same skin-aware well, sizes and validation states as text inputs.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>select</code></td><td>On <code>&lt;select&gt;</code></td></tr>
+        <tr><td class="doc-cat">Size</td><td><code>select--sm</code> <code>select--lg</code></td><td>Small / large</td></tr>
+        <tr><td class="doc-cat">Validation</td><td><code>select--error</code> <code>select--success</code></td><td>Invalid / valid</td></tr>
+      </tbody>
+    </table>
+
+    <section class="doc-sec">
+      <h2>Select</h2>
+      <div class="doc-preview col">
+        <div class="field" style="max-width:320px">
+          <label class="field__label" for="role">Role</label>
+          <select id="role" class="select"><option>Owner</option><option>Editor</option><option>Viewer</option></select>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;select class="select"&gt;
+  &lt;option&gt;Owner&lt;/option&gt;
+  &lt;option&gt;Editor&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Sizes &amp; validation</h2>
+      <div class="doc-preview col">
+        <select class="select select--sm" style="max-width:320px"><option>Small</option></select>
+        <select class="select" style="max-width:320px"><option>Default</option></select>
+        <select class="select select--lg" style="max-width:320px"><option>Large</option></select>
+        <select class="select select--error" style="max-width:320px"><option>Please choose…</option></select>
+        <select class="select select--success" style="max-width:320px"><option>Owner</option></select>
+        <select class="select" disabled style="max-width:320px"><option>Disabled</option></select>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;select class="select select--sm"&gt; … &lt;/select&gt;
+&lt;select class="select select--error"&gt; … &lt;/select&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

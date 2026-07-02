@@ -1,0 +1,4 @@
+// Build preset: the whole library compiled with the NEU skin.
+// Outputs dist/aura-neu.css. Not library source — just a recipe.
+@use "../src/config" with ($skin: neu);
+@use "../src/index";

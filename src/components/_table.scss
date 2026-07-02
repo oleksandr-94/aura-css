@@ -1,0 +1,38 @@
+// ============================================================
+// Aura — Table
+// Transparent by design — place inside a .card for a surface.
+// Uses outline tokens for rules; skin-independent.
+// ============================================================
+@use "../config" as cfg;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--fs-md);
+    color: var(--on-surface);
+
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--outline);
+    }
+    th {
+      font-size: var(--fs-xs);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      font-weight: 700;
+      color: var(--on-surface-muted);
+    }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: color-mix(in srgb, var(--on-surface) 5%, transparent); }
+  }
+
+  // ---- variants ----
+  .#{$p}table--zebra tbody tr:nth-child(even) {
+    background: color-mix(in srgb, var(--on-surface) 4%, transparent);
+  }
+  .#{$p}table--compact th,
+  .#{$p}table--compact td { padding: 7px 10px; }
+}

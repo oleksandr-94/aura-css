@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Button — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Button</h1>
+    <p class="doc-lead">Buttons trigger an action. The base <code>.btn</code> is the primary
+      button; add modifiers for colour, style, and size. Their surface (glow / flat / extruded)
+      follows the active skin — try the Skin switch on the left.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>btn</code></td><td>Base (primary) button</td></tr>
+        <tr><td class="doc-cat">Color</td><td><code>btn--secondary</code> <code>btn--accent</code></td><td>Accent colours</td></tr>
+        <tr><td class="doc-cat">Color</td><td><code>btn--success</code> <code>btn--warning</code> <code>btn--error</code> <code>btn--info</code></td><td>Status colours</td></tr>
+        <tr><td class="doc-cat">Style</td><td><code>btn--ghost</code> <code>btn--outline</code></td><td>Transparent / outlined</td></tr>
+        <tr><td class="doc-cat">Fill</td><td><code>btn--gradient</code></td><td>Brand gradient (skin-aware)</td></tr>
+        <tr><td class="doc-cat">Size</td><td><code>btn--sm</code> <code>btn--lg</code></td><td>Small / large</td></tr>
+        <tr><td class="doc-cat">Modifier</td><td><code>btn--block</code> <code>btn--disabled</code></td><td>Full width / disabled</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Default -->
+    <section class="doc-sec">
+      <h2>Button</h2>
+      <div class="doc-preview">
+        <button class="btn">Button</button>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;button class="btn"&gt;Button&lt;/button&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Colors -->
+    <section class="doc-sec">
+      <h2>Colours</h2>
+      <div class="doc-preview">
+        <button class="btn">Primary</button>
+        <button class="btn btn--secondary">Secondary</button>
+        <button class="btn btn--accent">Accent</button>
+        <button class="btn btn--success">Success</button>
+        <button class="btn btn--warning">Warning</button>
+        <button class="btn btn--error">Error</button>
+        <button class="btn btn--info">Info</button>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;button class="btn"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn--secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="btn btn--accent"&gt;Accent&lt;/button&gt;
+&lt;button class="btn btn--success"&gt;Success&lt;/button&gt;
+&lt;button class="btn btn--warning"&gt;Warning&lt;/button&gt;
+&lt;button class="btn btn--error"&gt;Error&lt;/button&gt;
+&lt;button class="btn btn--info"&gt;Info&lt;/button&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Styles -->
+    <section class="doc-sec">
+      <h2>Style variants</h2>
+      <div class="doc-preview">
+        <button class="btn btn--ghost">Ghost</button>
+        <button class="btn btn--outline">Outline</button>
+        <button class="btn btn--outline btn--error">Outline error</button>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;button class="btn btn--ghost"&gt;Ghost&lt;/button&gt;
+&lt;button class="btn btn--outline"&gt;Outline&lt;/button&gt;
+&lt;button class="btn btn--outline btn--error"&gt;Outline error&lt;/button&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Gradient -->
+    <section class="doc-sec">
+      <h2>Gradient</h2>
+      <p class="doc-lead" style="font-size:15px;margin-bottom:14px">The gradient follows the
+        button's colour — combine <code>.btn--gradient</code> with any colour modifier.</p>
+      <div class="doc-preview">
+        <button class="btn btn--gradient">Primary</button>
+        <button class="btn btn--gradient btn--secondary">Secondary</button>
+        <button class="btn btn--gradient btn--success">Success</button>
+        <button class="btn btn--gradient btn--warning">Warning</button>
+        <button class="btn btn--gradient btn--error">Error</button>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;button class="btn btn--gradient"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn--gradient btn--success"&gt;Success&lt;/button&gt;
+&lt;button class="btn btn--gradient btn--error"&gt;Error&lt;/button&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Sizes -->
+    <section class="doc-sec">
+      <h2>Sizes</h2>
+      <div class="doc-preview">
+        <button class="btn btn--sm">Small</button>
+        <button class="btn">Default</button>
+        <button class="btn btn--lg">Large</button>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;button class="btn btn--sm"&gt;Small&lt;/button&gt;
+&lt;button class="btn"&gt;Default&lt;/button&gt;
+&lt;button class="btn btn--lg"&gt;Large&lt;/button&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Block -->
+    <section class="doc-sec">
+      <h2>Block</h2>
+      <div class="doc-preview col">
+        <button class="btn btn--block">Block button</button>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;button class="btn btn--block"&gt;Block button&lt;/button&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Disabled -->
+    <section class="doc-sec">
+      <h2>Disabled</h2>
+      <div class="doc-preview">
+        <button class="btn" disabled>Disabled (attribute)</button>
+        <button class="btn btn--disabled">Disabled (class)</button>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;button class="btn" disabled&gt;Disabled&lt;/button&gt;
+&lt;button class="btn btn--disabled"&gt;Disabled&lt;/button&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

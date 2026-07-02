@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Checkbox — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Checkbox</h1>
+    <p class="doc-lead">A custom checkbox. The box is a skin-aware well; checked and
+      indeterminate states fill with the accent colour and a white mark.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>checkbox</code></td><td>On <code>&lt;input type="checkbox"&gt;</code></td></tr>
+        <tr><td class="doc-cat">Color</td><td><code>checkbox--success</code> <code>checkbox--warning</code> <code>checkbox--error</code></td><td>Checked colour</td></tr>
+        <tr><td class="doc-cat">State</td><td><code>:indeterminate</code></td><td>Dash (set via JS)</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Default -->
+    <section class="doc-sec">
+      <h2>Checkbox</h2>
+      <div class="doc-preview">
+        <input type="checkbox" class="checkbox" checked>
+        <input type="checkbox" class="checkbox">
+        <input type="checkbox" class="checkbox" disabled checked>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;input type="checkbox" class="checkbox" checked&gt;
+&lt;input type="checkbox" class="checkbox"&gt;
+&lt;input type="checkbox" class="checkbox" disabled checked&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Colours -->
+    <section class="doc-sec">
+      <h2>Colours</h2>
+      <div class="doc-preview">
+        <input type="checkbox" class="checkbox" checked>
+        <input type="checkbox" class="checkbox checkbox--success" checked>
+        <input type="checkbox" class="checkbox checkbox--warning" checked>
+        <input type="checkbox" class="checkbox checkbox--error" checked>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;input type="checkbox" class="checkbox checkbox--success" checked&gt;
+&lt;input type="checkbox" class="checkbox checkbox--error" checked&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Indeterminate -->
+    <section class="doc-sec">
+      <h2>Indeterminate</h2>
+      <div class="doc-preview">
+        <input type="checkbox" class="checkbox" id="ind">
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;input type="checkbox" class="checkbox" id="c"&gt;
+&lt;script&gt;document.getElementById('c').indeterminate = true&lt;/script&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- With label -->
+    <section class="doc-sec">
+      <h2>With label</h2>
+      <div class="doc-preview col">
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
+          <input type="checkbox" class="checkbox" checked> Subscribe to updates
+        </label>
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
+          <input type="checkbox" class="checkbox"> Remember this device
+        </label>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;label style="display:flex;align-items:center;gap:10px"&gt;
+  &lt;input type="checkbox" class="checkbox" checked&gt; Subscribe to updates
+&lt;/label&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+  <script>var i=document.getElementById('ind'); if(i) i.indeterminate = true;</script>
+</body>
+</html>

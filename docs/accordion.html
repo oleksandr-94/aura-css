@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Accordion — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Accordion</h1>
+    <p class="doc-lead">Collapsible sections built on native <code>&lt;details&gt;</code> — no JS,
+      keyboard-accessible out of the box. Add <code>name</code> to the items to make them
+      mutually exclusive.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>accordion</code></td><td>Wrapper</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>accordion__item</code></td><td>A <code>&lt;details&gt;</code></td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>accordion__head</code></td><td>A <code>&lt;summary&gt;</code></td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>accordion__body</code></td><td>Content</td></tr>
+      </tbody>
+    </table>
+
+    <section class="doc-sec">
+      <h2>Accordion</h2>
+      <div class="doc-preview col">
+        <div class="accordion" style="width:100%;max-width:460px">
+          <details class="accordion__item" name="faq" open>
+            <summary class="accordion__head">What is Aura?</summary>
+            <div class="accordion__body">A framework-agnostic, themeable, skinnable CSS component library.</div>
+          </details>
+          <details class="accordion__item" name="faq">
+            <summary class="accordion__head">Does it need a build?</summary>
+            <div class="accordion__body">Only to author (SCSS). You can ship the compiled CSS to any project.</div>
+          </details>
+          <details class="accordion__item" name="faq">
+            <summary class="accordion__head">Can I change the skin?</summary>
+            <div class="accordion__body">Yes — glass, flat, or neu, independent of the colour theme.</div>
+          </details>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="accordion"&gt;
+  &lt;details class="accordion__item" name="faq" open&gt;
+    &lt;summary class="accordion__head"&gt;What is Aura?&lt;/summary&gt;
+    &lt;div class="accordion__body"&gt;A CSS component library.&lt;/div&gt;
+  &lt;/details&gt;
+  &lt;details class="accordion__item" name="faq"&gt;
+    &lt;summary class="accordion__head"&gt;Does it need a build?&lt;/summary&gt;
+    &lt;div class="accordion__body"&gt;Only to author.&lt;/div&gt;
+  &lt;/details&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pagination — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Pagination</h1>
+    <p class="doc-lead">Page navigation. The active page is a skin-aware filled control; use
+      <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> for items.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>pagination</code></td><td>Wrapper</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>pagination__item</code></td><td>Page / arrow</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>pagination__ellipsis</code></td><td>… gap marker (non-interactive)</td></tr>
+        <tr><td class="doc-cat">State</td><td><code>pagination__item--active</code></td><td>Current page</td></tr>
+        <tr><td class="doc-cat">State</td><td><code>pagination__item--disabled</code> / <code>disabled</code></td><td>Unavailable</td></tr>
+        <tr><td class="doc-cat">Style</td><td><code>pagination--joined</code></td><td>Joined (button-group)</td></tr>
+        <tr><td class="doc-cat">Size</td><td><code>pagination--sm</code></td><td>Small</td></tr>
+      </tbody>
+    </table>
+
+    <section class="doc-sec">
+      <h2>Pagination</h2>
+      <div class="doc-preview">
+        <nav class="pagination">
+          <button class="pagination__item" disabled>‹</button>
+          <button class="pagination__item pagination__item--active">1</button>
+          <button class="pagination__item">2</button>
+          <button class="pagination__item">3</button>
+          <button class="pagination__item">4</button>
+          <button class="pagination__item">›</button>
+        </nav>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;nav class="pagination"&gt;
+  &lt;button class="pagination__item" disabled&gt;‹&lt;/button&gt;
+  &lt;button class="pagination__item pagination__item--active"&gt;1&lt;/button&gt;
+  &lt;button class="pagination__item"&gt;2&lt;/button&gt;
+  &lt;button class="pagination__item"&gt;3&lt;/button&gt;
+  &lt;button class="pagination__item"&gt;›&lt;/button&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>With ellipsis</h2>
+      <div class="doc-preview">
+        <nav class="pagination" aria-label="Pagination">
+          <button class="pagination__item" disabled>‹</button>
+          <button class="pagination__item">1</button>
+          <span class="pagination__ellipsis">…</span>
+          <button class="pagination__item">5</button>
+          <button class="pagination__item pagination__item--active">6</button>
+          <button class="pagination__item">7</button>
+          <span class="pagination__ellipsis">…</span>
+          <button class="pagination__item">20</button>
+          <button class="pagination__item">›</button>
+        </nav>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;nav class="pagination" aria-label="Pagination"&gt;
+  &lt;button class="pagination__item" disabled&gt;‹&lt;/button&gt;
+  &lt;button class="pagination__item"&gt;1&lt;/button&gt;
+  &lt;span class="pagination__ellipsis"&gt;…&lt;/span&gt;
+  &lt;button class="pagination__item"&gt;5&lt;/button&gt;
+  &lt;button class="pagination__item pagination__item--active"&gt;6&lt;/button&gt;
+  &lt;button class="pagination__item"&gt;7&lt;/button&gt;
+  &lt;span class="pagination__ellipsis"&gt;…&lt;/span&gt;
+  &lt;button class="pagination__item"&gt;20&lt;/button&gt;
+  &lt;button class="pagination__item"&gt;›&lt;/button&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Joined <span style="font-size:14px;color:var(--on-surface-muted);font-weight:600">button-group style</span></h2>
+      <div class="doc-preview">
+        <nav class="pagination pagination--joined">
+          <button class="pagination__item" disabled>‹</button>
+          <button class="pagination__item pagination__item--active">1</button>
+          <button class="pagination__item">2</button>
+          <button class="pagination__item">3</button>
+          <button class="pagination__item">4</button>
+          <button class="pagination__item">›</button>
+        </nav>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;nav class="pagination pagination--joined"&gt;
+  &lt;button class="pagination__item pagination__item--active"&gt;1&lt;/button&gt;
+  &lt;button class="pagination__item"&gt;2&lt;/button&gt;
+  &lt;button class="pagination__item"&gt;3&lt;/button&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Small</h2>
+      <div class="doc-preview" style="flex-direction:column;align-items:flex-start;gap:16px">
+        <nav class="pagination pagination--sm">
+          <button class="pagination__item" disabled>‹</button>
+          <button class="pagination__item pagination__item--active">1</button>
+          <button class="pagination__item">2</button>
+          <button class="pagination__item">3</button>
+          <button class="pagination__item">›</button>
+        </nav>
+        <nav class="pagination pagination--sm pagination--joined">
+          <button class="pagination__item pagination__item--active">1</button>
+          <button class="pagination__item">2</button>
+          <button class="pagination__item">3</button>
+          <button class="pagination__item">4</button>
+          <button class="pagination__item">5</button>
+        </nav>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;nav class="pagination pagination--sm"&gt; … &lt;/nav&gt;
+&lt;nav class="pagination pagination--sm pagination--joined"&gt; … &lt;/nav&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+// ============================================================
+// Aura — Pagination
+// ============================================================
+@use "../config" as cfg;
+@use "../surface" as s;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}pagination {
+    display: inline-flex;
+    gap: 4px;
+  }
+
+  .#{$p}pagination__item {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--outline);
+    background: var(--surface-1);
+    color: var(--on-surface);
+    font: inherit;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover:not(.#{$p}pagination__item--active):not(:disabled):not(.#{$p}pagination__item--disabled) {
+      background: color-mix(in srgb, var(--on-surface) 8%, transparent);
+    }
+    &:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+    &:disabled,
+    &.#{$p}pagination__item--disabled { opacity: .5; cursor: not-allowed; }
+  }
+
+  .#{$p}pagination__item--active {
+    --_bg: var(--primary);
+    --_fg: var(--on-primary);
+    @include s.control;
+    border-color: transparent;
+  }
+
+  // ---- joined (button-group) style ----
+  .#{$p}pagination--joined {
+    gap: 0;
+
+    .#{$p}pagination__item {
+      position: relative;
+      border-radius: 0;
+    }
+    .#{$p}pagination__item:not(:first-child) { margin-inline-start: -1px; }
+    .#{$p}pagination__item:hover:not(:disabled):not(.#{$p}pagination__item--disabled),
+    .#{$p}pagination__item:focus-visible,
+    .#{$p}pagination__item--active { z-index: 1; }
+    .#{$p}pagination__item:first-child {
+      border-start-start-radius: var(--radius-md);
+      border-end-start-radius: var(--radius-md);
+    }
+    .#{$p}pagination__item:last-child {
+      border-start-end-radius: var(--radius-md);
+      border-end-end-radius: var(--radius-md);
+    }
+  }
+
+  // ---- small ----
+  .#{$p}pagination--sm .#{$p}pagination__item {
+    min-width: 30px;
+    height: 30px;
+    font-size: var(--fs-xs);
+  }
+
+  // ---- ellipsis (non-interactive gap marker) ----
+  .#{$p}pagination__ellipsis {
+    min-width: 24px;
+    height: 36px;
+    display: inline-flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 6px;
+    color: var(--on-surface-muted);
+    user-select: none;
+  }
+  .#{$p}pagination--sm .#{$p}pagination__ellipsis { height: 30px; }
+}

@@ -1,0 +1,43 @@
+// ============================================================
+// Aura — Modal
+// Driven by [data-state] on the overlay (mark it data-overlay so the
+// JS applies scroll-lock + focus-trap + backdrop-close). The dialog
+// is a solid surface for readability (not translucent).
+// ============================================================
+@use "../config" as cfg;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgba(4, 10, 20, .5);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s ease, visibility .2s ease;
+  }
+  .#{$p}modal-overlay[data-state="open"] { opacity: 1; visibility: visible; }
+
+  .#{$p}modal {
+    width: 100%;
+    max-width: 440px;
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+    border: 1px solid var(--outline);
+    box-shadow: var(--shadow-2);
+    transform: translateY(10px) scale(.98);
+    transition: transform .2s ease;
+  }
+  .#{$p}modal-overlay[data-state="open"] .#{$p}modal { transform: none; }
+
+  .#{$p}modal__title   { margin: 0 0 8px; font-size: var(--fs-xl); font-weight: 800; }
+  .#{$p}modal__body    { margin: 0 0 20px; color: var(--on-surface-muted); font-size: var(--fs-md); line-height: 1.5; }
+  .#{$p}modal__actions { display: flex; gap: 10px; justify-content: flex-end; }
+}

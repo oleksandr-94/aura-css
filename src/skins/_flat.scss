@@ -1,0 +1,29 @@
+// ============================================================
+// Skin: flat — solid fills, crisp borders, no blur, no shadow.
+// ============================================================
+@mixin surface($level: 1) {
+  background: var(--surface-#{$level});
+  border: 1px solid var(--outline);
+}
+
+@mixin field {
+  background: var(--surface-1);
+  border: 1px solid var(--outline-strong);
+}
+
+// Filled control — plain solid fill.
+@mixin control {
+  background: var(--_bg);
+  color: var(--_fg);
+  border: 1px solid transparent;
+  box-shadow: none;
+}
+
+@mixin control-active {
+  transform: translateY(1px);
+}
+
+// Small tinted pill (badge) — flat: colour tint only.
+@mixin chip {
+  box-shadow: none;
+}

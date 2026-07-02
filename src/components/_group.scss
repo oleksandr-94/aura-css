@@ -1,0 +1,51 @@
+// ============================================================
+// Aura — Group (join)
+// Joins adjacent controls — buttons AND form fields — into one
+// segmented unit: square inner corners, rounded outer corners, a
+// single shared border (adjacent borders overlap, never doubled).
+// `.btn-group` is kept as an alias.
+// ============================================================
+@use "../config" as cfg;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}group,
+  .#{$p}btn-group {
+    display: inline-flex;
+    align-items: stretch;
+    border-radius: var(--radius-md);
+
+    > * {
+      position: relative;
+      border-radius: 0;
+      box-shadow: none;       // flatten per-item chrome inside the group
+    }
+    // overlap adjacent borders → one seam, not two
+    > :not(:first-child) { margin-inline-start: -1px; }
+    // bring the active item's border above its neighbours
+    > :hover,
+    > :focus-visible,
+    > :focus-within { z-index: 1; }
+
+    // round only the outermost corners
+    > :first-child {
+      border-start-start-radius: var(--radius-md);
+      border-end-start-radius: var(--radius-md);
+    }
+    > :last-child {
+      border-start-end-radius: var(--radius-md);
+      border-end-end-radius: var(--radius-md);
+    }
+
+    // fields grow to fill; buttons keep their natural width
+    > .#{$p}input,
+    > .#{$p}select { flex: 1; width: auto; min-width: 0; }
+  }
+
+  .#{$p}group--block,
+  .#{$p}btn-group--block {
+    display: flex;
+    width: 100%;
+    > * { flex: 1; }
+  }
+}

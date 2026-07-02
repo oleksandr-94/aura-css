@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Input — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Input</h1>
+    <p class="doc-lead">Text controls — <code>.input</code>, <code>.select</code>,
+      <code>.textarea</code>. Their well is rendered by the active skin (translucent, solid, or
+      inset). Wrap with <code>.field</code> to attach a label and hint.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>input</code> <code>select</code> <code>textarea</code></td><td>Base controls</td></tr>
+        <tr><td class="doc-cat">Size</td><td><code>input--sm</code> <code>input--lg</code></td><td>Small / large</td></tr>
+        <tr><td class="doc-cat">Validation</td><td><code>input--error</code> <code>input--success</code></td><td>Invalid / valid border</td></tr>
+        <tr><td class="doc-cat">Wrapper</td><td><code>field</code></td><td>Label + control + hint stack</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>field__label</code> <code>field__label--required</code> <code>field__hint</code> <code>field__hint--error</code> <code>field__hint--success</code></td><td>Label / required * / helper / status text</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Basic -->
+    <section class="doc-sec">
+      <h2>Input</h2>
+      <div class="doc-preview col">
+        <input class="input" type="text" placeholder="you@studio.dev" style="max-width:320px">
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;input class="input" type="text" placeholder="you@studio.dev"&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- With label -->
+    <section class="doc-sec">
+      <h2>With label &amp; hint</h2>
+      <div class="doc-preview col">
+        <div class="field" style="max-width:320px">
+          <label class="field__label" for="e">Email</label>
+          <input id="e" class="input" type="email" placeholder="you@studio.dev">
+          <span class="field__hint">We'll never share it.</span>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="field"&gt;
+  &lt;label class="field__label" for="e"&gt;Email&lt;/label&gt;
+  &lt;input id="e" class="input" type="email"&gt;
+  &lt;span class="field__hint"&gt;We'll never share it.&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Validation -->
+    <section class="doc-sec">
+      <h2>Validation</h2>
+      <div class="doc-preview col">
+        <div class="field" style="max-width:320px">
+          <label class="field__label field__label--required" for="p">Password</label>
+          <input id="p" class="input input--error" type="password" value="123">
+          <span class="field__hint field__hint--error">At least 8 characters.</span>
+        </div>
+        <div class="field" style="max-width:320px">
+          <label class="field__label" for="u">Username</label>
+          <input id="u" class="input input--success" type="text" value="olena">
+          <span class="field__hint field__hint--success">Looks good — that's available.</span>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="field"&gt;
+  &lt;label class="field__label field__label--required"&gt;Password&lt;/label&gt;
+  &lt;input class="input input--error" type="password"&gt;
+  &lt;span class="field__hint field__hint--error"&gt;At least 8 characters.&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="field"&gt;
+  &lt;label class="field__label"&gt;Username&lt;/label&gt;
+  &lt;input class="input input--success" type="text"&gt;
+  &lt;span class="field__hint field__hint--success"&gt;Looks good.&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Select & textarea -->
+    <section class="doc-sec">
+      <h2>Select &amp; textarea</h2>
+      <div class="doc-preview col">
+        <select class="select" style="max-width:320px"><option>Owner</option><option>Editor</option><option>Viewer</option></select>
+        <textarea class="textarea" placeholder="Type here…" style="max-width:320px"></textarea>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;select class="select"&gt;
+  &lt;option&gt;Owner&lt;/option&gt;
+  &lt;option&gt;Editor&lt;/option&gt;
+&lt;/select&gt;
+&lt;textarea class="textarea" placeholder="Type here…"&gt;&lt;/textarea&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Sizes -->
+    <section class="doc-sec">
+      <h2>Sizes</h2>
+      <div class="doc-preview col">
+        <input class="input input--sm" placeholder="Small" style="max-width:320px">
+        <input class="input" placeholder="Default" style="max-width:320px">
+        <input class="input input--lg" placeholder="Large" style="max-width:320px">
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;input class="input input--sm" placeholder="Small"&gt;
+&lt;input class="input" placeholder="Default"&gt;
+&lt;input class="input input--lg" placeholder="Large"&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

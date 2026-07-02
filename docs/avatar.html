@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Avatar — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Avatar</h1>
+    <p class="doc-lead">A user avatar — image or initials, with an optional status dot and an
+      overlapping group.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>avatar</code></td><td>Initials or <code>&lt;img&gt;</code></td></tr>
+        <tr><td class="doc-cat">Size</td><td><code>avatar--sm</code> <code>avatar--lg</code></td><td>Small / large</td></tr>
+        <tr><td class="doc-cat">Shape</td><td><code>avatar--square</code></td><td>Rounded square</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>avatar__status</code> <code>--online</code> <code>--busy</code></td><td>Status dot</td></tr>
+        <tr><td class="doc-cat">Layout</td><td><code>avatar-group</code></td><td>Overlapping stack</td></tr>
+      </tbody>
+    </table>
+
+    <section class="doc-sec">
+      <h2>Avatar</h2>
+      <div class="doc-preview">
+        <span class="avatar">OL</span>
+        <span class="avatar avatar--square">AK</span>
+        <span class="avatar"><img src="https://i.pravatar.cc/80?img=12" alt=""></span>
+        <span class="avatar">OL<span class="avatar__status avatar__status--online"></span></span>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;span class="avatar"&gt;OL&lt;/span&gt;
+&lt;span class="avatar avatar--square"&gt;AK&lt;/span&gt;
+&lt;span class="avatar"&gt;&lt;img src="…" alt=""&gt;&lt;/span&gt;
+&lt;span class="avatar"&gt;OL&lt;span class="avatar__status avatar__status--online"&gt;&lt;/span&gt;&lt;/span&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Sizes &amp; group</h2>
+      <div class="doc-preview">
+        <span class="avatar avatar--sm">S</span>
+        <span class="avatar">M</span>
+        <span class="avatar avatar--lg">L</span>
+        <span class="avatar-group" style="margin-left:16px">
+          <span class="avatar">OL</span>
+          <span class="avatar" style="background:color-mix(in srgb,var(--secondary) 30%,var(--surface-2))">AK</span>
+          <span class="avatar" style="background:color-mix(in srgb,var(--warning) 30%,var(--surface-2))">MB</span>
+          <span class="avatar">+5</span>
+        </span>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;span class="avatar-group"&gt;
+  &lt;span class="avatar"&gt;OL&lt;/span&gt;
+  &lt;span class="avatar"&gt;AK&lt;/span&gt;
+  &lt;span class="avatar"&gt;+5&lt;/span&gt;
+&lt;/span&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

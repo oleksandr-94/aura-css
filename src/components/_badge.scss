@@ -1,0 +1,61 @@
+// ============================================================
+// Aura — Badge
+// Small status / label pill. Colour variants use the *-container
+// tokens (soft tint + readable content colour), so contrast is
+// guaranteed. The colour tint is constant; the active skin only adds
+// surface feel via chip() (flat / glass gloss / neu extrusion).
+// ============================================================
+@use "../config" as cfg;
+@use "../surface" as s;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}badge {
+    --_bg: color-mix(in srgb, var(--on-surface) 10%, transparent);
+    --_fg: var(--on-surface);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    line-height: 1.5;
+    white-space: nowrap;
+    border-radius: var(--radius-pill);
+    border: 1px solid transparent;
+    background: var(--_bg);
+    color: var(--_fg);
+
+    @include s.chip;            // skin feel (glass gloss / neu extrusion)
+
+    // ---- colour variants (soft) ----
+    &.#{$p}badge--primary   { --_bg: var(--primary-container);   --_fg: var(--on-primary-container); }
+    &.#{$p}badge--secondary { --_bg: var(--secondary-container); --_fg: var(--on-secondary-container); }
+    &.#{$p}badge--accent    { --_bg: var(--accent-container);    --_fg: var(--on-accent-container); }
+    &.#{$p}badge--success   { --_bg: var(--success-container);   --_fg: var(--on-success-container); }
+    &.#{$p}badge--warning   { --_bg: var(--warning-container);   --_fg: var(--on-warning-container); }
+    &.#{$p}badge--error     { --_bg: var(--error-container);     --_fg: var(--on-error-container); }
+    &.#{$p}badge--info      { --_bg: var(--info-container);      --_fg: var(--on-info-container); }
+
+    // ---- style variant ----
+    &.#{$p}badge--outline {
+      background: transparent;
+      border-color: color-mix(in srgb, var(--_fg) 45%, transparent);
+      box-shadow: none;
+    }
+
+    // ---- sizes ----
+    &.#{$p}badge--sm { padding: 2px 8px;  font-size: 11px; }
+    &.#{$p}badge--lg { padding: 5px 13px; font-size: var(--fs-sm); }
+  }
+
+  // Optional leading status dot: <span class="badge badge--success"><i class="badge__dot"></i> Active</span>
+  .#{$p}badge__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    flex: none;
+  }
+}

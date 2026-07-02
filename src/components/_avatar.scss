@@ -1,0 +1,50 @@
+// ============================================================
+// Aura — Avatar (+ group, + status dot)
+// ============================================================
+@use "../config" as cfg;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}avatar {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    flex: none;
+    border-radius: 50%;
+    overflow: hidden;
+    font-weight: 700;
+    font-size: var(--fs-md);
+    color: var(--on-surface);
+    background: color-mix(in srgb, var(--primary) 22%, var(--surface-2));
+    border: 2px solid var(--surface-1);
+  }
+  .#{$p}avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+  .#{$p}avatar--sm { width: 30px; height: 30px; font-size: var(--fs-xs); }
+  .#{$p}avatar--lg { width: 56px; height: 56px; font-size: var(--fs-xl); }
+  .#{$p}avatar--square { border-radius: var(--radius-md); }
+
+  // ---- status dot ----
+  .#{$p}avatar__status {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--on-surface-muted);
+    border: 2px solid var(--surface-1);
+  }
+  .#{$p}avatar__status--online { background: var(--success); }
+  .#{$p}avatar__status--busy   { background: var(--error); }
+
+  // ---- overlapping group ----
+  .#{$p}avatar-group { display: inline-flex; }
+  .#{$p}avatar-group .#{$p}avatar:not(:first-child) { margin-left: -12px; }
+}

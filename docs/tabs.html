@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tabs — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Tabs</h1>
+    <p class="doc-lead">A tab bar with switchable panels. Point each tab at a panel with
+      <code>data-tab="#id"</code>; the optional JS activates it and toggles panel visibility.
+      In frameworks, render the active tab + panel from your own state.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class / attr</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>tabs</code></td><td>Tab bar (pill style)</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>tab</code> · <code>tab-panel</code></td><td>Tab item / content panel</td></tr>
+        <tr><td class="doc-cat">State</td><td><code>tab--active</code></td><td>Selected tab</td></tr>
+        <tr><td class="doc-cat">Style</td><td><code>tabs--underline</code> <code>tabs--lift</code></td><td>Underline / raised looks</td></tr>
+        <tr><td class="doc-cat">Size</td><td><code>tabs--sm</code> <code>tabs--lg</code></td><td>Small / large</td></tr>
+        <tr><td class="doc-cat">Modifier</td><td><code>tabs--block</code></td><td>Full width</td></tr>
+        <tr><td class="doc-cat">Trigger</td><td><code>data-tab="#id"</code></td><td>Panel to show (JS)</td></tr>
+      </tbody>
+    </table>
+
+    <section class="doc-sec">
+      <h2>Tabs <span style="font-size:14px;color:var(--on-surface-muted);font-weight:600">click to switch →</span></h2>
+      <div class="doc-preview col">
+        <div class="tab-card">
+          <div class="tabs" role="tablist">
+            <button class="tab tab--active" data-tab="#p1" role="tab" aria-selected="true">Overview</button>
+            <button class="tab" data-tab="#p2" role="tab" aria-selected="false" tabindex="-1">Activity</button>
+            <button class="tab" data-tab="#p3" role="tab" aria-selected="false" tabindex="-1">Settings</button>
+          </div>
+          <div class="tab-panels">
+            <div id="p1" class="tab-panel" role="tabpanel">A summary of your workspace metrics and recent revenue.</div>
+            <div id="p2" class="tab-panel" role="tabpanel" hidden>Recent events across your team — deploys, invites, comments.</div>
+            <div id="p3" class="tab-panel" role="tabpanel" hidden>Configure preferences, access, and integrations.</div>
+          </div>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="tab-card"&gt;
+  &lt;div class="tabs" role="tablist"&gt;
+    &lt;button class="tab tab--active" data-tab="#p1"&gt;Overview&lt;/button&gt;
+    &lt;button class="tab" data-tab="#p2"&gt;Activity&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="tab-panels"&gt;
+    &lt;div id="p1" class="tab-panel"&gt;Overview…&lt;/div&gt;
+    &lt;div id="p2" class="tab-panel" hidden&gt;Activity…&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type="module" src="interactions.auto.js"&gt;&lt;/script&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Underline</h2>
+      <div class="doc-preview col">
+        <div class="tab-card">
+          <div class="tabs tabs--underline" role="tablist">
+            <button class="tab tab--active" data-tab="#u1" role="tab" aria-selected="true">Profile</button>
+            <button class="tab" data-tab="#u2" role="tab" aria-selected="false" tabindex="-1">Billing</button>
+            <button class="tab" data-tab="#u3" role="tab" aria-selected="false" tabindex="-1">Team</button>
+          </div>
+          <div class="tab-panels">
+            <div id="u1" class="tab-panel" role="tabpanel">Your name, avatar and public details.</div>
+            <div id="u2" class="tab-panel" role="tabpanel" hidden>Plan, invoices and payment method.</div>
+            <div id="u3" class="tab-panel" role="tabpanel" hidden>Members, roles and invitations.</div>
+          </div>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="tabs tabs--underline" role="tablist"&gt;
+  &lt;button class="tab tab--active" data-tab="#u1"&gt;Profile&lt;/button&gt;
+  &lt;button class="tab" data-tab="#u2"&gt;Billing&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Lift <span style="font-size:14px;color:var(--on-surface-muted);font-weight:600">raised · connects to panel</span></h2>
+      <div class="doc-preview col">
+        <div style="width:100%;max-width:460px">
+          <div class="tabs tabs--lift" role="tablist">
+            <button class="tab tab--active" data-tab="#l1" role="tab" aria-selected="true">Files</button>
+            <button class="tab" data-tab="#l2" role="tab" aria-selected="false" tabindex="-1">Members</button>
+            <button class="tab" data-tab="#l3" role="tab" aria-selected="false" tabindex="-1">History</button>
+          </div>
+          <div class="tab-panels">
+            <div id="l1" class="tab-panel" role="tabpanel">Project files and folders live here — the panel shares the active tab's surface, so it's clear the content belongs to <strong>Files</strong>.</div>
+            <div id="l2" class="tab-panel" role="tabpanel" hidden>Team members and their roles.</div>
+            <div id="l3" class="tab-panel" role="tabpanel" hidden>Recent activity history.</div>
+          </div>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="tabs tabs--lift" role="tablist"&gt;
+  &lt;button class="tab tab--active" data-tab="#l1"&gt;Files&lt;/button&gt;
+  &lt;button class="tab" data-tab="#l2"&gt;Members&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="tab-panels"&gt;
+  &lt;div id="l1" class="tab-panel"&gt;Files…&lt;/div&gt;
+  &lt;div id="l2" class="tab-panel" hidden&gt;Members…&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Sizes</h2>
+      <div class="doc-preview col" style="gap:14px">
+        <div class="tabs tabs--sm">
+          <button class="tab tab--active">Day</button>
+          <button class="tab">Week</button>
+          <button class="tab">Month</button>
+        </div>
+        <div class="tabs">
+          <button class="tab tab--active">Day</button>
+          <button class="tab">Week</button>
+          <button class="tab">Month</button>
+        </div>
+        <div class="tabs tabs--lg">
+          <button class="tab tab--active">Day</button>
+          <button class="tab">Week</button>
+          <button class="tab">Month</button>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="tabs tabs--sm"&gt; … &lt;/div&gt;
+&lt;div class="tabs"&gt; … &lt;/div&gt;
+&lt;div class="tabs tabs--lg"&gt; … &lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="doc-sec">
+      <h2>Full width</h2>
+      <div class="doc-preview col">
+        <div class="tabs tabs--block" role="tablist">
+          <button class="tab tab--active" data-tab="#b1" role="tab" aria-selected="true">Day</button>
+          <button class="tab" data-tab="#b2" role="tab" aria-selected="false" tabindex="-1">Week</button>
+          <button class="tab" data-tab="#b3" role="tab" aria-selected="false" tabindex="-1">Month</button>
+        </div>
+        <div id="b1" class="tab-panel" role="tabpanel">Today's figures.</div>
+        <div id="b2" class="tab-panel" role="tabpanel" hidden>This week's figures.</div>
+        <div id="b3" class="tab-panel" role="tabpanel" hidden>This month's figures.</div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="tabs tabs--block" role="tablist"&gt; … &lt;/div&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+  <script type="module" src="../src/js/interactions.auto.js"></script>
+</body>
+</html>

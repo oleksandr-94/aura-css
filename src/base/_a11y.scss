@@ -1,0 +1,31 @@
+// ============================================================
+// Aura — accessibility base
+// In the last cascade layer so it overrides Aura's own component
+// motion, but stays below the host app's unlayered styles (we never
+// clobber the host's animations).
+// ============================================================
+@use "../config" as cfg;
+$p: cfg.$prefix;
+
+@layer a11y {
+  // Respect the user's reduced-motion preference for Aura components.
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 1ms;
+      animation-iteration-count: 1;
+      transition-duration: 1ms;
+      scroll-behavior: auto;
+    }
+  }
+
+  // Screen-reader-only helper (visually hidden, still announced).
+  .#{$p}sr-only {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}

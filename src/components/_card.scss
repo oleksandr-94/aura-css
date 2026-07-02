@@ -1,0 +1,58 @@
+// ============================================================
+// Aura — Card
+// Surface container rendered through the active skin. Optional
+// status accent (coloured left bar) and gradient fill, both driven
+// by --_c so they follow the colour and stay themeable.
+// ============================================================
+@use "../config" as cfg;
+@use "../surface" as s;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}card {
+    --_c: var(--primary);
+    @include s.surface(1);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    color: var(--on-surface);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .#{$p}card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+  .#{$p}card__title { margin: 0; font-size: var(--fs-xl); font-weight: 800; }
+  .#{$p}card__body  { margin: 0; color: var(--on-surface-muted); font-size: var(--fs-md); line-height: 1.5; }
+  .#{$p}card__actions { display: flex; gap: var(--space-2); margin-top: auto; }
+
+  // ---- status accent (coloured left bar) ----
+  .#{$p}card--primary { --_c: var(--primary); }
+  .#{$p}card--success { --_c: var(--success); }
+  .#{$p}card--warning { --_c: var(--warning); }
+  .#{$p}card--error   { --_c: var(--error); }
+  .#{$p}card--info    { --_c: var(--info); }
+  .#{$p}card--primary,
+  .#{$p}card--success,
+  .#{$p}card--warning,
+  .#{$p}card--error,
+  .#{$p}card--info {
+    border-inline-start: 3px solid var(--_c);
+  }
+
+  // ---- gradient fill (follows --_c; combine with a colour modifier) ----
+  .#{$p}card--gradient {
+    background: linear-gradient(135deg,
+      color-mix(in srgb, var(--_c) 62%, var(--gradient-tint)) 0%,
+      var(--_c) 48%,
+      color-mix(in srgb, var(--_c) 84%, #000) 100%);
+    border: none;
+    color: #fff;
+
+    .#{$p}card__body { color: rgba(255, 255, 255, .82); }
+  }
+}

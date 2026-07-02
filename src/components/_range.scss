@@ -1,0 +1,27 @@
+// ============================================================
+// Aura — Range / slider
+// Native <input type="range"> themed via accent-color: auto-fills,
+// keyboard-accessible, zero JS. Colour follows --_c.
+// ============================================================
+@use "../config" as cfg;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}range {
+    --_c: var(--primary);
+    width: 100%;
+    height: 22px;
+    accent-color: var(--_c);
+    cursor: pointer;
+
+    &:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+    &:disabled { opacity: .5; cursor: not-allowed; }
+
+    &.#{$p}range--success { --_c: var(--success); }
+    &.#{$p}range--warning { --_c: var(--warning); }
+    &.#{$p}range--error   { --_c: var(--error); }
+
+    &.#{$p}range--sm { height: 16px; }
+    &.#{$p}range--lg { height: 28px; }
+  }
+}
