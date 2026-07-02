@@ -1,8 +1,9 @@
 {
-  "name": "aura-css",
+  "name": "@oleksandr-94/aura-css",
   "version": "0.1.0",
   "description": "Aura — a framework-agnostic, themeable, skinnable CSS component library (SCSS source + optional JS behaviour layer).",
   "license": "MIT",
+  "publishConfig": { "access": "public" },
   "repository": { "type": "git", "url": "git+https://github.com/oleksandr-94/aura-css.git" },
   "homepage": "https://github.com/oleksandr-94/aura-css#readme",
   "bugs": "https://github.com/oleksandr-94/aura-css/issues",

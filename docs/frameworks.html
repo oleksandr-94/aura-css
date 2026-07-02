@@ -34,8 +34,8 @@
       <h2>Install</h2>
       <div class="doc-codewrap">
         <button class="doc-copy">Copy</button>
-        <pre class="doc-code"><code>import 'aura-css/css';                       // glass skin (or aura-css/flat, aura-css/neu)
-import { toast, trapFocus, lockScroll, unlockScroll } from 'aura-css';</code></pre>
+        <pre class="doc-code"><code>import '@oleksandr-94/aura-css/css';                       // glass skin (or @oleksandr-94/aura-css/flat, @oleksandr-94/aura-css/neu)
+import { toast, trapFocus, lockScroll, unlockScroll } from '@oleksandr-94/aura-css';</code></pre>
       </div>
     </section>
 
@@ -44,7 +44,7 @@ import { toast, trapFocus, lockScroll, unlockScroll } from 'aura-css';</code></p
       <div class="doc-codewrap">
         <button class="doc-copy">Copy</button>
         <pre class="doc-code"><code>import { useEffect, useRef } from 'react';
-import { trapFocus, lockScroll, unlockScroll } from 'aura-css';
+import { trapFocus, lockScroll, unlockScroll } from '@oleksandr-94/aura-css';
 
 function Modal({ open, onClose, children }) {
   const ref = useRef(null);
@@ -105,7 +105,7 @@ function Modal({ open, onClose, children }) {
       </div>
       <div class="doc-codewrap">
         <button class="doc-copy">Copy</button>
-        <pre class="doc-code"><code>import { toast } from 'aura-css';
+        <pre class="doc-code"><code>import { toast } from '@oleksandr-94/aura-css';
 
 &lt;button className="btn" onClick={() =&gt; toast('Saved!', { type: 'success' })}&gt;
   Save
@@ -128,7 +128,7 @@ function Modal({ open, onClose, children }) {
 
 &lt;script setup&gt;
 import { watch, ref } from 'vue';
-import { trapFocus, lockScroll, unlockScroll } from 'aura-css';
+import { trapFocus, lockScroll, unlockScroll } from '@oleksandr-94/aura-css';
 // bind :data-state to `open`; call trapFocus/lockScroll in a watcher.
 &lt;/script&gt;</code></pre>
       </div>

@@ -55,7 +55,7 @@
 &lt;script type="module" src="aura/src/js/interactions.auto.js"&gt;&lt;/script&gt;
 
 // C) bundler / framework
-import { open, toast } from 'aura-css';   // dist/interactions.mjs + types</code></pre>
+import { open, toast } from '@oleksandr-94/aura-css';   // dist/interactions.mjs + types</code></pre>
       </div>
     </section>
 
@@ -63,11 +63,11 @@ import { open, toast } from 'aura-css';   // dist/interactions.mjs + types</code
       <h2>3 · Install from npm</h2>
       <div class="doc-codewrap">
         <button class="doc-copy">Copy</button>
-        <pre class="doc-code"><code>npm install aura-css
+        <pre class="doc-code"><code>npm install @oleksandr-94/aura-css
 
 # then, with a bundler:
-import 'aura-css/css';                    // glass  (aura-css/css/min · aura-css/flat · aura-css/neu)
-import { open, toast } from 'aura-css';   // behaviour layer + types</code></pre>
+import '@oleksandr-94/aura-css/css';                    // glass  (@oleksandr-94/aura-css/css/min · @oleksandr-94/aura-css/flat · @oleksandr-94/aura-css/neu)
+import { open, toast } from '@oleksandr-94/aura-css';   // behaviour layer + types</code></pre>
       </div>
     </section>
 
@@ -89,7 +89,7 @@ npm test          # unit tests for the JS layer</code></pre>
       <div class="doc-codewrap">
         <button class="doc-copy">Copy</button>
         <pre class="doc-code"><code>// your-styles.scss
-@use 'aura-css/scss' with (
+@use '@oleksandr-94/aura-css/scss' with (
   $prefix: 'ui',            // → .ui-btn  (avoid class clashes)
   $skin:   flat,            // glass | flat | neu
   $themes: ( ocean: ( primary: #0EA5E9, … ) )

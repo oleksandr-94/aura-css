@@ -499,7 +499,7 @@ minified per skin), PostCSS/autoprefixer adds vendor prefixes (targets from the
 
 | File | Use |
 |------|-----|
-| `dist/interactions.mjs` / `.min.mjs` | ESM — `import { open, toast } from 'aura-css'` (frameworks, `<script type=module>`) |
+| `dist/interactions.mjs` / `.min.mjs` | ESM — `import { open, toast } from '@oleksandr-94/aura-css'` (frameworks, `<script type=module>`) |
 | `dist/interactions.global.min.js` | Minified IIFE — `<script src>` exposes `window.Aura` + auto-wires triggers |
 | `dist/interactions.d.ts` | TypeScript types |
 
@@ -509,11 +509,11 @@ unaffected.
 **Package entry points** (`exports`):
 
 ```js
-import { open, toast } from 'aura-css';        // JS (ESM) + types
-import 'aura-css/css';                          // glass CSS  (also: aura-css/css/min)
-import 'aura-css/flat';                         // flat skin  (also: aura-css/flat/min)
-import 'aura-css/neu';                          // neu skin
-// SCSS source for custom builds:  @use 'aura-css/scss' with ($skin: flat, $prefix: 'ui');
+import { open, toast } from '@oleksandr-94/aura-css';        // JS (ESM) + types
+import '@oleksandr-94/aura-css/css';                          // glass CSS  (also: @oleksandr-94/aura-css/css/min)
+import '@oleksandr-94/aura-css/flat';                         // flat skin  (also: @oleksandr-94/aura-css/flat/min)
+import '@oleksandr-94/aura-css/neu';                          // neu skin
+// SCSS source for custom builds:  @use '@oleksandr-94/aura-css/scss' with ($skin: flat, $prefix: 'ui');
 ```
 
 ---
