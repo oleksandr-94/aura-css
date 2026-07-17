@@ -1,6 +1,6 @@
 {
   "name": "@oleksandr-94/aura-css",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Aura — a framework-agnostic, themeable, skinnable CSS component library (SCSS source + optional JS behaviour layer).",
   "license": "MIT",
   "publishConfig": {
@@ -30,7 +30,8 @@
   "style": "./dist/aura.css",
   "files": [
     "dist",
-    "src"
+    "src",
+    "CHANGELOG.md"
   ],
   "exports": {
     ".": {

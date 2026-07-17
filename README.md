@@ -584,7 +584,9 @@ gradient; hover uses a soft accent tint.
 | `.menu__item` | Row: icon slot (`> svg`) + label + trailing badge |
 | `.menu__item--active` | Current item (gradient fill) |
 | `.menu__item--disabled` | Non-interactive |
-| `.menu__badge` | Trailing count / badge |
+| `.menu__badge` | Trailing count / badge (solid brand fill) |
+| `.menu--compact` | Icons-only rail: labels hide, section headings become dividers, badge pins to the icon corner |
+| `data-tip="…"` on `.menu__item` | Tooltip text shown on hover/focus in the compact variant |
 
 ```html
 <nav class="menu">
@@ -592,6 +594,11 @@ gradient; hover uses a soft accent tint.
   <a class="menu__item" href="#"><svg>…</svg> <span>Projects</span><span class="menu__badge">12</span></a>
 </nav>
 ```
+
+Toggling a sidebar between full and compact is one class on the same markup
+(`menu--compact`); hidden labels stay in the DOM for accessibility. The compact
+tooltip renders outside the rail — don't clip it with `overflow: hidden` on the host
+sidebar.
 
 ---
 

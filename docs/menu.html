@@ -28,7 +28,9 @@
         <tr><td class="doc-cat">Part</td><td><code>menu__item</code></td><td>Row: icon slot + label + trailing badge</td></tr>
         <tr><td class="doc-cat">State</td><td><code>menu__item--active</code></td><td>Current item (gradient fill)</td></tr>
         <tr><td class="doc-cat">State</td><td><code>menu__item--disabled</code></td><td>Non-interactive</td></tr>
-        <tr><td class="doc-cat">Part</td><td><code>menu__badge</code></td><td>Trailing count / badge</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>menu__badge</code></td><td>Trailing count / badge (solid brand fill)</td></tr>
+        <tr><td class="doc-cat">Variant</td><td><code>menu--compact</code></td><td>Icons-only rail: labels hide, section headings become dividers, badge pins to the icon corner</td></tr>
+        <tr><td class="doc-cat">Hook</td><td><code>data-tip="…"</code></td><td>On <code>menu__item</code>: tooltip text shown on hover/focus in the compact variant</td></tr>
       </tbody>
     </table>
 
@@ -105,6 +107,56 @@
   &lt;/div&gt;
 &lt;/nav&gt;</code></pre>
       </div>
+    </section>
+
+    <!-- Compact rail -->
+    <section class="doc-sec">
+      <h2>Compact rail</h2>
+      <p class="doc-lead" style="font-size:15px;margin-bottom:14px">Add <code>menu--compact</code> to collapse the
+        menu into an icons-only rail — the markup stays exactly the same, so a sidebar can toggle between full and
+        compact with one class. Labels and section headings hide (headings become thin dividers), the badge shrinks
+        to a notification dot on the icon corner, and <code>data-tip</code> shows the item name as a tooltip on
+        hover/focus.</p>
+      <div class="doc-preview">
+        <div style="width:64px">
+          <nav class="menu menu--compact">
+            <div class="menu__section">
+              <div class="menu__label">Workspace</div>
+              <a class="menu__item menu__item--active" href="#" data-tip="Dashboard">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
+                <span>Dashboard</span>
+              </a>
+              <a class="menu__item" href="#" data-tip="Projects">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <span>Projects</span>
+                <span class="menu__badge">12</span>
+              </a>
+            </div>
+            <div class="menu__section">
+              <div class="menu__label">Account</div>
+              <a class="menu__item" href="#" data-tip="Team">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+                <span>Team</span>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;nav class="menu menu--compact"&gt;
+  &lt;div class="menu__section"&gt;
+    &lt;div class="menu__label"&gt;Workspace&lt;/div&gt;   &lt;!-- renders as a divider --&gt;
+    &lt;a class="menu__item" href="#" data-tip="Projects"&gt;
+      &lt;svg&gt;…&lt;/svg&gt;
+      &lt;span&gt;Projects&lt;/span&gt;                    &lt;!-- hidden, kept for a11y / toggling back --&gt;
+      &lt;span class="menu__badge"&gt;12&lt;/span&gt;      &lt;!-- pins to the icon corner --&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+      <p class="doc-lead" style="font-size:15px;margin-top:14px">The tooltip renders to the item's inline-end side,
+        outside the rail — make sure the host sidebar doesn't clip it with <code>overflow: hidden</code>.</p>
     </section>
 
     <!-- Host CSS caveat -->

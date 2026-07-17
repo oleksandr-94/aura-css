@@ -1809,8 +1809,8 @@
     font-weight: 700;
     line-height: 1;
     border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--on-surface) 12%, transparent);
-    color: var(--on-surface);
+    background: var(--primary);
+    color: var(--on-primary);
   }
 }
 @layer components {

@@ -178,6 +178,8 @@ $p: cfg.$prefix;
   }
 
   // ---- Trailing badge / count ----
+  // Solid brand fill in both layouts, so the full menu and the compact rail
+  // read as one system; --compact only repositions and shrinks it.
   .#{$p}menu__badge {
     flex: none;
     margin-inline-start: auto;
@@ -191,7 +193,7 @@ $p: cfg.$prefix;
     font-weight: 700;
     line-height: 1;
     border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--on-surface) 12%, transparent);
-    color: var(--on-surface);
+    background: var(--primary);
+    color: var(--on-primary);
   }
 }
