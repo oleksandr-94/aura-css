@@ -1,0 +1,115 @@
+// ============================================================
+// Aura — Stat
+// A metric card: icon slot + big value + label. The surface is
+// rendered through the active skin (glass/flat/neu), exactly like
+// .card. Colour variants add a 3px accent bar on top plus a faint
+// tint pulled from the same --_c, so they follow the theme.
+// ============================================================
+@use "../config" as cfg;
+@use "../surface" as s;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}stat {
+    --_c: var(--primary);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    color: var(--on-surface);
+    @include s.surface(1);
+  }
+
+  // icon slot — tinted chip in the accent colour. Size is driven by a
+  // local token (--_isize) so it can be scaled up without re-stating rules.
+  .#{$p}stat__icon {
+    --_isize: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: var(--_isize);
+    height: var(--_isize);
+    margin-bottom: var(--space-1);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--_c) 16%, transparent);
+    color: var(--_c);
+    > svg { width: 55%; height: 55%; }
+  }
+  // plain slot — no tinted square, sizes to its own content (e.g. a 3D PNG)
+  .#{$p}stat__icon--plain {
+    background: none;
+    width: auto;
+    height: auto;
+    > svg { width: auto; height: auto; }
+  }
+
+  // optional wrapper around value+label (keeps them a single block in --row)
+  .#{$p}stat__body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .#{$p}stat__value {
+    font-size: var(--fs-xl);
+    font-weight: 800;
+    line-height: 1.1;
+  }
+  .#{$p}stat__label {
+    font-size: var(--fs-sm);
+    color: var(--on-surface-muted);
+  }
+
+  // optional trailing delta line (e.g. "+12% vs last week")
+  .#{$p}stat__delta {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    color: var(--_c);
+  }
+
+  // ---- horizontal variant: icon left, text block right ----
+  .#{$p}stat--row {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-4);
+    .#{$p}stat__icon { margin-bottom: 0; }
+  }
+
+  // ---- colour variants: top accent bar + faint tint ----
+  .#{$p}stat--primary { --_c: var(--primary); }
+  .#{$p}stat--secondary { --_c: var(--secondary); }
+  .#{$p}stat--accent  { --_c: var(--accent); }
+  .#{$p}stat--success { --_c: var(--success); }
+  .#{$p}stat--warning { --_c: var(--warning); }
+  .#{$p}stat--error   { --_c: var(--error); }
+  .#{$p}stat--info    { --_c: var(--info); }
+
+  .#{$p}stat--primary,
+  .#{$p}stat--secondary,
+  .#{$p}stat--accent,
+  .#{$p}stat--success,
+  .#{$p}stat--warning,
+  .#{$p}stat--error,
+  .#{$p}stat--info {
+    // diagonal soft→transparent tint (reveals the surface at ~62%), not a flat wash
+    background-image: linear-gradient(135deg,
+      color-mix(in srgb, var(--_c) 20%, transparent) 0%,
+      transparent 62%);
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline: 0;
+      height: 3px;
+      background: var(--_c);
+    }
+  }
+}

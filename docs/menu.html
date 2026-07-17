@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Menu — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Menu</h1>
+    <p class="doc-lead">A vertical navigation primitive — <strong>not</strong> a sidebar. It carries no
+      width, position, or background of its own, so the same <code>.menu</code> drops cleanly into a
+      sidebar, a drawer, or a popover. The active item rides the brand gradient.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>menu</code></td><td>Vertical container (no width / position of its own)</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>menu__section</code></td><td>Grouped block of items</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>menu__label</code></td><td>Uppercase section heading</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>menu__item</code></td><td>Row: icon slot + label + trailing badge</td></tr>
+        <tr><td class="doc-cat">State</td><td><code>menu__item--active</code></td><td>Current item (gradient fill)</td></tr>
+        <tr><td class="doc-cat">State</td><td><code>menu__item--disabled</code></td><td>Non-interactive</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>menu__badge</code></td><td>Trailing count / badge</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Basic -->
+    <section class="doc-sec">
+      <h2>Menu</h2>
+      <p class="doc-lead" style="font-size:15px;margin-bottom:14px">Placement-agnostic: here it sits in a
+        plain <code>260px</code> box, but it inherits any width you give the wrapper.</p>
+      <div class="doc-preview">
+        <div style="width:260px">
+          <nav class="menu">
+            <a class="menu__item menu__item--active" href="#">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
+              <span>Dashboard</span>
+            </a>
+            <a class="menu__item" href="#">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+              <span>Projects</span>
+              <span class="menu__badge">12</span>
+            </a>
+            <a class="menu__item" href="#">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+              <span>Team</span>
+            </a>
+            <a class="menu__item menu__item--disabled" href="#" aria-disabled="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>
+              <span>Archive</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;nav class="menu"&gt;
+  &lt;a class="menu__item menu__item--active" href="#"&gt;
+    &lt;svg&gt;…&lt;/svg&gt; &lt;span&gt;Dashboard&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;a class="menu__item" href="#"&gt;
+    &lt;svg&gt;…&lt;/svg&gt; &lt;span&gt;Projects&lt;/span&gt;
+    &lt;span class="menu__badge"&gt;12&lt;/span&gt;
+  &lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Sections -->
+    <section class="doc-sec">
+      <h2>Sections</h2>
+      <p class="doc-lead" style="font-size:15px;margin-bottom:14px">Group items under an uppercase
+        <code>menu__label</code>.</p>
+      <div class="doc-preview">
+        <div style="width:260px">
+          <nav class="menu">
+            <div class="menu__section">
+              <div class="menu__label">Workspace</div>
+              <a class="menu__item menu__item--active" href="#"><span>Overview</span></a>
+              <a class="menu__item" href="#"><span>Reports</span><span class="menu__badge">3</span></a>
+            </div>
+            <div class="menu__section">
+              <div class="menu__label">Account</div>
+              <a class="menu__item" href="#"><span>Settings</span></a>
+              <a class="menu__item" href="#"><span>Billing</span></a>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;nav class="menu"&gt;
+  &lt;div class="menu__section"&gt;
+    &lt;div class="menu__label"&gt;Workspace&lt;/div&gt;
+    &lt;a class="menu__item menu__item--active" href="#"&gt;&lt;span&gt;Overview&lt;/span&gt;&lt;/a&gt;
+    &lt;a class="menu__item" href="#"&gt;&lt;span&gt;Reports&lt;/span&gt;&lt;span class="menu__badge"&gt;3&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Host CSS caveat -->
+    <section class="doc-sec">
+      <h2>Heads up: host CSS resets</h2>
+      <p class="doc-lead" style="font-size:15px">Aura components live in <code>@layer components</code>, so any
+        <strong>unlayered</strong> rule in your app overrides them. Broad resets can break the menu in
+        particular:</p>
+      <ul class="doc-lead" style="font-size:15px;line-height:1.7;margin-top:6px">
+        <li><code>* { margin:0 }</code> / <code>* { padding:0 }</code> flatten spacing on
+          <code>menu__section</code>, <code>menu__badge</code> and item padding.</li>
+        <li><code>a { color:inherit }</code> recolours the active <code>menu__item</code> (it's an
+          <code>&lt;a&gt;</code>), so it loses its on-gradient text colour.</li>
+      </ul>
+      <p class="doc-lead" style="font-size:15px;margin-top:6px">Scope those resets to your own containers, or put
+        your app styles in their <strong>own <code>@layer</code> declared after Aura</strong>. This matters most
+        for link-based components (<code>menu</code>, future <code>breadcrumbs</code>).</p>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

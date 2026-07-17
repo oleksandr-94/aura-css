@@ -5,8 +5,9 @@ Works in any project — plain HTML, React/Vue/Svelte, or alongside Tailwind —
 single stylesheet. Theming and surface style ("skin") are decoupled from markup, so the
 same components can be glass in one app and flat in another, on different palettes.
 
-> **Status:** early foundation. Complete theming/skin/token system + **2 components**
-> (`button`, `card`). More components are being added on top of this base.
+> **Status:** early foundation. Complete theming/skin/token system + a growing component
+> set (button, card, stat, ring, timeline, menu, inputs, overlays, and more). More
+> components are being added on top of this base.
 
 ---
 
@@ -147,7 +148,7 @@ Base class renders the **primary** button. Add modifiers to change colour, style
 | `.btn--success` / `.btn--warning` / `.btn--error` / `.btn--info` | Status colours |
 | `.btn--ghost` | Transparent, bordered |
 | `.btn--outline` | Outlined; combine with a colour modifier |
-| `.btn--gradient` | Gradient fill — follows the colour; combine with a colour modifier (`.btn--gradient.btn--success`) |
+| `.btn--gradient` | Two-colour gradient — `--<role>` → `--<role>-2` (brand `--primary → --secondary` by default); combine with a colour modifier (`.btn--gradient.btn--success`) |
 | `.btn--sm` / `.btn--lg` | Sizes |
 | `.btn--block` | Full width |
 | `.btn--disabled` / `[disabled]` | Disabled state |
@@ -161,6 +162,12 @@ States handled automatically: `:hover`, `:active`, `:focus-visible`, `:disabled`
 <button class="btn btn--lg btn--block">Continue</button>
 <button class="btn" disabled>Disabled</button>
 ```
+
+**Gradient tokens (optional, per theme):** `--<role>-2` sets the second gradient stop for a role
+(e.g. `primary-2`, `error-2`). Without it the second stop falls back to a darker shade of the
+colour, so the gradient stays visible (a tonal light→dark); `--primary` uniquely falls back to
+`--secondary`, giving the brand two-tone. `--on-gradient` forces the text colour on gradient fills
+only — solid buttons keep their auto on-colour.
 
 ### Card — `.card`
 
@@ -183,6 +190,88 @@ Surface container rendered through the active skin (glass/flat/neu).
 </div>
 
 <div class="card card--gradient card--error"> … </div>
+```
+
+### Stat — `.stat`
+
+Metric card rendered through the active skin (like `.card`): icon slot + value + label. Colour
+variants add a top accent bar and a faint tint from the same colour.
+
+| Class | Element / effect |
+|-------|------------------|
+| `.stat` | Container (uses `surface()`) |
+| `.stat--row` | Horizontal layout — icon left, text block right |
+| `.stat__icon` / `.stat__value` / `.stat__label` | Icon chip / big value / caption |
+| `.stat__icon--plain` | Transparent slot (sizes to its own content, e.g. a PNG) |
+| `.stat__body` | Optional value+label wrapper (keeps them one block in `--row`) |
+| `.stat__delta` | Optional trend line (inherits the accent colour) |
+| `.stat--primary` / `--success` / `--warning` / `--error` / `--info` … | Accent bar + tint |
+
+The icon chip size is a local token — `--_isize` (default `40px`); set it inline to grow the chip.
+
+```html
+<div class="stat stat--success">
+  <div class="stat__icon"><svg>…</svg></div>
+  <div class="stat__value">98.4%</div>
+  <div class="stat__label">Uptime</div>
+  <div class="stat__delta">▲ 0.2% vs last week</div>
+</div>
+
+<!-- horizontal: icon left, text right -->
+<div class="stat stat--row stat--primary">
+  <span class="stat__icon" style="--_isize:52px"><svg>…</svg></span>
+  <div class="stat__body">
+    <div class="stat__value">128</div>
+    <div class="stat__label">Words in dictionary</div>
+  </div>
+</div>
+```
+
+### Ring — `.ring`
+
+CSS-only radial progress (conic-gradient + mask, no SVG). Progress is set inline with `--val` (0–100).
+The arc is the brand `--gradient` by default; colour variants make it a single accent.
+
+| Class / var | Effect |
+|-------------|--------|
+| `.ring` + `style="--val:60"` | Ring at 60 % |
+| `.ring__label` | Centred label |
+| `.ring--sm` / `.ring--lg` | Sizes |
+| `.ring--primary` / `--success` / `--warning` / `--error` … | Single-colour arc |
+
+```html
+<div class="ring" style="--val:60"><span class="ring__label">60%</span></div>
+<div class="ring ring--success ring--lg" style="--val:80"><span class="ring__label">80%</span></div>
+```
+
+### Timeline — `.timeline`
+
+Vertical feed of events: a rail with an accent dot per item, `--now` glows, `--muted` dims.
+
+| Class | Element / effect |
+|-------|------------------|
+| `.timeline` | List with the vertical rail (`::before`) |
+| `.timeline--row` | Horizontal items — `time \| body \| count` on one line |
+| `.timeline__item` | One event (accent dot); `--now` / `--muted` states |
+| `.timeline__time` | Timestamp line |
+| `.timeline__body` / `.timeline__title` / `.timeline__sub` | Body wrapper / title / subtitle |
+| `.timeline__count` | Trailing count pill |
+
+`--now` is brand-coloured by default; override any item's dot/count colour with an inline `--_c`
+(e.g. `style="--_c:var(--success)"`).
+
+```html
+<ol class="timeline">
+  <li class="timeline__item timeline__item--now">
+    <span class="timeline__time">Now · 14:20</span>
+    <div class="timeline__body"><span class="timeline__title">Deploy started</span></div>
+  </li>
+  <li class="timeline__item">
+    <span class="timeline__time">13:58</span>
+    <div class="timeline__body"><span class="timeline__title">Build passed</span></div>
+    <span class="timeline__count">128</span>
+  </li>
+</ol>
 ```
 
 ### Input — `.input` / `.select` / `.textarea`
@@ -225,12 +314,15 @@ content colour.
 | `.badge--primary` / `--secondary` / `--accent` | Accent tints |
 | `.badge--success` / `--warning` / `--error` / `--info` | Status tints |
 | `.badge--outline` | Transparent, bordered |
+| `.badge--gradient` | Two-colour gradient fill — `--<role>` → `--<role>-2` (brand `--primary → --secondary` by default); combine with a colour modifier (`.badge--gradient.badge--success`). Text uses `--on-gradient`. |
 | `.badge--sm` / `.badge--lg` | Sizes |
 | `.badge__dot` | Leading status dot |
 
 ```html
 <span class="badge badge--success"><i class="badge__dot"></i> Active</span>
 <span class="badge badge--error badge--outline">Failed</span>
+<span class="badge badge--gradient">Brand</span>
+<span class="badge badge--gradient badge--success">Success</span>
 ```
 
 ### Alert — `.alert`
@@ -479,6 +571,28 @@ toast('Changes saved.', { type: 'success', timeout: 4000 });
 Variants: `.pagination--joined` (button-group style, shared borders) · `.pagination--sm`.
 Use `.pagination__ellipsis` for `…` gaps in long ranges.
 
+### Menu — `.menu`
+
+A vertical navigation **primitive**, not a sidebar: it carries no width, position, or background of its
+own, so the same `.menu` drops into a sidebar, drawer, or popover. The active item rides the brand
+gradient; hover uses a soft accent tint.
+
+| Class | Element / effect |
+|-------|------------------|
+| `.menu` | Vertical container (placement-agnostic) |
+| `.menu__section` / `.menu__label` | Grouped block / uppercase heading |
+| `.menu__item` | Row: icon slot (`> svg`) + label + trailing badge |
+| `.menu__item--active` | Current item (gradient fill) |
+| `.menu__item--disabled` | Non-interactive |
+| `.menu__badge` | Trailing count / badge |
+
+```html
+<nav class="menu">
+  <a class="menu__item menu__item--active" href="#"><svg>…</svg> <span>Dashboard</span></a>
+  <a class="menu__item" href="#"><svg>…</svg> <span>Projects</span><span class="menu__badge">12</span></a>
+</nav>
+```
+
 ---
 
 ## Distribution
@@ -557,7 +671,7 @@ aura/
 │   ├── _surface.scss     # skin dispatcher: surface() / field()
 │   ├── skins/            # _glass · _flat · _neu
 │   ├── base/_reset.scss  # minimal reset in @layer base
-│   ├── components/       # _button · _card
+│   ├── components/       # _button · _card · _menu · _stat · _ring · _timeline · …
 │   ├── _layers.scss      # cascade-layer order
 │   └── index.scss        # entry (default = glass)
 ├── builds/               # build presets (recipes): flat.scss …
@@ -570,6 +684,17 @@ aura/
   unlayered styles always win, so overriding is easy.
 - **Coexistence** — set `$prefix` to avoid class clashes with other libraries. With
   Tailwind v4 you can also map Aura's role variables into `@theme` to share one palette.
+- **Watch out for aggressive host resets.** Because Aura's rules live in `@layer components`,
+  any **unlayered** rule in your app beats them — that's the point, but broad resets can
+  clobber components unintentionally. In particular:
+  - `* { margin: 0 }` / `* { padding: 0 }` flatten component spacing (`.menu__section`,
+    `.menu__badge`, button/badge padding).
+  - `a { color: inherit }` recolours link-based components — e.g. the active `.menu__item`
+    (which is an `<a>`) loses its on-gradient colour.
+
+  Scope such resets to your own containers, or put your app's styles in their **own
+  `@layer` declared after Aura** so the intended layer order is preserved. This matters
+  most for link-based components (`menu`, and future `breadcrumbs`).
 
 ---
 
@@ -587,7 +712,8 @@ scroll-lock, `toast()` lifecycle, and prefix config.
 
 ## Not yet (roadmap)
 
-- Components: `breadcrumbs`, `menu`/sidebar, `steps`, `skeleton`, `stat`, `drawer`, `popover`.
+- Components: `breadcrumbs`, `steps`, `skeleton`, `drawer`, `popover`.
+  ✅ Done: `menu`, `stat`, `ring`, `timeline`.
 - More prebuilt themes (the token system supports them cheaply).
 - Visual-regression tests (Playwright over the docs, per skin × theme) + a11y audit (axe).
 - RTL audit · `prefers-color-scheme` auto-theme · per-component CSS imports (tree-shaking).

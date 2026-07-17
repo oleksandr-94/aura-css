@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ring — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Ring</h1>
+    <p class="doc-lead">A CSS-only radial progress ring — no SVG. A <code>conic-gradient</code> paints the
+      arc and a mask carves out the centre. Progress is set inline with <code>--val</code> (0–100). The
+      arc uses the brand gradient by default; colour variants make it a single accent.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class / var</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>ring</code></td><td>Radial progress ring</td></tr>
+        <tr><td class="doc-cat">Value</td><td><code>style="--val:60"</code></td><td>Progress, 0–100</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>ring__label</code></td><td>Centred label</td></tr>
+        <tr><td class="doc-cat">Size</td><td><code>ring--sm</code> <code>ring--lg</code></td><td>Small / large</td></tr>
+        <tr><td class="doc-cat">Color</td><td><code>ring--primary</code> <code>ring--success</code> <code>ring--warning</code> <code>ring--error</code> …</td><td>Single-colour arc</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Basic -->
+    <section class="doc-sec">
+      <h2>Ring</h2>
+      <div class="doc-preview">
+        <div class="ring" style="--val:25"><span class="ring__label">25%</span></div>
+        <div class="ring" style="--val:60"><span class="ring__label">60%</span></div>
+        <div class="ring" style="--val:92"><span class="ring__label">92%</span></div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="ring" style="--val:60"&gt;
+  &lt;span class="ring__label"&gt;60%&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Sizes -->
+    <section class="doc-sec">
+      <h2>Sizes</h2>
+      <div class="doc-preview" style="align-items:center">
+        <div class="ring ring--sm" style="--val:70"><span class="ring__label">70%</span></div>
+        <div class="ring" style="--val:70"><span class="ring__label">70%</span></div>
+        <div class="ring ring--lg" style="--val:70"><span class="ring__label">70%</span></div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="ring ring--sm" style="--val:70"&gt;…&lt;/div&gt;
+&lt;div class="ring" style="--val:70"&gt;…&lt;/div&gt;
+&lt;div class="ring ring--lg" style="--val:70"&gt;…&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Colours -->
+    <section class="doc-sec">
+      <h2>Colours</h2>
+      <div class="doc-preview">
+        <div class="ring ring--success" style="--val:80"><span class="ring__label">80%</span></div>
+        <div class="ring ring--warning" style="--val:45"><span class="ring__label">45%</span></div>
+        <div class="ring ring--error" style="--val:15"><span class="ring__label">15%</span></div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="ring ring--success" style="--val:80"&gt;
+  &lt;span class="ring__label"&gt;80%&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

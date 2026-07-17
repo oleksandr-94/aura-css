@@ -10,6 +10,9 @@
     { title: 'Data display', items: [
       { href: 'card.html',      label: 'Card' },
       { href: 'badge.html',     label: 'Badge' },
+      { href: 'stat.html',      label: 'Stat' },
+      { href: 'ring.html',      label: 'Ring' },
+      { href: 'timeline.html',  label: 'Timeline' },
       { href: 'table.html',     label: 'Table' },
       { href: 'avatar.html',    label: 'Avatar' },
       { href: 'accordion.html', label: 'Accordion' },
@@ -25,6 +28,7 @@
       { href: 'rating.html',   label: 'Rating' },
     ] },
     { title: 'Navigation',   items: [
+      { href: 'menu.html',       label: 'Menu' },
       { href: 'tabs.html',       label: 'Tabs' },
       { href: 'pagination.html', label: 'Pagination' },
     ] },

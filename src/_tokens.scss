@@ -44,6 +44,10 @@
       // subtle tinted fill for badges/alerts + its content colour
       --#{$role}-container: color-mix(in srgb, #{$val} 16%, transparent);
       --on-#{$role}-container: #{$val};
+      // optional second gradient stop (e.g. `primary-2: #…` in the theme).
+      // When present, two-colour gradients (buttons) blend --role → --role-2.
+      $val2: map.get($c, #{$role}-2);
+      @if $val2 { --#{$role}-2: #{$val2}; }
     }
   }
   // surfaces + lines + elevation (provided explicitly)
@@ -53,6 +57,10 @@
     $val: map.get($c, $role);
     @if $val { --#{$role}: #{$val}; }
   }
+  // optional forced text colour on gradient fills (buttons/menu active).
+  // Omit to fall back to the role's auto content colour.
+  $on-grad: map.get($c, on-gradient);
+  @if $on-grad { --on-gradient: #{$on-grad}; }
 }
 
 @each $name, $colors in cfg.$themes {

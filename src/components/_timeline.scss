@@ -1,0 +1,123 @@
+// ============================================================
+// Aura — Timeline
+// A vertical feed of events. A single rail (::before on the list)
+// runs down the left; each item carries an accent dot. The "now"
+// item glows via a tinted box-shadow; muted items dim. Item bodies
+// use --surface-2 with a small hover shift. All colour is token-
+// driven — no hardcoded values.
+// ============================================================
+@use "../config" as cfg;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}timeline {
+    --_c: var(--primary);       // accent for dots / "now" glow
+    --_rail: 20px;              // gap from the rail to item bodies
+    --_dot: 11px;               // dot diameter
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    padding-inline-start: var(--_rail);
+    list-style: none;
+
+    // the vertical rail
+    &::before {
+      content: "";
+      position: absolute;
+      inset-block: 6px 6px;
+      inset-inline-start: 0;
+      width: 2px;
+      background: var(--outline);
+    }
+  }
+
+  .#{$p}timeline__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    background: var(--surface-2);
+    transition: transform .15s ease;
+
+    // dot on the rail
+    &::before {
+      content: "";
+      position: absolute;
+      inset-inline-start: calc(-1 * var(--_rail) + 1px); // centre dot on the 2px rail
+      inset-block-start: var(--space-4);
+      width: var(--_dot);
+      height: var(--_dot);
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: var(--_c);
+      box-shadow: 0 0 0 3px var(--surface);
+    }
+
+    &:hover { transform: translateX(2px); }
+
+    // ---- states ----
+    &.#{$p}timeline__item--now {
+      --_c:  var(--primary);   // "now" = brand; override per item via inline --_c
+      --_c2: var(--primary-2, var(--secondary));
+      &::before {
+        box-shadow:
+          0 0 0 3px var(--surface),
+          0 0 0 6px color-mix(in srgb, var(--_c) 40%, transparent);
+      }
+      // count takes the .badge--gradient look (two-tone brand fill) for emphasis
+      .#{$p}timeline__count {
+        background: linear-gradient(135deg, var(--_c) 0%, var(--_c2) 100%);
+        color: var(--on-gradient, #fff);
+      }
+    }
+    // muted = de-emphasise by COLOUR, not a blanket opacity (which fades the
+    // count pill into illegibility). --_c → grey drives both dot and count.
+    &.#{$p}timeline__item--muted {
+      --_c: var(--on-surface-muted);
+      .#{$p}timeline__title { color: var(--on-surface-muted); font-weight: 600; }
+    }
+  }
+
+  .#{$p}timeline__time {
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    color: var(--on-surface-muted);
+  }
+  .#{$p}timeline__body  { display: flex; flex-direction: column; gap: 2px; }
+  .#{$p}timeline__title { font-size: var(--fs-md); font-weight: 700; color: var(--on-surface); }
+  .#{$p}timeline__sub   { font-size: var(--fs-sm); color: var(--on-surface-muted); }
+
+  // count pill = same vocabulary as .badge: neutral by default, brand gradient
+  // when the item is --now (see the --now block). Values mirror .badge / .badge--gradient.
+  .#{$p}timeline__count {
+    align-self: flex-start;
+    margin-block-start: var(--space-1);
+    padding: 3px 10px;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    line-height: 1.5;
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--on-surface) 10%, transparent);  // = .badge --_bg
+    color: var(--on-surface);                                            // = .badge --_fg
+  }
+
+  // ---- horizontal variant: time | body | count on one row ----
+  .#{$p}timeline--row {
+    .#{$p}timeline__item {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--space-4);
+      // centre the dot against the single-row height
+      &::before { inset-block-start: 50%; transform: translate(-50%, -50%); }
+    }
+    .#{$p}timeline__time  { flex: none; min-width: 76px; }
+    .#{$p}timeline__body  { flex: 1; }
+    .#{$p}timeline__count { align-self: center; margin-block-start: 0; }
+  }
+}

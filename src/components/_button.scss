@@ -11,6 +11,7 @@ $p: cfg.$prefix;
 @layer components {
   .#{$p}btn {
     --_c: var(--primary);        // semantic colour (drives fill + gradient + outline)
+    --_c2: var(--primary-2, var(--secondary));  // second gradient stop (default: brand partner)
     --_bg: var(--_c);            // solid fill by default
     --_fg: var(--on-primary);
 
@@ -36,21 +37,22 @@ $p: cfg.$prefix;
     &.#{$p}btn--disabled { opacity: .5; cursor: not-allowed; filter: none; }
 
     // ---- colour variants ----
-    &.#{$p}btn--secondary { --_c: var(--secondary); --_fg: var(--on-secondary); }
-    &.#{$p}btn--accent    { --_c: var(--accent);    --_fg: var(--on-accent); }
-    &.#{$p}btn--success   { --_c: var(--success);   --_fg: var(--on-success); }
-    &.#{$p}btn--warning   { --_c: var(--warning);   --_fg: var(--on-warning); }
-    &.#{$p}btn--error     { --_c: var(--error);     --_fg: var(--on-error); }
-    &.#{$p}btn--info      { --_c: var(--info);      --_fg: var(--on-info); }
+    // Each sets its own gradient partner: --_c2 = var(--<role>-2, <shade of the colour>).
+    // No theme partner → a darker shade of the colour, so the gradient stays visible.
+    &.#{$p}btn--secondary { --_c: var(--secondary); --_c2: var(--secondary-2, color-mix(in srgb, var(--secondary) 72%, #000)); --_fg: var(--on-secondary); }
+    &.#{$p}btn--accent    { --_c: var(--accent);    --_c2: var(--accent-2,    color-mix(in srgb, var(--accent) 72%, #000));    --_fg: var(--on-accent); }
+    &.#{$p}btn--success   { --_c: var(--success);   --_c2: var(--success-2,   color-mix(in srgb, var(--success) 72%, #000));   --_fg: var(--on-success); }
+    &.#{$p}btn--warning   { --_c: var(--warning);   --_c2: var(--warning-2,   color-mix(in srgb, var(--warning) 72%, #000));   --_fg: var(--on-warning); }
+    &.#{$p}btn--error     { --_c: var(--error);     --_c2: var(--error-2,     color-mix(in srgb, var(--error) 72%, #000));     --_fg: var(--on-error); }
+    &.#{$p}btn--info      { --_c: var(--info);      --_c2: var(--info-2,      color-mix(in srgb, var(--info) 72%, #000));      --_fg: var(--on-info); }
 
-    // gradient fill — derived from the current colour (--_c). Combine with any
-    // colour modifier: .btn--gradient.btn--success, .btn--gradient.btn--error, …
+    // gradient fill — two-colour, --_c → --_c2. Combine with any colour modifier
+    // (.btn--gradient.btn--success, .btn--gradient.btn--error, …). Text colour is
+    // the role's auto on-colour, unless the theme forces --on-gradient.
     &.#{$p}btn--gradient {
-      --_bg: linear-gradient(135deg,
-        color-mix(in srgb, var(--_c) 62%, var(--gradient-tint)) 0%,
-        var(--_c) 48%,
-        color-mix(in srgb, var(--_c) 84%, #000) 100%);
+      --_bg: linear-gradient(135deg, var(--_c) 0%, var(--_c2) 100%);
       --_shadow-color: var(--_c);
+      color: var(--on-gradient, var(--_fg));
     }
 
     // ---- style variants (skin chrome removed) ----
