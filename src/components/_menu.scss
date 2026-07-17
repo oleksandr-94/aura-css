@@ -114,15 +114,21 @@ $p: cfg.$prefix;
       > span:not([class]) { display: none; }
     }
 
+    // On a rail the translucent pill reads as loose digits over the icon,
+    // so the badge flips to a solid notification dot: brand fill, tiny type,
+    // and a surface-coloured ring that separates it from the icon underneath.
     .#{$p}menu__badge {
       position: absolute;
-      inset-block-start: 2px;
-      inset-inline-end: 2px;
+      inset-block-start: 3px;
+      inset-inline-end: 3px;
       margin-inline-start: 0;
-      min-width: 16px;
-      height: 16px;
+      min-width: 15px;
+      height: 15px;
       padding: 0 4px;
-      font-size: 10px;
+      font-size: 9.5px;
+      background: var(--primary);
+      color: var(--on-primary);
+      box-shadow: 0 0 0 2px var(--surface-1);
     }
 
     .#{$p}menu__item[data-tip] {
