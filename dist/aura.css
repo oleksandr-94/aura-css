@@ -1681,6 +1681,7 @@
     color: var(--on-surface-muted);
   }
   .menu__item {
+    position: relative;
     display: flex;
     align-items: center;
     gap: var(--space-3);
@@ -1730,6 +1731,71 @@
   .menu__item:disabled:hover, .menu__item.menu__item--disabled:hover {
     background: transparent;
   }
+  .menu--compact .menu__label {
+    height: 1px;
+    padding: 0;
+    margin-block: var(--space-2);
+    margin-inline: var(--space-2);
+    font-size: 0;
+    background: var(--outline);
+    overflow: hidden;
+  }
+  .menu--compact .menu__item {
+    justify-content: center;
+    padding: 10px;
+  }
+  .menu--compact .menu__item > span:not([class]) {
+    display: none;
+  }
+  .menu--compact .menu__badge {
+    position: absolute;
+    inset-block-start: 3px;
+    inset-inline-end: 3px;
+    margin-inline-start: 0;
+    min-width: 15px;
+    height: 15px;
+    padding: 0 4px;
+    font-size: 9.5px;
+    background: var(--primary);
+    color: var(--on-primary);
+    box-shadow: 0 0 0 2px var(--surface-1);
+  }
+  .menu--compact .menu__item[data-tip]::after {
+    content: attr(data-tip);
+    position: absolute;
+    inset-inline-start: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    background: var(--tip-bg);
+    color: var(--tip-text);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    z-index: var(--z-dropdown);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.15s ease, visibility 0.15s ease;
+  }
+  .menu--compact .menu__item[data-tip]::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-inline-end-color: var(--tip-bg);
+    z-index: var(--z-dropdown);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.15s ease, visibility 0.15s ease;
+  }
+  .menu--compact .menu__item[data-tip]:hover::after, .menu--compact .menu__item[data-tip]:hover::before, .menu--compact .menu__item[data-tip]:focus-visible::after, .menu--compact .menu__item[data-tip]:focus-visible::before {
+    visibility: visible;
+    opacity: 1;
+  }
   .menu__badge {
     flex: none;
     margin-inline-start: auto;
@@ -1743,8 +1809,8 @@
     font-weight: 700;
     line-height: 1;
     border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--on-surface) 12%, transparent);
-    color: var(--on-surface);
+    background: var(--primary);
+    color: var(--on-primary);
   }
 }
 @layer components {
