@@ -36,6 +36,7 @@ $p: cfg.$prefix;
 
   // ---- Item ----
   .#{$p}menu__item {
+    position: relative;   // anchor for the compact badge + data-tip tooltip
     display: flex;
     align-items: center;
     gap: var(--space-3);

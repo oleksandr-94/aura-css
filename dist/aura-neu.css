@@ -1669,6 +1669,7 @@
     color: var(--on-surface-muted);
   }
   .menu__item {
+    position: relative;
     display: flex;
     align-items: center;
     gap: var(--space-3);
