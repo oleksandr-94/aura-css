@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stat — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Stat</h1>
+    <p class="doc-lead">A metric card: icon, big value, and label. The surface is rendered through the
+      active skin (glass / flat / neu), exactly like <code>.card</code>. Colour variants add a top
+      accent bar and a faint tint pulled from the same colour.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>stat</code></td><td>Metric card (uses <code>surface()</code>)</td></tr>
+        <tr><td class="doc-cat">Layout</td><td><code>stat--row</code></td><td>Horizontal: icon left, text right</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>stat__icon</code></td><td>Tinted icon chip (size via <code>--_isize</code>, default 40px)</td></tr>
+        <tr><td class="doc-cat">Style</td><td><code>stat__icon--plain</code></td><td>Transparent slot, sizes to its own content</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>stat__body</code></td><td>Optional value+label wrapper (keeps them one block in <code>--row</code>)</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>stat__value</code></td><td>Large value</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>stat__label</code></td><td>Caption</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>stat__delta</code></td><td>Optional trend line</td></tr>
+        <tr><td class="doc-cat">Color</td><td><code>stat--primary</code> <code>stat--success</code> <code>stat--warning</code> <code>stat--error</code> <code>stat--info</code> …</td><td>Top accent bar + tint</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Basic -->
+    <section class="doc-sec">
+      <h2>Stat</h2>
+      <div class="doc-preview">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;width:100%">
+          <div class="stat">
+            <div class="stat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
+            <div class="stat__value">$48.2k</div>
+            <div class="stat__label">Revenue this month</div>
+          </div>
+          <div class="stat">
+            <div class="stat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+            <div class="stat__value">1,284</div>
+            <div class="stat__label">Active users</div>
+          </div>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="stat"&gt;
+  &lt;div class="stat__icon"&gt;&lt;svg&gt;…&lt;/svg&gt;&lt;/div&gt;
+  &lt;div class="stat__value"&gt;$48.2k&lt;/div&gt;
+  &lt;div class="stat__label"&gt;Revenue this month&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Colours -->
+    <section class="doc-sec">
+      <h2>Colours</h2>
+      <p class="doc-lead" style="font-size:15px;margin-bottom:14px">Each variant sets a top accent bar plus a
+        faint tint, and pushes the icon chip / delta to the same colour.</p>
+      <div class="doc-preview">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;width:100%">
+          <div class="stat stat--success">
+            <div class="stat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="stat__value">98.4%</div>
+            <div class="stat__label">Uptime</div>
+            <div class="stat__delta">▲ 0.2% vs last week</div>
+          </div>
+          <div class="stat stat--warning">
+            <div class="stat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L14.7 3.9a2 2 0 00-3.4 0z"/></svg></div>
+            <div class="stat__value">7</div>
+            <div class="stat__label">Open incidents</div>
+          </div>
+          <div class="stat stat--error">
+            <div class="stat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 10l4 4 3-3 5 6"/></svg></div>
+            <div class="stat__value">-12%</div>
+            <div class="stat__label">Churn delta</div>
+          </div>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="stat stat--success"&gt;
+  &lt;div class="stat__icon"&gt;&lt;svg&gt;…&lt;/svg&gt;&lt;/div&gt;
+  &lt;div class="stat__value"&gt;98.4%&lt;/div&gt;
+  &lt;div class="stat__label"&gt;Uptime&lt;/div&gt;
+  &lt;div class="stat__delta"&gt;▲ 0.2% vs last week&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Row / horizontal -->
+    <section class="doc-sec">
+      <h2>Horizontal (<code>stat--row</code>)</h2>
+      <p class="doc-lead" style="font-size:15px;margin-bottom:14px">Add <code>stat--row</code> and wrap the value
+        and label in <code>stat__body</code> so the text sits as one block to the right of the icon. Colour
+        variants (bar + tint) work the same. Use <code>stat__icon--plain</code> for a transparent slot and
+        <code>--_isize</code> to grow the chip.</p>
+      <div class="doc-preview">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;width:100%">
+          <div class="stat stat--row stat--primary">
+            <span class="stat__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16M8 15V9M13 15V7M18 15v-3"/></svg></span>
+            <div class="stat__body">
+              <div class="stat__value">128</div>
+              <div class="stat__label">Words in dictionary</div>
+            </div>
+          </div>
+          <div class="stat stat--row stat--success">
+            <span class="stat__icon" style="--_isize:52px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <div class="stat__body">
+              <div class="stat__value">42</div>
+              <div class="stat__label">Lessons completed</div>
+              <div class="stat__delta">▲ 6 this week</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;div class="stat stat--row stat--primary"&gt;
+  &lt;span class="stat__icon"&gt;&lt;svg&gt;…&lt;/svg&gt;&lt;/span&gt;
+  &lt;div class="stat__body"&gt;
+    &lt;div class="stat__value"&gt;128&lt;/div&gt;
+    &lt;div class="stat__label"&gt;Words in dictionary&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- transparent slot + bigger icon --&gt;
+&lt;span class="stat__icon stat__icon--plain"&gt;&lt;img src="badge.png" width="56"&gt;&lt;/span&gt;
+&lt;span class="stat__icon" style="--_isize:52px"&gt;…&lt;/span&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

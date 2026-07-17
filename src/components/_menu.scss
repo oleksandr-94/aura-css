@@ -1,0 +1,110 @@
+// ============================================================
+// Aura — Menu
+// A vertical navigation primitive (NOT a sidebar). It is
+// placement-agnostic: no width, no position, no background of its
+// own — the host app's shell provides those. Drop the same .menu
+// into a sidebar, a drawer, or a popover and it fits.
+// Active items ride the brand --gradient; hover uses a soft accent
+// tint, so the menu follows the theme with no hardcoded colours.
+// ============================================================
+@use "../config" as cfg;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}menu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    // intentionally no width / position / background — supplied by the shell.
+  }
+
+  // ---- Section grouping ----
+  .#{$p}menu__section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    & + & { margin-top: var(--space-3); }
+  }
+  .#{$p}menu__label {
+    padding: var(--space-2) var(--space-3) var(--space-1);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--on-surface-muted);
+  }
+
+  // ---- Item ----
+  .#{$p}menu__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    padding: 10px 12px;
+    font: inherit;
+    font-size: var(--fs-md);
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: start;
+    text-decoration: none;
+    color: var(--on-surface);
+    background: transparent;
+    border: 0;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background .15s ease, color .15s ease;
+
+    // icon slot — fixed size, never shrinks
+    > svg {
+      flex: none;
+      width: 20px;
+      height: 20px;
+    }
+
+    // label takes the remaining space so a trailing badge sits at the end
+    > span:not([class]) { flex: 1 1 auto; }
+
+    &:hover {
+      background: color-mix(in srgb, var(--primary) 12%, transparent);
+    }
+    &:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    &.#{$p}menu__item--active {
+      background: var(--gradient);
+      color: var(--on-gradient, #fff);
+      box-shadow: 0 6px 18px color-mix(in srgb, var(--primary) 30%, transparent);
+      // keep the trailing badge readable on the gradient
+      .#{$p}menu__badge {
+        background: color-mix(in srgb, #fff 22%, transparent);
+        color: var(--on-gradient, #fff);
+      }
+    }
+    &:disabled,
+    &.#{$p}menu__item--disabled {
+      opacity: .5;
+      cursor: not-allowed;
+      &:hover { background: transparent; }
+    }
+  }
+
+  // ---- Trailing badge / count ----
+  .#{$p}menu__badge {
+    flex: none;
+    margin-inline-start: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 7px;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    line-height: 1;
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--on-surface) 12%, transparent);
+    color: var(--on-surface);
+  }
+}

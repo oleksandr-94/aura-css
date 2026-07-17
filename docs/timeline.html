@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aura-dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Timeline — Aura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link id="aura-css" rel="stylesheet" href="../dist/aura.css" />
+<link rel="stylesheet" href="_docs.css" />
+</head>
+<body>
+  <aside class="doc-side" id="doc-side"></aside>
+
+  <main class="doc-main">
+    <h1 class="doc-h1">Timeline</h1>
+    <p class="doc-lead">A vertical feed of events. A single rail runs down the left with an accent dot on
+      every item; the <code>--now</code> item glows and <code>--muted</code> items dim. Item bodies sit on
+      <code>--surface-2</code> and nudge on hover.</p>
+
+    <table class="doc-table">
+      <thead><tr><th>Category</th><th>Class</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td class="doc-cat">Component</td><td><code>timeline</code></td><td>Vertical event list with a rail</td></tr>
+        <tr><td class="doc-cat">Layout</td><td><code>timeline--row</code></td><td>Horizontal items: time | body | count</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>timeline__item</code></td><td>One event (accent dot on the rail)</td></tr>
+        <tr><td class="doc-cat">State</td><td><code>timeline__item--now</code></td><td>Current event (brand-coloured glowing dot; override via inline <code>--_c</code>)</td></tr>
+        <tr><td class="doc-cat">State</td><td><code>timeline__item--muted</code></td><td>De-emphasised event</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>timeline__time</code></td><td>Timestamp line</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>timeline__title</code> <code>timeline__sub</code></td><td>Title + subtitle</td></tr>
+        <tr><td class="doc-cat">Part</td><td><code>timeline__count</code></td><td>Trailing count pill</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Basic -->
+    <section class="doc-sec">
+      <h2>Timeline</h2>
+      <div class="doc-preview">
+        <ol class="timeline" style="width:100%;max-width:420px">
+          <li class="timeline__item timeline__item--now">
+            <span class="timeline__time">Now · 14:20</span>
+            <div class="timeline__body">
+              <span class="timeline__title">Deploy started</span>
+              <span class="timeline__sub">Release v2.4.0 rolling out to production</span>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__time">13:58</span>
+            <div class="timeline__body">
+              <span class="timeline__title">Build passed</span>
+              <span class="timeline__sub">All 128 checks green</span>
+            </div>
+            <span class="timeline__count">128</span>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__time">13:30</span>
+            <div class="timeline__body">
+              <span class="timeline__title">Pull request merged</span>
+              <span class="timeline__sub">feat: two-colour gradient buttons</span>
+            </div>
+          </li>
+          <li class="timeline__item timeline__item--muted">
+            <span class="timeline__time">Yesterday</span>
+            <div class="timeline__body">
+              <span class="timeline__title">Branch created</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;ol class="timeline"&gt;
+  &lt;li class="timeline__item timeline__item--now"&gt;
+    &lt;span class="timeline__time"&gt;Now · 14:20&lt;/span&gt;
+    &lt;div class="timeline__body"&gt;
+      &lt;span class="timeline__title"&gt;Deploy started&lt;/span&gt;
+      &lt;span class="timeline__sub"&gt;Release v2.4.0 rolling out&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="timeline__item"&gt;
+    &lt;span class="timeline__time"&gt;13:58&lt;/span&gt;
+    &lt;div class="timeline__body"&gt;&lt;span class="timeline__title"&gt;Build passed&lt;/span&gt;&lt;/div&gt;
+    &lt;span class="timeline__count"&gt;128&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- Horizontal -->
+    <section class="doc-sec">
+      <h2>Horizontal (<code>timeline--row</code>)</h2>
+      <p class="doc-lead" style="font-size:15px;margin-bottom:14px">Add <code>timeline--row</code> to lay each
+        item out as <code>time | body | count</code> on a single line. Same markup, same rail and dots.</p>
+      <div class="doc-preview">
+        <ol class="timeline timeline--row" style="width:100%;max-width:460px">
+          <li class="timeline__item timeline__item--now">
+            <span class="timeline__time">14:20</span>
+            <div class="timeline__body"><span class="timeline__title">Deploy started</span></div>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__time">13:58</span>
+            <div class="timeline__body"><span class="timeline__title">Build passed</span></div>
+            <span class="timeline__count">128</span>
+          </li>
+          <li class="timeline__item timeline__item--muted">
+            <span class="timeline__time">13:30</span>
+            <div class="timeline__body"><span class="timeline__title">PR merged</span></div>
+          </li>
+        </ol>
+      </div>
+      <div class="doc-codewrap">
+        <button class="doc-copy">Copy</button>
+        <pre class="doc-code"><code>&lt;ol class="timeline timeline--row"&gt;
+  &lt;li class="timeline__item timeline__item--now"&gt;
+    &lt;span class="timeline__time"&gt;14:20&lt;/span&gt;
+    &lt;div class="timeline__body"&gt;&lt;span class="timeline__title"&gt;Deploy started&lt;/span&gt;&lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+</body>
+</html>

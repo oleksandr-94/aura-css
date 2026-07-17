@@ -1,0 +1,67 @@
+// ============================================================
+// Aura — Ring
+// CSS-only radial progress (no SVG). A conic-gradient paints the
+// arc on a ::before layer; a mask punches the centre out to leave a
+// ring. Progress is driven by --val (0–100). The arc sweeps
+// --_c1 → --_c2 (brand primary → secondary by default, so it reads
+// as the brand gradient); colour variants set both to one accent.
+// A conic-gradient can only take colour stops, so the arc is two
+// colours, never a nested linear-gradient. Track is --surface-2. The
+// label is a real child, so the mask never clips it.
+//   <div class="ring" style="--val:60"><span class="ring__label">60%</span></div>
+// ============================================================
+@use "../config" as cfg;
+$p: cfg.$prefix;
+
+@layer components {
+  .#{$p}ring {
+    --val: 0;                 // progress, 0–100
+    --_size: 120px;           // outer diameter
+    --_track: 10px;           // ring thickness
+    --_c1: var(--primary);    // arc start colour
+    --_c2: var(--secondary);  // arc end colour
+
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    width: var(--_size);
+    height: var(--_size);
+
+    // the ring itself lives on ::before so the label stays unmasked
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      // 1.5° feather on the arc end + 1px feather on the mask edge → no jagged/pixelated edges
+      background: conic-gradient(
+        var(--_c1) 0deg,
+        var(--_c2) calc(var(--val) * 3.6deg),
+        var(--surface-2) calc(var(--val) * 3.6deg + 1.5deg));
+      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - var(--_track) - 0.5px), #000 calc(100% - var(--_track) + 0.5px));
+      mask: radial-gradient(farthest-side, transparent calc(100% - var(--_track) - 0.5px), #000 calc(100% - var(--_track) + 0.5px));
+    }
+  }
+
+  // centred label — sits above the arc layer
+  .#{$p}ring__label {
+    position: relative;
+    z-index: 1;
+    font-size: var(--fs-lg);
+    font-weight: 800;
+    color: var(--on-surface);
+  }
+
+  // ---- sizes ----
+  .#{$p}ring--sm { --_size: 72px;  --_track: 7px;  .#{$p}ring__label { font-size: var(--fs-sm); } }
+  .#{$p}ring--lg { --_size: 168px; --_track: 14px; .#{$p}ring__label { font-size: var(--fs-xl); } }
+
+  // ---- colour variants: solid single-colour arc (both stops = accent) ----
+  .#{$p}ring--primary   { --_c1: var(--primary);   --_c2: var(--primary); }
+  .#{$p}ring--secondary { --_c1: var(--secondary); --_c2: var(--secondary); }
+  .#{$p}ring--accent    { --_c1: var(--accent);    --_c2: var(--accent); }
+  .#{$p}ring--success   { --_c1: var(--success);   --_c2: var(--success); }
+  .#{$p}ring--warning   { --_c1: var(--warning);   --_c2: var(--warning); }
+  .#{$p}ring--error     { --_c1: var(--error);     --_c2: var(--error); }
+  .#{$p}ring--info      { --_c1: var(--info);      --_c2: var(--info); }
+}

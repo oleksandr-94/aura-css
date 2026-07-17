@@ -11,6 +11,8 @@ $p: cfg.$prefix;
 
 @layer components {
   .#{$p}badge {
+    --_c:  var(--primary);                     // gradient endpoints (for --gradient)
+    --_c2: var(--primary-2, var(--secondary));
     --_bg: color-mix(in srgb, var(--on-surface) 10%, transparent);
     --_fg: var(--on-surface);
 
@@ -30,19 +32,29 @@ $p: cfg.$prefix;
     @include s.chip;            // skin feel (glass gloss / neu extrusion)
 
     // ---- colour variants (soft) ----
-    &.#{$p}badge--primary   { --_bg: var(--primary-container);   --_fg: var(--on-primary-container); }
-    &.#{$p}badge--secondary { --_bg: var(--secondary-container); --_fg: var(--on-secondary-container); }
-    &.#{$p}badge--accent    { --_bg: var(--accent-container);    --_fg: var(--on-accent-container); }
-    &.#{$p}badge--success   { --_bg: var(--success-container);   --_fg: var(--on-success-container); }
-    &.#{$p}badge--warning   { --_bg: var(--warning-container);   --_fg: var(--on-warning-container); }
-    &.#{$p}badge--error     { --_bg: var(--error-container);     --_fg: var(--on-error-container); }
-    &.#{$p}badge--info      { --_bg: var(--info-container);      --_fg: var(--on-info-container); }
+    // --_c2 fallback = a darker shade of the colour (so a single-accent gradient still
+    // reads as a gradient). primary falls back to secondary → the two-tone brand mint→sky.
+    &.#{$p}badge--primary   { --_c: var(--primary);   --_c2: var(--primary-2, var(--secondary));                                  --_bg: var(--primary-container);   --_fg: var(--on-primary-container); }
+    &.#{$p}badge--secondary { --_c: var(--secondary); --_c2: var(--secondary-2, color-mix(in srgb, var(--secondary) 72%, #000)); --_bg: var(--secondary-container); --_fg: var(--on-secondary-container); }
+    &.#{$p}badge--accent    { --_c: var(--accent);    --_c2: var(--accent-2, color-mix(in srgb, var(--accent) 72%, #000));       --_bg: var(--accent-container);    --_fg: var(--on-accent-container); }
+    &.#{$p}badge--success   { --_c: var(--success);   --_c2: var(--success-2, color-mix(in srgb, var(--success) 72%, #000));     --_bg: var(--success-container);   --_fg: var(--on-success-container); }
+    &.#{$p}badge--warning   { --_c: var(--warning);   --_c2: var(--warning-2, color-mix(in srgb, var(--warning) 72%, #000));     --_bg: var(--warning-container);   --_fg: var(--on-warning-container); }
+    &.#{$p}badge--error     { --_c: var(--error);     --_c2: var(--error-2, color-mix(in srgb, var(--error) 72%, #000));         --_bg: var(--error-container);     --_fg: var(--on-error-container); }
+    &.#{$p}badge--info      { --_c: var(--info);      --_c2: var(--info-2, color-mix(in srgb, var(--info) 72%, #000));           --_bg: var(--info-container);      --_fg: var(--on-info-container); }
 
-    // ---- style variant ----
+    // ---- style variants ----
     &.#{$p}badge--outline {
       background: transparent;
       border-color: color-mix(in srgb, var(--_fg) 45%, transparent);
       box-shadow: none;
+    }
+
+    // two-tone gradient fill (follows the colour; combine with a colour modifier,
+    // e.g. .badge--gradient.badge--success). Mirrors .btn--gradient.
+    &.#{$p}badge--gradient {
+      --_bg: linear-gradient(135deg, var(--_c) 0%, var(--_c2) 100%);
+      --_fg: var(--on-gradient, #fff);
+      border-color: transparent;
     }
 
     // ---- sizes ----

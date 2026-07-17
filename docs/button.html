@@ -26,7 +26,7 @@
         <tr><td class="doc-cat">Color</td><td><code>btn--secondary</code> <code>btn--accent</code></td><td>Accent colours</td></tr>
         <tr><td class="doc-cat">Color</td><td><code>btn--success</code> <code>btn--warning</code> <code>btn--error</code> <code>btn--info</code></td><td>Status colours</td></tr>
         <tr><td class="doc-cat">Style</td><td><code>btn--ghost</code> <code>btn--outline</code></td><td>Transparent / outlined</td></tr>
-        <tr><td class="doc-cat">Fill</td><td><code>btn--gradient</code></td><td>Brand gradient (skin-aware)</td></tr>
+        <tr><td class="doc-cat">Fill</td><td><code>btn--gradient</code></td><td>Two-colour gradient (<code>--primary → --secondary</code>; follows the colour modifier)</td></tr>
         <tr><td class="doc-cat">Size</td><td><code>btn--sm</code> <code>btn--lg</code></td><td>Small / large</td></tr>
         <tr><td class="doc-cat">Modifier</td><td><code>btn--block</code> <code>btn--disabled</code></td><td>Full width / disabled</td></tr>
       </tbody>
@@ -87,8 +87,11 @@
     <!-- Gradient -->
     <section class="doc-sec">
       <h2>Gradient</h2>
-      <p class="doc-lead" style="font-size:15px;margin-bottom:14px">The gradient follows the
-        button's colour — combine <code>.btn--gradient</code> with any colour modifier.</p>
+      <p class="doc-lead" style="font-size:15px;margin-bottom:14px">A two-colour blend. On its own,
+        <code>.btn--gradient</code> is the brand <code>--primary → --secondary</code>. Combine it with any
+        colour modifier and it blends <code>--&lt;role&gt;</code> → <code>--&lt;role&gt;-2</code> (defined in the theme;
+        falls back to a mono gradient of the single colour). Set <code>--on-gradient</code> in a theme to force
+        the text colour on gradients only.</p>
       <div class="doc-preview">
         <button class="btn btn--gradient">Primary</button>
         <button class="btn btn--gradient btn--secondary">Secondary</button>
