@@ -1709,8 +1709,7 @@
     box-shadow: 0 6px 18px color-mix(in srgb, var(--primary) 30%, transparent);
   }
   .menu__item.menu__item--active .menu__badge {
-    background: color-mix(in srgb, #fff 22%, transparent);
-    color: var(--on-gradient, #fff);
+    box-shadow: 0 0 0 2px var(--on-gradient, #fff);
   }
   .menu__item:disabled, .menu__item.menu__item--disabled {
     opacity: 0.5;
@@ -1747,6 +1746,9 @@
     background: var(--primary);
     color: var(--on-primary);
     box-shadow: 0 0 0 2px var(--surface-1);
+  }
+  .menu--compact .menu__item--active .menu__badge {
+    box-shadow: 0 0 0 2px var(--on-gradient, #fff);
   }
   .menu--compact .menu__item[data-tip]::after {
     content: attr(data-tip);
@@ -2051,7 +2053,6 @@
     --_c: var(--on-surface-muted);
   }
   .timeline__item.timeline__item--muted .timeline__title {
-    color: var(--on-surface-muted);
     font-weight: 600;
   }
   .timeline__time {

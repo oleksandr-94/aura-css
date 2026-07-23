@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.1 — 2026-07-23
+
+### Fixed
+- `.menu__item--active .menu__badge` — the translucent white fill washed out
+  on light pastel gradients. The active badge now keeps the same solid
+  `--primary` / `--on-primary` pill as inactive items and gains a 2px
+  `--on-gradient` ring that separates it from the gradient in any theme.
+  The compact rail's dot swaps its `--surface-1` ring for the same
+  `--on-gradient` ring when its item is active.
+- `.timeline__item--muted` no longer greys out `timeline__title` — a greyed
+  title read as disabled and dropped below body-text contrast. Muting now
+  de-emphasises the decoration only (grey dot/count via `--_c`) and lightens
+  the title's weight (700 → 600); the sub line is muted everywhere anyway.
+
 ## 0.3.0 — 2026-07-17
 
 ### Added

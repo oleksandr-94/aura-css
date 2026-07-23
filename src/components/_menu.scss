@@ -77,10 +77,12 @@ $p: cfg.$prefix;
       background: var(--gradient);
       color: var(--on-gradient, #fff);
       box-shadow: 0 6px 18px color-mix(in srgb, var(--primary) 30%, transparent);
-      // keep the trailing badge readable on the gradient
+      // The badge keeps its solid --primary fill (identical to inactive items);
+      // a translucent fill washed out on light pastel gradients. Since the
+      // gradient itself starts from --primary, an --on-gradient ring separates
+      // the pill from the fill it sits on in any theme.
       .#{$p}menu__badge {
-        background: color-mix(in srgb, #fff 22%, transparent);
-        color: var(--on-gradient, #fff);
+        box-shadow: 0 0 0 2px var(--on-gradient, #fff);
       }
     }
     &:disabled,
@@ -129,6 +131,13 @@ $p: cfg.$prefix;
       background: var(--primary);
       color: var(--on-primary);
       box-shadow: 0 0 0 2px var(--surface-1);
+    }
+
+    // On an active item the dot sits on the gradient, where a surface-coloured
+    // ring can vanish — switch it to the same --on-gradient ring as the full
+    // layout's active badge.
+    .#{$p}menu__item--active .#{$p}menu__badge {
+      box-shadow: 0 0 0 2px var(--on-gradient, #fff);
     }
 
     .#{$p}menu__item[data-tip] {

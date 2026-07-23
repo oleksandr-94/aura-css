@@ -76,11 +76,12 @@ $p: cfg.$prefix;
         color: var(--on-gradient, #fff);
       }
     }
-    // muted = de-emphasise by COLOUR, not a blanket opacity (which fades the
-    // count pill into illegibility). --_c → grey drives both dot and count.
+    // muted = de-emphasise the DECORATION (grey dot via --_c) and lighten the
+    // title's weight — never its colour: a greyed title reads as disabled and
+    // drops below body-text contrast. The sub line is already muted everywhere.
     &.#{$p}timeline__item--muted {
       --_c: var(--on-surface-muted);
-      .#{$p}timeline__title { color: var(--on-surface-muted); font-weight: 600; }
+      .#{$p}timeline__title { font-weight: 600; }
     }
   }
 
