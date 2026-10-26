@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.4.0 — 2026-10-26
+
+### Added
+- Themed scrollbars (`base/_scrollbar.scss`, `@layer base`): every scroll
+  container now gets a thin scrollbar coloured with `--outline-strong` on a
+  transparent track, so it adapts to each theme and skin instead of showing
+  the native scrollbar with arrow buttons. Applied per element, so nested
+  `data-theme` subtrees get their own colour. Host rules override it
+  (`scrollbar-width: auto` opts an element out). Safari < 18.2 gets an
+  equivalent `::-webkit-scrollbar` fallback.
+
 ## 0.3.1 — 2026-07-23
 
 ### Fixed

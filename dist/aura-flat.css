@@ -119,6 +119,28 @@
     box-sizing: border-box;
   }
 }
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--outline-strong) transparent;
+  }
+  @supports not (scrollbar-color: auto) {
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track,
+    ::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--outline-strong);
+      border: 2px solid transparent;
+      border-radius: var(--radius-pill);
+      background-clip: padding-box;
+    }
+  }
+}
 @layer a11y {
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {

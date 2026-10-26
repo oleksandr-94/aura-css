@@ -1,0 +1,29 @@
+// ============================================================
+// Aura — themed scrollbars
+// Thin scrollbars coloured from theme tokens, so every scroll
+// container follows the active theme (and per-subtree themes).
+// Applied per element rather than inherited from :root, because
+// `scrollbar-width` doesn't inherit and the colour must resolve
+// against the nearest [data-theme]. In @layer base, so any host
+// rule wins (e.g. `scrollbar-width: auto` to opt an element out).
+// ============================================================
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--outline-strong) transparent;
+  }
+
+  // Fallback for engines without the standard properties
+  // (Safari < 18.2). Chromium/Firefox use the rules above.
+  @supports not (scrollbar-color: auto) {
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track,
+    ::-webkit-scrollbar-corner { background: transparent; }
+    ::-webkit-scrollbar-thumb {
+      background: var(--outline-strong);
+      border: 2px solid transparent;
+      border-radius: var(--radius-pill);
+      background-clip: padding-box;
+    }
+  }
+}

@@ -677,7 +677,7 @@ aura/
 │   ├── _tokens.scss      # emits static scales + generates every theme
 │   ├── _surface.scss     # skin dispatcher: surface() / field()
 │   ├── skins/            # _glass · _flat · _neu
-│   ├── base/_reset.scss  # minimal reset in @layer base
+│   ├── base/             # @layer base: _reset · _scrollbar · _a11y
 │   ├── components/       # _button · _card · _menu · _stat · _ring · _timeline · …
 │   ├── _layers.scss      # cascade-layer order
 │   └── index.scss        # entry (default = glass)
@@ -689,6 +689,12 @@ aura/
 
 - **Cascade layers** — all Aura CSS lives in `@layer base, components`; your app's own
   unlayered styles always win, so overriding is easy.
+- **Themed scrollbars** — every scroll container gets a thin scrollbar coloured from
+  the theme (`scrollbar-width: thin; scrollbar-color: var(--outline-strong) transparent`),
+  so it follows light/dark and per-subtree `data-theme` automatically. It lives in
+  `@layer base`, so any rule of yours wins — e.g. opt an element out with
+  `scrollbar-width: auto; scrollbar-color: auto`, or recolour with `scrollbar-color`.
+  Safari < 18.2 gets an equivalent `::-webkit-scrollbar` fallback.
 - **Coexistence** — set `$prefix` to avoid class clashes with other libraries. With
   Tailwind v4 you can also map Aura's role variables into `@theme` to share one palette.
 - **Watch out for aggressive host resets.** Because Aura's rules live in `@layer components`,
