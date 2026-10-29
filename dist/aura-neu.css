@@ -1332,6 +1332,10 @@
     display: flex;
     gap: 10px;
     justify-content: flex-end;
+    margin-top: 20px;
+  }
+  .modal__body + .modal__actions {
+    margin-top: 0;
   }
 }
 @layer components {

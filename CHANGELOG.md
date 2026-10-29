@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.1 — 2026-10-29
+
+### Fixed
+- `.modal__actions` sat flush against anything but `.modal__body` — a form
+  field, an alert or a list right above the buttons left no gap, because the
+  only spacing came from `__body`'s bottom margin. The actions now carry
+  their own `margin-top: 20px`; directly after `__body` it stays 0, so
+  existing title / body / actions dialogs look exactly as before.
+
 ## 0.4.0 — 2026-10-26
 
 ### Added

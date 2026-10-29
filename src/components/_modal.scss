@@ -39,5 +39,9 @@ $p: cfg.$prefix;
 
   .#{$p}modal__title   { margin: 0 0 8px; font-size: var(--fs-xl); font-weight: 800; }
   .#{$p}modal__body    { margin: 0 0 20px; color: var(--on-surface-muted); font-size: var(--fs-md); line-height: 1.5; }
-  .#{$p}modal__actions { display: flex; gap: 10px; justify-content: flex-end; }
+  // the actions keep their distance from whatever precedes them (a field,
+  // an alert, a list) — not only from __body, whose bottom margin already
+  // provides it
+  .#{$p}modal__actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+  .#{$p}modal__body + .#{$p}modal__actions { margin-top: 0; }
 }
